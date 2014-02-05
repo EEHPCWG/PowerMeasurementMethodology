@@ -3,7 +3,27 @@
 \usepackage{makeidx}  % allows for indexgeneration
 \usepackage[pdftex]{hyperref}
 \usepackage{graphicx}
+\usepackage{url}
+
 %
+
+\newenvironment{packed_enum}{
+\begin{enumerate}
+  \setlength{\itemsep}{1pt}
+  \setlength{\parskip}{0pt}
+  \setlength{\parsep}{0pt}
+}{\end{enumerate}}
+
+\newenvironment{packed_item}{
+\begin{itemize}
+  \setlength{\itemsep}{1pt}
+  \setlength{\parskip}{0pt}
+  \setlength{\parsep}{0pt}
+}{\end{itemize}}
+
+
+\def\wl{\par \vspace{\baselineskip}}
+
 \begin{document}
 
 \pagestyle{headings}  % switches on printing of running  heads
@@ -16,13 +36,16 @@ Energy Efficient High Performance Computing Power Measurement Methodology
 \date{ }
 \maketitle              % typeset the title of the contribution
 
-\def\wl{\par \vspace{\baselineskip}}
+\tableofcontents
 
 %
 \chapter{Introduction}
 \input{intro}
 \label{sec:intro}
 
+\chapter{Checklist for Reporting Power Values}
+\input{checklist}
+\label{sec:checklist}
 
 \newpage
 
