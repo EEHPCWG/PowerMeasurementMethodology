@@ -18,11 +18,13 @@ information when you run your workload.
 \begin{itemize}
 \item[{[ ]}]
 \textbf{Quality Level}
+\addcontentsline{toc}{subsection}{Quality Level}
 
 Choosing a quality level is the first important decision a submitter must make. Refer to Section 3.3 Aspect and Quality Levels for general information about the three quality levels.  Sections 3.4 through 3.8 describe the details of the three quality levels
 
 \item[{[ ]}]
 \textbf{Power Measurement Locations}
+\addcontentsline{toc}{subsection}{Power Measurement Locations}
 
 Measurements of power or energy are often made at multiple points in parallel across the computer system. A typical location might be the output of the building transformer.
 Refer to Section 3.8 Aspect 4: Point where the Electrical Measurements are Taken for more information about power measurement locations.
@@ -34,6 +36,7 @@ Note that in some cases, you may have to adjust for power loss. For information 
 
 \item[{[ ]}]
 \textbf{Measuring Devices}
+\addcontentsline{toc}{subsection}{Measuring Devices}
 
 Specify the measuring device or devices used. A reference to the device specifications is useful.
 
@@ -45,11 +48,13 @@ If multiple meters are used, describe how the data aggregation and synchronizati
 
 \item[{[ ]}]
 \textbf{Workload Requirement}
+\addcontentsline{toc}{subsection}{Workload Requirement}
 
 The workload must run on all compute nodes of the system. Level 3 measures the power for the entire system. Levels 1 and 2 measure the power for a portion of the system and extrapolate a value for the entire system. 
 
 \item[{[ ]}]
 \textbf{Level 3 Power Measurement}
+\addcontentsline{toc}{subsection}{Level 3 Power Measurement}
 
 Level 3 submissions include the average power during the core phase of the run and the average power during the full run.
 
@@ -72,6 +77,7 @@ With Level 3, the submitter need not be concerned about different types of compu
 \newpage
 \item[{[ ]}]
 \textbf{Level 2 Power Measurement}
+\addcontentsline{toc}{subsection}{Level 2 Power Measurement}
 
 Level 2 submissions include the average power during the core phase of the run and the average power during the full run.
 
@@ -93,6 +99,7 @@ The compute-node subsystem is the set of compute nodes. As with Level 1, if the 
 \newpage
 \item[{[ ]}]
 \textbf{Level 1 Power Measurement}
+\addcontentsline{toc}{subsection}{Level 1 Power Measurement}
 
 Level 1 requires at least one power-averaged measurement during the run. Refer to Section 3.2.2 Power-Averaged and Total Energy Measurements for the definition of a power-averaged measurement and how it differs from a total energy measurement.
 
@@ -115,6 +122,7 @@ If the compute node-subsystem contains different types of compute nodes, measure
 
 \item[{[ ]}]
 \textbf{Idle Power}
+\addcontentsline{toc}{subsection}{Idle Power}
 
 Idle power is defined as the power used by the system when it is not running a workload, but it is in a state where it is ready to accept a workload. The idle state is not a sleep or a hibernation state.
 
@@ -125,6 +133,7 @@ For Levels 2 and 3, there must be at least one idle measurement. An idle measure
 \newpage
 \item[{[ ]}]
 \textbf{Included Subsystems}
+\addcontentsline{toc}{subsection}{Included Subsystems}
 
 Subsystems include (but are not limited to) computational nodes, any interconnect network the application uses, any head or control nodes, any storage system the application uses, and any internal cooling devices (self-contained liquid cooling systems and fans).  
 
@@ -153,6 +162,7 @@ Refer to Section 3.6 Aspect 2: Machine Fraction Instrumented for information abo
  
 \item[{[ ]}]
 \textbf{Tunable Parameters}
+\addcontentsline{toc}{subsection}{Tunable Parameters}
 
 Listing tunable parameters for all levels is optional.
 Typical tunable values are the CPU frequency, memory settings, and internal network settings. Be conservative, but list any other values you consider important.
@@ -164,6 +174,7 @@ If you report tunable parameters, submit both the default value (the value that 
 \newpage
 \item[{[ ]}]
 \textbf{Environmental Factors}
+\addcontentsline{toc}{subsection}{Environmental Factors}
 
 All levels require information about the cooling system temperature. Reporting other environmental data (such as humidity) is optional. 
 

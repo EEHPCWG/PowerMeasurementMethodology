@@ -1,2 +1,21 @@
 \contentsline {chapter}{\numberline {1}Introduction}{3}{chapter.1}
 \contentsline {chapter}{\numberline {2}Checklist for Reporting Power Values}{4}{chapter.2}
+\contentsline {subsection}{Quality Level}{4}{section*.2}
+\contentsline {subsection}{Power Measurement Locations}{4}{section*.2}
+\contentsline {subsection}{Measuring Devices}{5}{section*.2}
+\contentsline {subsection}{Workload Requirement}{5}{section*.2}
+\contentsline {subsection}{Level 3 Power Measurement}{5}{section*.2}
+\contentsline {subsection}{Level 2 Power Measurement}{6}{section*.2}
+\contentsline {subsection}{Level 1 Power Measurement}{7}{section*.2}
+\contentsline {subsection}{Idle Power}{7}{section*.2}
+\contentsline {subsection}{Included Subsystems}{8}{section*.2}
+\contentsline {subsection}{Tunable Parameters}{8}{section*.2}
+\contentsline {subsection}{Environmental Factors}{9}{section*.2}
+\contentsline {chapter}{\numberline {3}Reporting Power Values (Detailed Information)}{10}{chapter.3}
+\contentsline {section}{\numberline {3.1}Measuring Device Specifications}{10}{section.3.1}
+\contentsline {section}{\numberline {3.2}Measuring Device Terminology}{10}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Sampling}{10}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Power-Averaged and Total Energy Measurements}{12}{subsection.3.2.2}
+\contentsline {section}{\numberline {3.3}Aspect and Quality Levels}{13}{section.3.3}
+\contentsline {section}{\numberline {3.4}Aspect 1: Granularity, Timespan and Reported Measurements}{14}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}Core Phase}{15}{subsection.3.4.1}
