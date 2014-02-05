@@ -213,3 +213,330 @@ Every workload has a core phase where it is maximally exercising the relevant co
 \noindent
 For example, the core phase of the HPL workload is the portion of the core that actually solves the matrix. It is the numerically intensive solver phase of the calculation. Note that HPL now contains an HPL\_timer() routine that facilitates power measurements.
 \wl
+
+\subsection{The Whole Run}
+\noindent
+Level 2 and Level 3 submissions must also include the average power for the whole run, from the initiation of the job to its completion. 
+\wl
+
+\noindent
+Since HPL only reports the time spent executing the core phase of the workload, the time for the total run must be measured and reported separately by the submitter, for example by prepending the UNIX time command to the job invocation or the parallel application launch, whichever is earlier.
+\wl
+
+\noindent
+Levels 2 and 3 require the entire run to be measured and reported because HPL (the default workload at the time this document was written) drops significantly in power consumption during the course of a computation, as the matrix size being computed gets smaller.  Requiring the entire run eliminates systematic bias caused by using different parts of the run for the measurement. Figure 3 1 shows an example of a power graph taken from an HPL run on the LLNL Muir system in the fall of 2011.
+\wl
+
+\noindent
+Note that the power drops by 8% or so during the computational phase of the run.  This graph also illustrates the need for the device measurement to have as high a time resolution as possible.  The spread of power measurements even within a small time span is very likely caused by the sampling going in and out of phase with the AC input power. Figure 3 2 shows a smaller time slice that clearly illustrates this.
+\wl
+
+%INCLUDE FIG 3-1
+%INCLUDE FIG 3-2
+
+\noindent
+The boxes are individual one-second power samples.  This fast up-down fluctuation is not caused by the behavior of an individual power supply; the power being sampled is over the entire computer system doing the HPL run.  The reason that L3 requires integrating total energy meters is because they measure at a high enough frequency to not be subject to these sampling artifacts.
+\wl
+
+\noindent
+L2 and L3 each decrease the device's inherent time measurement granularity.  L2 allows 1-second intervals of the input power.  L3 requires an integrating total-energy meter, which samples the input power multiple times per AC cycle and so is much less susceptible to sampling artifacts caused by the AC waveform.  
+\wl
+
+\subsection{Level 1}
+\noindent
+The device measurement granularity must be at least one instantaneous measurement of power per second. This requirement holds whether the measurement is DC or AC.
+\wl
+
+\noindent
+There must be at least one power-averaged measurement during the run.
+The total interval covered must be at least 20\% of the core phase of the run or one minute, whichever is longer. The power-averaged measurement must be taken within the middle 80\% of the core phase of the benchmark.  
+\wl
+
+\noindent
+Figure 3 3 illustrates Aspect 1 Level 1 power measurement. If the minimum timespan turns out to be one minute, that minute must reside in the middle 80\% of the core phase. If, as required, the instantaneous measurement must be at least once per second and you are measuring for one minute, you have taken at least 60 instantaneous measurements and averaged them.
+\wl
+
+%INCLUDE FIG 3-3
+
+\subsection{Level 2}
+\noindent
+Level 2 submissions include a measurement of the average power during the core phase of the run and the average power during the full run. The workload run must have a series of equally spaced power-averaged measurements of equal length. These power-averaged measurements must be spaced close enough so that at least 10 measurements are reported during the core phase of the workload. The reported average power for the core phase of the run will be the numerical average of the 10 (or more) power-averaged measurements collected during the core phase.  
+\wl
+
+\noindent
+The complete set of power-averaged measurements used to calculate average power must also be provided.
+The device measurement sampling granularity must be at least one instantaneous measurement of power per second.
+\wl
+
+\noindent
+There is some unspecified number of power-averaged measurements during the workload but outside of the core phase. The reported average power for the whole run will be the numerical average of the power measurements for the whole run.  
+\wl
+
+
+\noindent
+Figure 3 4 illustrates Aspect 1 Level 2 power measurement. Each measurement is an average of instantaneous power measurements, and these instantaneous measurements are taken once per second. As an example, the figure shows 10 power-averaged measurements within the core phase and four power-averaged measurements outside the core phase, two before the core phase and two after the core phase.
+\wl
+
+%INCLUDE FIG 3-4
+
+\subsection{Level 3}
+\noindent
+Level 3 submissions include a measurement of the average power during the core phase of the run and the average power during the full run.
+\wl
+
+\noindent
+The complete set of total energy readings (at least 10 during the core computation phase) must be included, along with the execution time for the core phase and full run. 
+\wl
+
+\noindent
+Level 3 requires continuously integrated total energy measurements rather than power-averaged measurements. The readings must begin before the start of the run and extend to when it is finished.
+\wl
+
+\noindent
+The measuring device must sample voltage and current, whether AC or DC, at least 120 times or 100 times per second (depending on what the frequency standard in the current location is) and integrate those samples to determine the next total energy consumed reading.  Sampling at a greater rate is permitted. 
+\wl
+
+\noindent
+The reported total energy readings must be spaced so that at least 10 reported readings fall within the core phase of the workload. Note that each reported reading is the average of many samples.
+\wl
+
+
+\noindent
+Figure 3 5 illustrates Aspect 1 Level 3 power measurement. The figure shows 10 readings in the core phase of the workload. Note that these are integrated readings.  To obtain a power reading, one must subtract two integrated readings and divide by the time between the readings.
+\wl
+
+%INCLUDE FIG 3-5
+
+\section{Format of Reported Measurements}
+\noindent
+Levels 2 and 3 require the complete set of measurements. The submitter may choose to provide these values in a CSV file. Do not provide scans of paper documents.
+\wl
+
+\noindent
+The submitter may find it useful to create a graph showing the power and energy during the workload as shown in Figure 3 6. Keep this graph for reference, but do not provide it as part of the submission.
+\wl
+
+
+%INCLUDE FIG 3-6
+
+\section{Aspect 2: Machine Fraction Instrumented}
+\noindent
+Aspect 2 specifies the fraction of the system whose power feeds are instrumented by the measuring equipment. 
+\wl
+
+\noindent
+Level 3 requires that the entire machine be measured. Level 2 requires a higher fraction than Level 1.
+\wl
+
+\noindent
+When calculating the average power of the full machine for Levels 1 and 2, the measured power must be divided by this fraction to estimate the average power drawn by the whole machine. For example, if the submitter measures the power delivered to ¬ of the machine, the submitter must then multiply the measured power by 4 to estimate power for the whole machine.  
+The higher machine fractions are required at the higher quality levels to reduce the effects of random fluctuations and minor differences in hardware influencing the power measurements.  The larger the sample, the more transients will tend to cancel out.
+\wl
+
+\noindent
+The requirements for each quality level are as follows.
+\wl
+
+\begin{itemize}
+\item
+L1: 1/64 of the compute-node subsystem or 1 kW, whichever is greater
+\item
+L2: 1/8 of the compute-node subsystem or at least 10 kW, whichever is greater
+\item
+L3: the power use of the whole machine must be measured
+\end{itemize}
+
+\section{Aspect 3: Subsystems Included in Instrumented Power}
+\noindent
+Aspect 3 specifies the subsystems included in the instrumented power. 
+\wl
+
+\noindent
+Subsystems in the context of this document are power subsystems. A power subsystem is that part of a supercomputer which can be measured in isolation for power consumption while the supercomputer is performing a task. 
+\wl
+
+\noindent
+Subsystems include computational nodes, any interconnect network the application uses, any head or control nodes, any storage system the application uses, and any internal cooling devices (self-contained liquid cooling systems and fans).
+\wl
+
+\noindent
+If some subsystems are part of the measured power, their power may not be subtracted out after the fact.  The explicitly measured value must be used as is.
+\wl
+
+
+\noindent
+For Level 1, only include the compute-node subsystem. For some systems, it may be impossible not to include a power contribution from some subsystems. In this case, provide a list of the measured subsystems, but do not subtract an estimated value for the included subsystem. 
+\wl
+
+\noindent
+For Level 2,  include the compute node subsystem. Other subsystems participating in the workload must be measured or estimated. The estimations must be based on derived numbers from the equipment manufacturer's specifications. 
+\wl
+
+
+\noindent
+For Level 3, all power going to the parts of a computer system that participate in a workload must be included in the power measurement. 
+\wl
+
+\noindent
+For Level 3, the reported power measurement must include all computational nodes, any interconnect network the application uses, any head or control nodes, any storage system the application uses, all power conversion losses inside the computer, and any internal cooling devices (self-contained liquid cooling systems and fans).  
+\wl
+
+\noindent
+For Levels 2 and 3, the reported power measurement may exclude storage subsystems that don't participate in the workload. It is not required to exclude such storage subsystems. However, if these storage subsystems are part of the cabinet or rack being measured, they may not be excluded even if they are not used. That is, the submitter cannot calculate their contribution and subtract that contribution. If the storage subsystem is not part of the rack or cabinet being measured and it does not participate in the workload, it need not be measured.
+\wl
+
+\noindent
+In some cases, the submitter may be measuring power that the application doesn't actually use. If the submitter can exclude the unused subsystems from the measurement or easily turn off the power to the unused subsystems, then the submitter can choose not to include those subsystems in the measurement. 
+\wl
+
+\noindent
+For example, the node board may include compute nodes and GPUs, and the application may not actually use the GPUs.  If you cannot easily shut down the GPUs (say with an API), you must still include the power that they use. It is not acceptable to measure the power for both the compute nodes and the GPUs and then subtract the GPU power from the measurement.
+\wl
+
+\noindent
+A site may include more subsystems than are strictly required if it chooses or if it is advantageous from a measurement logistics point of view.  
+\wl
+
+\noindent
+A particular system may have different types of compute nodes. The system may have compute nodes from different companies or even compute nodes with different architectures. These compute nodes are said to belong to different heterogeneous sets.
+\wl
+
+\noindent
+With Level 3, the submitter need not be concerned about heterogeneous sets of compute nodes because Level 3 measures the entire system. 
+\wl
+
+\noindent
+Levels 1 and 2, however, measure a portion of the compute-node subsystem and estimate contributions from unmeasured portions. With Levels 1 and 2, the submitter must measure at least one member of each heterogeneous set. The submitter must include a power measurement from at least one compute node in each heterogeneous set and then estimate the contribution from the remaining members of the set. 
+\wl
+
+\noindent
+For example, assume there exist two sets of compute nodes, a set called A and another called B.  The submitter is able to measure the power consumed by « of the A compute nodes and ¬ of the B compute nodes.
+\wl
+
+\noindent
+The total power measurement reported for compute nodes would then be 
+\wl
+
+\noindent
+Total power=2*(power from compute nodes A)
+                              + 4*(power from compute nodes B)
+\wl
+
+\noindent
+The assumption of Levels 2 and 1 is that all the compute nodes in a set react identically to the workload.
+\wl
+
+
+\section{Aspect 4: Point where the Electrical Measurements are Taken}
+Aspect 4 specifies where in the power distribution system the power delivery is measured.  For all quality levels, the submission indicates where power is measured and the quantity of parallel measurements points.
+\wl
+
+\noindent
+Measurements of power or energy are typically made at multiple points in parallel across the computer system. For example, such locations can be at the entrance to each separate rack, or at the exit points of multiple building transformers. 
+\wl
+
+\noindent
+All the reported measurements taken in parallel at a given instant in time are then summed into a total measurement for that time.  The total measurement for a given moment in time constitutes one entry in the series of measurements that becomes part of the submission.
+\wl
+
+\noindent
+AC measurements are upstream of the system's power conversion. If the measurements are in a DC context, the submitter may have to take into account some power loss. Refer to Section 3.8.1 Adjusting for Power Loss.
+\wl
+
+\noindent
+Electrical power or energy measurements shall be taken in one of the following locations.
+\wl
+
+\begin{itemize}
+\item[{A)}]
+At a point upstream of where the electrical supply from the data center is delivered to the computer system
+
+OR
+
+\item[{B)}]
+At the point of the electrical supply delivery to the computer system from the data center
+
+OR
+
+\item[{C)}]
+At a point just inside of the computer system that is electrically equivalent to location B) above.  This includes the following. 
+
+\begin{itemize}
+\item
+At any point within a passive PDU, at the input to the PDU, at the exit point(s) of the PDU, or anywhere in between 
+\item
+At the entry point to the first power-modifying component (for example, the Blue Gene bulk power module, Cray AC/DC converters, and possibly the input point to one or more crate power supplies)
+\end{itemize}
+\end{itemize}
+
+\noindent
+If the measuring device or devices used to satisfy Aspect 1 also meet the ABC location requirements just specified above, then those devices are sufficient to obtain the measurements needed for submission.
+\wl
+
+
+\subsection{Adjusting for Power Loss}
+\noindent
+If the measurement device(s) that satisfy Aspect 1 are downstream of the ABC locations specified above, then two sets of measurements must be taken in order to determine the power loss between the required and the actual measurement location. 
+\wl
+
+\begin{itemize}
+\item
+For a Level 1 measurement, the power loss may be a load-varying model based on specifications from the manufacturer.  
+\item
+For a Level 2 measurement, the power loss may be a load-varying model based on an actual physical measurement of one power supply in the system.  
+\item
+For a Level 3 submission, the power loss must be measured simultaneously by a device at the required point (one of the ABC locations) measured at least once every five minutes, averaged long enough to average out the AC transients. 
+\end{itemize}
+
+\noindent
+For all three levels, the power losses used and how they were determined must be part of the submissions.
+\wl
+
+\subsection{Data Center Schematic}
+\noindent
+Figure 3 7 is an example of a simple power measurement schematic. This example shows only one power measurement point.
+\wl
+
+
+\noindent
+Submitters may find it useful to create such a schematic to identify the power measurement locations. Keep this schematic for reference, but do not provide it as part of the submission.
+\wl
+
+%INCLUDE FIG 3-7
+
+\section{Environmental Factors}
+\noindent
+Reporting information about the cooling system temperature is required.  All Levels require both the in and the out temperature of the cooling system. For air-cooled systems, these are the in and out air temperatures. For liquid-cooled systems, these are the in and out temperatures of the liquid.
+\wl
+
+\noindent
+Even though large systems often have multiple levels of heat energy exchange, the cooling method here refers to how the CPU is cooled.  If the CPU has a heat sink and air blows over it, then it is air-cooled.  If the CPU is embedded in water or some other refrigerant, then it is liquid-cooled.
+\wl
+
+\noindent
+For air-cooled systems, the air temperature both at the entrance to the computer system and at the exhaust must be measured sometime during the core phase of the computational run.  These temperatures must be reported as part of the submitted data.
+\wl
+
+\noindent
+For liquid-cooled systems, the temperature of both the incoming and outgoing cooling liquid must be measured sometime during the core phase run, and that temperature must be reported in the submission.
+\wl
+
+\noindent
+All other environmental data is optional. Other environmental data may include factors such as:
+\wl
+
+\begin{packed_item}
+\item[{-}]
+\% deviation between supply and rated voltage and frequency (recommended +/-5%)
+\item[{-}]
+\% total harmonic distortion (recommended < 2% THD )
+\item[{-}]
+line impedance (recommended <.25 ohm)
+\item[{-}]
+relative humidity
+\end{packed_item}
+
+
+
+
+
