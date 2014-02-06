@@ -51,7 +51,6 @@ Sampling delivered electrical power in a DC context refers to a single simultane
 If the submitter is sampling in a DC context, most likely it will be necessary to adjust for power loss in the AC/DC conversion stage. Refer to Section 3.7 Aspect 3: Subsystems Included in Instrumented Power for details.
 \wl
 
-\newpage
 
 \subsection{Power-Averaged and Total Energy Measurements}
 \noindent
@@ -224,15 +223,28 @@ Since HPL only reports the time spent executing the core phase of the workload, 
 \wl
 
 \noindent
-Levels 2 and 3 require the entire run to be measured and reported because HPL (the default workload at the time this document was written) drops significantly in power consumption during the course of a computation, as the matrix size being computed gets smaller.  Requiring the entire run eliminates systematic bias caused by using different parts of the run for the measurement. Figure 3 1 shows an example of a power graph taken from an HPL run on the LLNL Muir system in the fall of 2011.
+Levels 2 and 3 require the entire run to be measured and reported because HPL (the default workload at the time this document was written) drops significantly in power consumption during the course of a computation, as the matrix size being computed gets smaller.  Requiring the entire run eliminates systematic bias caused by using different parts of the run for the measurement. Figure~\ref{fig:powprof} shows an example of a power graph taken from an HPL run on the LLNL Muir system in the fall of 2011.
 \wl
 
 \noindent
-Note that the power drops by 8% or so during the computational phase of the run.  This graph also illustrates the need for the device measurement to have as high a time resolution as possible.  The spread of power measurements even within a small time span is very likely caused by the sampling going in and out of phase with the AC input power. Figure 3 2 shows a smaller time slice that clearly illustrates this.
+Note that the power drops by 8\% or so during the computational phase of the run.  This graph also illustrates the need for the device measurement to have as high a time resolution as possible.  The spread of power measurements even within a small time span is very likely caused by the sampling going in and out of phase with the AC input power. Figure~\ref{fig:sopm} shows a smaller time slice that clearly illustrates this.
 \wl
 
 %INCLUDE FIG 3-1
+\begin{figure}
+\centering
+\includegraphics[width=4in]{fig3-1}
+\caption{Power Profile HPL Run}
+\label{fig:powprof}
+\end{figure}
+
 %INCLUDE FIG 3-2
+\begin{figure}
+\centering
+\includegraphics[width=4in]{fig3-2}
+\caption{Spread of Power Measurements}
+\label{fig:sopm}
+\end{figure}
 
 \noindent
 The boxes are individual one-second power samples.  This fast up-down fluctuation is not caused by the behavior of an individual power supply; the power being sampled is over the entire computer system doing the HPL run.  The reason that L3 requires integrating total energy meters is because they measure at a high enough frequency to not be subject to these sampling artifacts.
@@ -253,10 +265,16 @@ The total interval covered must be at least 20\% of the core phase of the run or
 \wl
 
 \noindent
-Figure 3 3 illustrates Aspect 1 Level 1 power measurement. If the minimum timespan turns out to be one minute, that minute must reside in the middle 80\% of the core phase. If, as required, the instantaneous measurement must be at least once per second and you are measuring for one minute, you have taken at least 60 instantaneous measurements and averaged them.
+Figure~\ref{fig:a1l1pm} illustrates Aspect 1 Level 1 power measurement. If the minimum timespan turns out to be one minute, that minute must reside in the middle 80\% of the core phase. If, as required, the instantaneous measurement must be at least once per second and you are measuring for one minute, you have taken at least 60 instantaneous measurements and averaged them.
 \wl
 
 %INCLUDE FIG 3-3
+\begin{figure}
+\centering
+\includegraphics[width=4in]{fig3-3}
+\caption{Aspect 1 Level 1 Power Measurements}
+\label{fig:a1l1pm}
+\end{figure}
 
 \subsection{Level 2}
 \noindent
@@ -274,10 +292,16 @@ There is some unspecified number of power-averaged measurements during the workl
 
 
 \noindent
-Figure 3 4 illustrates Aspect 1 Level 2 power measurement. Each measurement is an average of instantaneous power measurements, and these instantaneous measurements are taken once per second. As an example, the figure shows 10 power-averaged measurements within the core phase and four power-averaged measurements outside the core phase, two before the core phase and two after the core phase.
+Figure~\ref{fig:a1l2pm} illustrates Aspect 1 Level 2 power measurement. Each measurement is an average of instantaneous power measurements, and these instantaneous measurements are taken once per second. As an example, the figure shows 10 power-averaged measurements within the core phase and four power-averaged measurements outside the core phase, two before the core phase and two after the core phase.
 \wl
 
 %INCLUDE FIG 3-4
+\begin{figure}
+\centering
+\includegraphics[width=4in]{fig3-4}
+\caption{Aspect 1 Level 2 Power Measurements}
+\label{fig:a1l2pm}
+\end{figure}
 
 \subsection{Level 3}
 \noindent
@@ -302,10 +326,16 @@ The reported total energy readings must be spaced so that at least 10 reported r
 
 
 \noindent
-Figure 3 5 illustrates Aspect 1 Level 3 power measurement. The figure shows 10 readings in the core phase of the workload. Note that these are integrated readings.  To obtain a power reading, one must subtract two integrated readings and divide by the time between the readings.
+Figure~\ref{fig:a1l3pm} illustrates Aspect 1 Level 3 power measurement. The figure shows 10 readings in the core phase of the workload. Note that these are integrated readings.  To obtain a power reading, one must subtract two integrated readings and divide by the time between the readings.
 \wl
 
 %INCLUDE FIG 3-5
+\begin{figure}
+\centering
+\includegraphics[width=4in]{fig3-5}
+\caption{Aspect 1 Level 3 Power Measurements}
+\label{fig:a1l3pm}
+\end{figure}
 
 \section{Format of Reported Measurements}
 \noindent
@@ -313,11 +343,17 @@ Levels 2 and 3 require the complete set of measurements. The submitter may choos
 \wl
 
 \noindent
-The submitter may find it useful to create a graph showing the power and energy during the workload as shown in Figure 3 6. Keep this graph for reference, but do not provide it as part of the submission.
+The submitter may find it useful to create a graph showing the power and energy during the workload as shown in Figure~\ref{fig:powengwl}. Keep this graph for reference, but do not provide it as part of the submission.
 \wl
 
 
 %INCLUDE FIG 3-6
+\begin{figure}
+\centering
+\includegraphics[width=4in]{fig3-6}
+\caption{Power and Energy During the Workload}
+\label{fig:powengwl}
+\end{figure}
 
 \section{Aspect 2: Machine Fraction Instrumented}
 \noindent
@@ -494,7 +530,7 @@ For all three levels, the power losses used and how they were determined must be
 
 \subsection{Data Center Schematic}
 \noindent
-Figure 3 7 is an example of a simple power measurement schematic. This example shows only one power measurement point.
+Figure~\ref{fig:powmeasschem} is an example of a simple power measurement schematic. This example shows only one power measurement point.
 \wl
 
 
@@ -503,6 +539,13 @@ Submitters may find it useful to create such a schematic to identify the power m
 \wl
 
 %INCLUDE FIG 3-7
+\begin{figure}
+\centering
+\includegraphics[width=4in]{fig3-7}
+\caption{Example of a Power Measurement Schematic}
+\label{fig:powmeasschem}
+\end{figure}
+
 
 \section{Environmental Factors}
 \noindent
@@ -523,15 +566,14 @@ For liquid-cooled systems, the temperature of both the incoming and outgoing coo
 
 \noindent
 All other environmental data is optional. Other environmental data may include factors such as:
-\wl
 
 \begin{packed_item}
 \item[{-}]
-\% deviation between supply and rated voltage and frequency (recommended +/-5%)
+\% deviation between supply and rated voltage and frequency (recommended +/-5\%)
 \item[{-}]
-\% total harmonic distortion (recommended < 2% THD )
+\% total harmonic distortion (recommended \textless 2\% THD )
 \item[{-}]
-line impedance (recommended <.25 ohm)
+line impedance (recommended \textless 0.25 ohm)
 \item[{-}]
 relative humidity
 \end{packed_item}
