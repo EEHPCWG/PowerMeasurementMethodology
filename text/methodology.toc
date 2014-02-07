@@ -30,3 +30,4 @@
 \contentsline {subsection}{\numberline {3.8.1}Adjusting for Power Loss}{25}{subsection.3.8.1}
 \contentsline {subsection}{\numberline {3.8.2}Data Center Schematic}{25}{subsection.3.8.2}
 \contentsline {section}{\numberline {3.9}Environmental Factors}{25}{section.3.9}
+\contentsline {chapter}{\numberline {4}Change Notices}{27}{chapter.4}
