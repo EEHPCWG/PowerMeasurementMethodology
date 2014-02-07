@@ -1,4 +1,3 @@
-
 \noindent
 Refer to this section for detailed information about the elements of a power submission. 
 \wl
@@ -13,8 +12,10 @@ The section contains definitions of the terms used to describe the elements of a
 
 
 \section{Measuring Device Specifications}
+\label{sec:MDSpecs}
 \noindent
-Measuring devices must meet the Level requirements as defined in Sections 3.3 and 3.4. This section lists resources for finding and evaluating meters.
+Measuring devices must meet the Level requirements as defined in 
+Sections~\ref{sec:AQLevels} and \ref{sec:A1GTRM}. This section lists resources for finding and evaluating meters.
 \wl
 
 \noindent
@@ -22,7 +23,8 @@ The ANSI specification for revenue-grade meters is ANSI C12.20.
 \wl
 
 \noindent
-Also, refer to the Power and Temperature Measurement Setup Guide and the list of accepted power measurement devices from the Standard Performance Evaluation Corporation.
+Also, refer to 
+the {\itshape Power and Temperature Measurement Setup Guide \/} and the list of accepted power measurement devices from the Standard Performance Evaluation Corporation.
 \wl
 
 \noindent
@@ -30,12 +32,11 @@ Also, refer to the Power and Temperature Measurement Setup Guide and the list of
 
 \noindent
 \url{http://www.spec.org/power/docs/SPECpower-Device_List.html }
-\wl
 
 \section{Measuring Device Terminology}
+\label{sec:MDTerm}
 \noindent
 Levels 1 and 2 specify power measurements. Level 3 specifies an energy measurement, but reports a power value.
-\wl
 
 \subsection{Sampling}
 \noindent
@@ -43,22 +44,22 @@ For Levels 1 and 2, power measurements must be sampled at least once per second.
 \wl
 
 \noindent
-Sampling in an AC context requires a measurement stage that determines the true power delivered at that point and enters that value into a buffer where it is then used to calculate average power over a longer time.  So "sampled once per second" in this context means that the times in the buffer are averaged and recorded once per second.
+Sampling in an AC context requires a measurement stage that determines the true power delivered at that point and enters that value into a buffer where it is then used to calculate average power over a longer time.  So ``sampled once per second'' in this context means that the times in the buffer are averaged and recorded once per second.
 Sampling delivered electrical power in a DC context refers to a single simultaneous measurement of the voltage and the current to determine the delivered power at that point.  The sampling rate in this case is how often such a sample is taken and recorded internally within the device.  
 \wl
 
 \noindent
-If the submitter is sampling in a DC context, most likely it will be necessary to adjust for power loss in the AC/DC conversion stage. Refer to Section 3.7 Aspect 3: Subsystems Included in Instrumented Power for details.
-\wl
-
+If the submitter is sampling in a DC context, most likely it will be necessary to adjust for power loss in the AC/DC conversion stage. 
+Refer to Section~\ref{sec:A3SIiIP} Aspect 3: Subsystems Included in Instrumented Power for details.
 
 \subsection{Power-Averaged and Total Energy Measurements}
+\label{sec:PAaTEM}
 \noindent
 The reported power values for Levels 1 and 2 are power-averaged measurements. A power-averaged measurement is one taken by a device that samples the instantaneous power used by a system at some fine time resolution for a given interval. The power-averaged measurement for the interval is the numerical average of all the instantaneous power measurements during that interval and constitutes one reported measurement covering that interval. 
 \wl
 
 \noindent
-Consider Level 1, which requires only one reported power value. This reported power value may consist of several power measurements taken at a frequency of at least once per second and averaged over an interval. That interval must be at least 20% of the run or one minute, whichever is longer. For example, if power measurements may be taken once per second for one minute for a total of 60 power measurements and then averaged, Level 1 reports one power-averaged value.
+Consider Level 1, which requires only one reported power value. This reported power value may consist of several power measurements taken at a frequency of at least once per second and averaged over an interval. That interval must be at least 20\% of the run or one minute, whichever is longer. For example, if power measurements may be taken once per second for one minute for a total of 60 power measurements and then averaged, Level 1 reports one power-averaged value.
 \wl
 
 \noindent
@@ -87,12 +88,11 @@ Level 3 specifies a total energy measurement that, when divided by the measured 
 
 \noindent
 Level 3 reports an average power value for the core phase, an average power value for the whole run, at least 10 equally spaced energy values within the core phase, and the elapsed time between the initial and final energy readings in the core phase. The average power value for the core phase is the difference between the initial and final energy readings divided by the elapsed time.
-\wl
 
 \section{Aspect and Quality Levels}
+\label{sec:AQLevels}
 \noindent
-Table 3 1 summarizes the aspect and quality levels introduced in Section  1 Introduction
-\wl
+Table~\ref{tab:levels} summarizes the aspect and quality levels introduced in Section~\ref{sec:intro} Introduction
 
 %INSERT TABLE 1
 \noindent
@@ -160,9 +160,9 @@ Conversion loss measured simultaneously \\
 \end{table}
 
 \section{Aspect 1: Granularity, Timespan and Reported Measurements}
+\label{sec:A1GTRM}
 \noindent
 Aspect 1 has the following three parts. Levels 1, 2, and 3 satisfy this aspect in different ways.
-\wl
 
 \begin{itemize}
 \item
@@ -179,7 +179,6 @@ For all required measurements, the submission must also include the data used to
 
 \noindent
 Levels 2 and 3 require a number of equally spaced measurements to be reported for two reasons.  
-\wl
 
 \begin{itemize}
 \item
@@ -198,7 +197,6 @@ The number of reported average power measurements or total energy measurements i
 
 \noindent
 All levels specify that power measurements be performed within the core phase of a workload. Levels 2 and 3 specify that a power measurement for the entire application be reported. Consequently, these levels require measurements during the run but outside of the core phase.
-\wl
 
 \subsection{Core Phase}
 \noindent
@@ -211,7 +209,6 @@ Every workload has a core phase where it is maximally exercising the relevant co
 
 \noindent
 For example, the core phase of the HPL workload is the portion of the core that actually solves the matrix. It is the numerically intensive solver phase of the calculation. Note that HPL now contains an HPL\_timer() routine that facilitates power measurements.
-\wl
 
 \subsection{The Whole Run}
 \noindent
@@ -228,7 +225,6 @@ Levels 2 and 3 require the entire run to be measured and reported because HPL (t
 
 \noindent
 Note that the power drops by 8\% or so during the computational phase of the run.  This graph also illustrates the need for the device measurement to have as high a time resolution as possible.  The spread of power measurements even within a small time span is very likely caused by the sampling going in and out of phase with the AC input power. Figure~\ref{fig:sopm} shows a smaller time slice that clearly illustrates this.
-\wl
 
 %INCLUDE FIG 3-1
 \begin{figure}
@@ -252,7 +248,6 @@ The boxes are individual one-second power samples.  This fast up-down fluctuatio
 
 \noindent
 L2 and L3 each decrease the device's inherent time measurement granularity.  L2 allows 1-second intervals of the input power.  L3 requires an integrating total-energy meter, which samples the input power multiple times per AC cycle and so is much less susceptible to sampling artifacts caused by the AC waveform.  
-\wl
 
 \subsection{Level 1}
 \noindent
@@ -266,7 +261,6 @@ The total interval covered must be at least 20\% of the core phase of the run or
 
 \noindent
 Figure~\ref{fig:a1l1pm} illustrates Aspect 1 Level 1 power measurement. If the minimum timespan turns out to be one minute, that minute must reside in the middle 80\% of the core phase. If, as required, the instantaneous measurement must be at least once per second and you are measuring for one minute, you have taken at least 60 instantaneous measurements and averaged them.
-\wl
 
 %INCLUDE FIG 3-3
 \begin{figure}
@@ -293,7 +287,6 @@ There is some unspecified number of power-averaged measurements during the workl
 
 \noindent
 Figure~\ref{fig:a1l2pm} illustrates Aspect 1 Level 2 power measurement. Each measurement is an average of instantaneous power measurements, and these instantaneous measurements are taken once per second. As an example, the figure shows 10 power-averaged measurements within the core phase and four power-averaged measurements outside the core phase, two before the core phase and two after the core phase.
-\wl
 
 %INCLUDE FIG 3-4
 \begin{figure}
@@ -327,7 +320,6 @@ The reported total energy readings must be spaced so that at least 10 reported r
 
 \noindent
 Figure~\ref{fig:a1l3pm} illustrates Aspect 1 Level 3 power measurement. The figure shows 10 readings in the core phase of the workload. Note that these are integrated readings.  To obtain a power reading, one must subtract two integrated readings and divide by the time between the readings.
-\wl
 
 %INCLUDE FIG 3-5
 \begin{figure}
@@ -338,13 +330,13 @@ Figure~\ref{fig:a1l3pm} illustrates Aspect 1 Level 3 power measurement. The figu
 \end{figure}
 
 \section{Format of Reported Measurements}
+\label{sec:FoRM}
 \noindent
 Levels 2 and 3 require the complete set of measurements. The submitter may choose to provide these values in a CSV file. Do not provide scans of paper documents.
 \wl
 
 \noindent
 The submitter may find it useful to create a graph showing the power and energy during the workload as shown in Figure~\ref{fig:powengwl}. Keep this graph for reference, but do not provide it as part of the submission.
-\wl
 
 
 %INCLUDE FIG 3-6
@@ -352,10 +344,12 @@ The submitter may find it useful to create a graph showing the power and energy 
 \centering
 \includegraphics[width=4in]{fig3-6}
 \caption{Power and Energy During the Workload}
+(used with permission from Universit‚ Laval, Calcul Qu‚bec, Compute Canada)
 \label{fig:powengwl}
 \end{figure}
 
 \section{Aspect 2: Machine Fraction Instrumented}
+\label{sec:A2MFI}
 \noindent
 Aspect 2 specifies the fraction of the system whose power feeds are instrumented by the measuring equipment. 
 \wl
@@ -365,24 +359,26 @@ Level 3 requires that the entire machine be measured. Level 2 requires a higher 
 \wl
 
 \noindent
-When calculating the average power of the full machine for Levels 1 and 2, the measured power must be divided by this fraction to estimate the average power drawn by the whole machine. For example, if the submitter measures the power delivered to ¬ of the machine, the submitter must then multiply the measured power by 4 to estimate power for the whole machine.  
+When calculating the average power of the full machine for Levels 1 and 2, the measured power must be divided by this fraction to 
+estimate the average power drawn by the whole machine. For example, if the submitter measures the power delivered 
+to $ \frac{1}{4} $ of the machine, the submitter must then multiply the measured power by 4 to estimate power for the whole machine.  
 The higher machine fractions are required at the higher quality levels to reduce the effects of random fluctuations and minor differences in hardware influencing the power measurements.  The larger the sample, the more transients will tend to cancel out.
 \wl
 
 \noindent
 The requirements for each quality level are as follows.
-\wl
 
 \begin{itemize}
 \item
-L1: 1/64 of the compute-node subsystem or 1 kW, whichever is greater
+L1: $ \frac{1}{64} $ of the compute-node subsystem or 1 kW, whichever is greater
 \item
-L2: 1/8 of the compute-node subsystem or at least 10 kW, whichever is greater
+L2: $ \frac{1}{8} $ of the compute-node subsystem or at least 10 kW, whichever is greater
 \item
 L3: the power use of the whole machine must be measured
 \end{itemize}
 
 \section{Aspect 3: Subsystems Included in Instrumented Power}
+\label{sec:A3SIiIP}
 \noindent
 Aspect 3 specifies the subsystems included in the instrumented power. 
 \wl
@@ -446,24 +442,23 @@ Levels 1 and 2, however, measure a portion of the compute-node subsystem and est
 \wl
 
 \noindent
-For example, assume there exist two sets of compute nodes, a set called A and another called B.  The submitter is able to measure the power consumed by « of the A compute nodes and ¬ of the B compute nodes.
+For example, assume there exist two sets of compute nodes, a set called A and another called B.  The submitter is able to measure the power 
+consumed by $ \frac{1}{2} $ of the A compute nodes and $ \frac{1}{4} $ of the B compute nodes.
 \wl
 
 \noindent
 The total power measurement reported for compute nodes would then be 
-\wl
 
 \noindent
-Total power=2*(power from compute nodes A)
-                              + 4*(power from compute nodes B)
-\wl
+\[ Total~power=2*(power~from~compute~nodes~A) 
+                              + 4*(power~from~compute~nodes~B) \]
 
 \noindent
 The assumption of Levels 2 and 1 is that all the compute nodes in a set react identically to the workload.
-\wl
 
 
 \section{Aspect 4: Point where the Electrical Measurements are Taken}
+\label{sec:A4wEMaT}
 Aspect 4 specifies where in the power distribution system the power delivery is measured.  For all quality levels, the submission indicates where power is measured and the quantity of parallel measurements points.
 \wl
 
@@ -476,12 +471,12 @@ All the reported measurements taken in parallel at a given instant in time are t
 \wl
 
 \noindent
-AC measurements are upstream of the system's power conversion. If the measurements are in a DC context, the submitter may have to take into account some power loss. Refer to Section 3.8.1 Adjusting for Power Loss.
+AC measurements are upstream of the system's power conversion. If the measurements are in a DC context, the submitter may have to take into account some power loss. 
+Refer to Section~\ref{sec:AfPL} Adjusting for Power Loss.
 \wl
 
 \noindent
 Electrical power or energy measurements shall be taken in one of the following locations.
-\wl
 
 \begin{itemize}
 \item[{A)}]
@@ -507,13 +502,11 @@ At the entry point to the first power-modifying component (for example, the Blue
 
 \noindent
 If the measuring device or devices used to satisfy Aspect 1 also meet the ABC location requirements just specified above, then those devices are sufficient to obtain the measurements needed for submission.
-\wl
-
 
 \subsection{Adjusting for Power Loss}
+\label{sec:AfPL}
 \noindent
 If the measurement device(s) that satisfy Aspect 1 are downstream of the ABC locations specified above, then two sets of measurements must be taken in order to determine the power loss between the required and the actual measurement location. 
-\wl
 
 \begin{itemize}
 \item
@@ -526,7 +519,6 @@ For a Level 3 submission, the power loss must be measured simultaneously by a de
 
 \noindent
 For all three levels, the power losses used and how they were determined must be part of the submissions.
-\wl
 
 \subsection{Data Center Schematic}
 \noindent
@@ -536,21 +528,21 @@ Figure~\ref{fig:powmeasschem} is an example of a simple power measurement schema
 
 \noindent
 Submitters may find it useful to create such a schematic to identify the power measurement locations. Keep this schematic for reference, but do not provide it as part of the submission.
-\wl
 
 %INCLUDE FIG 3-7
 \begin{figure}
 \centering
 \includegraphics[width=4in]{fig3-7}
 \caption{Example of a Power Measurement Schematic}
+(used with permission from Universit‚ Laval, Calcul Qu‚bec, Compute Canada)
 \label{fig:powmeasschem}
 \end{figure}
 
 
 \section{Environmental Factors}
+\label{sec:EF}
 \noindent
 Reporting information about the cooling system temperature is required.  All Levels require both the in and the out temperature of the cooling system. For air-cooled systems, these are the in and out air temperatures. For liquid-cooled systems, these are the in and out temperatures of the liquid.
-\wl
 
 \noindent
 Even though large systems often have multiple levels of heat energy exchange, the cooling method here refers to how the CPU is cooled.  If the CPU has a heat sink and air blows over it, then it is air-cooled.  If the CPU is embedded in water or some other refrigerant, then it is liquid-cooled.
@@ -577,8 +569,4 @@ line impedance (recommended \textless 0.25 ohm)
 \item[{-}]
 relative humidity
 \end{packed_item}
-
-
-
-
 

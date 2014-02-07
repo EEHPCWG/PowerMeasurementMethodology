@@ -11,7 +11,7 @@
 \contentsline {subsection}{Included Subsystems}{10}{section*.4}
 \contentsline {subsection}{Tunable Parameters}{10}{section*.4}
 \contentsline {subsection}{Environmental Factors}{11}{section*.4}
-\contentsline {chapter}{\numberline {3}Reporting Power Values (Detailed Information)}{12}{chapter.3}
+\contentsline {chapter}{\numberline {3}Reporting Power Values \relax \fontsize {10.95}{13.6}\selectfont \abovedisplayskip 11\p@ plus3\p@ minus6\p@ \abovedisplayshortskip \z@ plus3\p@ \belowdisplayshortskip 6.5\p@ plus3.5\p@ minus3\p@ \belowdisplayskip \abovedisplayskip \let \leftmargin \leftmargini \parsep 4.5\p@ plus2\p@ minus\p@ \topsep 9\p@ plus3\p@ minus5\p@ \itemsep 4.5\p@ plus2\p@ minus\p@ \leftmargin \leftmargini \parsep 4.5\p@ plus2\p@ minus\p@ \topsep 9\p@ plus3\p@ minus5\p@ \itemsep 4.5\p@ plus2\p@ minus\p@ {(Detailed Information)}}{12}{chapter.3}
 \contentsline {section}{\numberline {3.1}Measuring Device Specifications}{12}{section.3.1}
 \contentsline {section}{\numberline {3.2}Measuring Device Terminology}{12}{section.3.2}
 \contentsline {subsection}{\numberline {3.2.1}Sampling}{12}{subsection.3.2.1}
@@ -19,14 +19,14 @@
 \contentsline {section}{\numberline {3.3}Aspect and Quality Levels}{14}{section.3.3}
 \contentsline {section}{\numberline {3.4}Aspect 1: Granularity, Timespan and Reported Measurements}{14}{section.3.4}
 \contentsline {subsection}{\numberline {3.4.1}Core Phase}{16}{subsection.3.4.1}
-\contentsline {subsection}{\numberline {3.4.2}The Whole Run}{17}{subsection.3.4.2}
-\contentsline {subsection}{\numberline {3.4.3}Level 1}{17}{subsection.3.4.3}
-\contentsline {subsection}{\numberline {3.4.4}Level 2}{19}{subsection.3.4.4}
-\contentsline {subsection}{\numberline {3.4.5}Level 3}{20}{subsection.3.4.5}
-\contentsline {section}{\numberline {3.5}Format of Reported Measurements}{21}{section.3.5}
-\contentsline {section}{\numberline {3.6}Aspect 2: Machine Fraction Instrumented}{21}{section.3.6}
+\contentsline {subsection}{\numberline {3.4.2}The Whole Run}{16}{subsection.3.4.2}
+\contentsline {subsection}{\numberline {3.4.3}Level 1}{18}{subsection.3.4.3}
+\contentsline {subsection}{\numberline {3.4.4}Level 2}{18}{subsection.3.4.4}
+\contentsline {subsection}{\numberline {3.4.5}Level 3}{19}{subsection.3.4.5}
+\contentsline {section}{\numberline {3.5}Format of Reported Measurements}{20}{section.3.5}
+\contentsline {section}{\numberline {3.6}Aspect 2: Machine Fraction Instrumented}{20}{section.3.6}
 \contentsline {section}{\numberline {3.7}Aspect 3: Subsystems Included in Instrumented Power}{22}{section.3.7}
 \contentsline {section}{\numberline {3.8}Aspect 4: Point where the Electrical Measurements are Taken}{24}{section.3.8}
 \contentsline {subsection}{\numberline {3.8.1}Adjusting for Power Loss}{25}{subsection.3.8.1}
-\contentsline {subsection}{\numberline {3.8.2}Data Center Schematic}{26}{subsection.3.8.2}
-\contentsline {section}{\numberline {3.9}Environmental Factors}{26}{section.3.9}
+\contentsline {subsection}{\numberline {3.8.2}Data Center Schematic}{25}{subsection.3.8.2}
+\contentsline {section}{\numberline {3.9}Environmental Factors}{25}{section.3.9}
