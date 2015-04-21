@@ -26,6 +26,7 @@
 \def\wl{\par \vspace{\baselineskip}}
 
 \begin{document}
+\graphicspath{{figures/}}
 
 \pagestyle{headings}  % switches on printing of running  heads
 
@@ -44,31 +45,13 @@ Energy Efficient High Performance Computing Power Measurement Methodology \\
 \listoffigures
 
 %
-\chapter{Introduction}
-\input{intro}
-\label{sec:intro}
-
-\chapter{Checklist for Reporting Power Values}
-\input{checklist}
-\label{sec:checklist}
-
-\chapter{Reporting Power Values \normalsize{(Detailed Information)}}
-\input{reporting}
-\label{sec:reporting}
+\input{text/intro}
+\input{text/checklist}
+\input{text/reporting}
 \newpage
 
-
-\chapter{Change Notices}
-\input{changenotices}
-\label{sec:changenotices}
-
-
-\chapter{Conclusion}
-\input{conclusion}
-\label{sec:conclusion}
-
-\chapter{Definitions}
-\input{definitions}
-\label{sec:definitions}
+\input{text/changenotices}
+\input{text/conclusion}
+\input{text/definitions}
 
 \end{document}
