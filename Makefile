@@ -16,14 +16,15 @@ pdf_files = $(wildcard *.pdf)
 methodology.pdf: $(tex_files) $(bib_files) $(pdf_files)
 	pdflatex -shell-escape methodology | tee latex.out ; \
 	pdflatex -shell-escape methodology | tee latex.out; \
-	pdflatex -shell-escape methodology | tee latex.out; \
-	cp methodology.pdf ../downloadPDF/methodology.pdf
+	pdflatex -shell-escape methodology | tee latex.out
 
 clean:
-	find . -name '*.blg' -print | xargs rm -f; \
-	find . -name '*.aux' -print | xargs rm -f; \
-	find . -name '*.bbl' -print | xargs rm -f; \
-	find . -name '*.log' -print | xargs rm -f; \
-	find . -name '*.out' -print | xargs rm -f; \
+	find . -name '*.blg' -print0 | xargs -0 rm -f; \
+	find . -name '*.aux' -print0 | xargs -0 rm -f; \
+	find . -name '*.bbl' -print0 | xargs -0 rm -f; \
+	find . -name '*.log' -print0 | xargs -0 rm -f; \
+	find . -name '*.out' -print0 | xargs -0 rm -f; \
+	find . -name '*.toc' -print0 | xargs -0 rm -f; \
+	find . -name '*.lof' -print0 | xargs -0 rm -f; \
+	find . -name '*.lot' -print0 | xargs -0 rm -f; \
 	rm -f methodology.pdf
-
