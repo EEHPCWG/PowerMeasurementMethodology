@@ -1,3 +1,5 @@
+\chapter{Checklist for Reporting Power Values}
+\label{sec:checklist}
 
 \noindent
 When you are ready to make a submission, go to the Top500 
@@ -88,9 +90,13 @@ With Level 3, the submitter need not be concerned about different types of compu
 Level 2 submissions include the average power during the core phase of the run and the average power during the full run.
 
 The complete set of power-averaged measurements used to calculate average power must also be provided. 
-Refer to Section~\ref{sec:PAaTEM} Power-Averaged and Total Energy Measurements for the definition of a power-averaged measurement and how it differs from a total energy measurement.
+Refer to Section~\ref{sec:PAaTEM} Power-Averaged and Total Energy Measurements for the definition of a power-averaged 
+measurement and how it differs from a total energy measurement.
 
-For Level 2, the workload run must have a series of equally spaced power-averaged measurements of equal length. These power-averaged measurements must be spaced close enough so that at least 10 measurements are reported during the core phase of the workload. The reported average power for the core phase of the run is the numerical average of the 10 (or more) power-averaged measurements collected during the core phase.
+For Level 2, the workload run must have a series of equally spaced power-averaged measurements of equal length. 
+These power-averaged measurements must be spaced close enough so that at least 10 measurements are reported during the 
+core phase of the workload. The reported average power for the core phase of the run is the numerical average of the 
+10 (or more) power-averaged measurements collected during the core phase.
 
 Each of the required equally spaced measurements required for L2 must power-average over the entire separating space. 
 
@@ -109,22 +115,29 @@ The compute-node subsystem is the set of compute nodes. As with Level 1, if the 
 \textbf{Level 1 Power Measurement}
 \addcontentsline{toc}{subsection}{Level 1 Power Measurement}
 
-Level 1 requires at least one power-averaged measurement during the run. Refer to 
-Section~\ref{sec:PAaTEM} Power-Averaged and Total Energy Measurements for the definition of a power-averaged measurement and how it differs from a total energy measurement.
+Level 1 submissions submissions include the average power during the core phase of the run.
 
-The total interval covered must be at least 20\% of the core phase of the run or one minute, whichever is {\itshape longer\/}. 
+The complete set of power-averaged measurements used to calculate average power must also be provided. 
+Refer to Section~\ref{sec:PAaTEM} Power-Averaged and Total Energy Measurements for the definition of a power-averaged measurement 
+and how it differs from a total energy measurement.
 
-If the choice is one minute (because it's longer than 20\% of the core phase) that minute must reside in the middle 80\% of the core phase. If the middle 80\% of the core phase is less than one minute, the measurement must include the entire middle 80\% and overlap equally on both sides.
+For Level 1, the workload run must have a series of equally spaced power-averaged measurements of equal length. 
+These power-averaged measurements must be spaced close enough so that at least 10 measurements are reported during the 
+core phase of the workload. The reported average power for the core phase of the run is the numerical average of the 
+10 (or more) power-averaged measurements collected during the core phase.
 
-If the choice is 20\% of the core phase (because this 20\% is greater than one minute), this 20\% must reside in the middle 80\% of the core phase.
+Each of the required equally spaced measurements required for L2 must power-average over the entire separating space. 
 
-Refer to Section~\ref{sec:A1GTRM} Aspect 1: Granularity, Timespan and Reported Measurement for more information about the Level 1 power submission.
+Refer to Section~\ref{sec:A1GTRM} Aspect 1: Granularity, Timespan and Reported Measurement for more information about the 
+Level 1 power submission.
 
-For Level 1, the only subsystem included in the power measurement is the compute-node subsystem. The compute-node subsystem is the set of compute nodes. Measure the greater of $ \frac{1}{64} $ of the compute-node subsystem or 1kW of power.
+For Level 1, the only subsystem included in the power measurement is the compute-node subsystem. The compute-node subsystem 
+is the set of compute nodes. Measure the greater of $ \frac{1}{64} $ of the compute-node subsystem or 1kW of power.
 
 List any other subsystems that contribute to the workload, but do not provide estimated values for their contribution.
 
-For some systems, it may be impossible not to include a power contribution from some subsystems. In this case, list what you are including, but do not subtract an estimated value for the included subsystem.
+For some systems, it may be impossible not to include a power contribution from some subsystems. In this case, list what 
+you are including, but do not subtract an estimated value for the included subsystem.
 
 If the compute node-subsystem contains different types of compute nodes, measure at least one member from each of the heterogeneous sets. The contribution from compute nodes not measured must be estimated. Refer to 
 Section~\ref{sec:A3SIiIP} Aspect 3: Subsystems Included in Instrumented Power for information about
