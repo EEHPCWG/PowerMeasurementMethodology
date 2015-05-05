@@ -125,7 +125,8 @@ The compute-node subsystem is the set of compute nodes. Measure the greater of $
 
  
 The interconnect subsystem participating in the workload must be measured or, if not measured, the contribution 
-must be estimated. 
+must be estimated. The interconnect is everything that you need to operate the network that is not part of the compute subsystem. 
+This may include infrastructure that is shared, but excludes the part that is not servicing the current cluster.
 
 List all other subsystems that contribute to the workload, but you do not have to provide 
 measured or estimated values for their contribution.
