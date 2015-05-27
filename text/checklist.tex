@@ -117,14 +117,18 @@ If the choice is 20\% of the core phase (because this 20\% is greater than one m
 
 Refer to Section~\ref{sec:A1GTRM} Aspect 1: Granularity, Timespan and Reported Measurement for more information about the Level 1 power submission.
 
-For Level 1, the only subsystem included in the power measurement is the compute-node subsystem. 
-The compute-node subsystem is the set of compute nodes. 
+For Level 1, both the compute-node subsystem and the interconnect need reporting.  
+The compute-node subsystem power must be measured. 
 Measure a minimum of 2kw of power, 
 10\% of the system, or 15  nodes whichever is largest, or the whole machine if smaller than the largest requirement.
 
-List any other subsystems that contribute to the workload, but do not provide estimated values for their contribution.
+The interconnect subsystem participating in the workload must also be measured or, if not measured, the contribution must be estimated.
+Include everything that you need to operate the interconnect network that is not part of the compute subsystem. 
+This may include infrastructure that is shared, but excludes that part that is not servicing the current cluster.
 
-For some systems, it may be impossible not to include a power contribution from some subsystems. In this case, list what you are including, but do not subtract an estimated value for the included subsystem.
+
+For some systems, it may be impossible not to include a power contribution from some subsystems. 
+In this case, list what you are including, but do not subtract an estimated value for the included subsystem.
 
 If the compute node-subsystem contains different types of compute nodes, measure at least one member from each of the heterogeneous sets. The contribution from compute nodes not measured must be estimated. Refer to 
 Section~\ref{sec:A3SIiIP} Aspect 3: Subsystems Included in Instrumented Power for information about
@@ -150,10 +154,10 @@ Subsystems include (but are not limited to) computational nodes, any interconnec
 
 \begin{itemize}
 \item
-For Level 1, all subsystems participating in the workload must be listed. 
+For Level 1, both the compute-node subsystem and the interconnect need reporting.  
+The compute-node subsystem power must be measured. 
+The interconnect subsystem participating in the workload must also be measured or, if not measured, the contribution must be estimated.
 
-Only the compute-node subsystem must be measured. Not every compute node belonging to the compute node subsystem must be measured, but the contribution from those compute nodes not measured must be estimated.  Measure the greater of at 
-least $ \frac{1}{64} $ of the compute-node system or at least 1kW of power. 
 
 \item
 For Level 2, all subsystems participating in the workload must be measured and, if not measured, their contribution must be estimated. The Measured \% and the Derived \% must sum to the Total \%.
