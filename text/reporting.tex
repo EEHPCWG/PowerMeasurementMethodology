@@ -405,7 +405,13 @@ If some subsystems are part of the measured power, their power may not be subtra
 
 
 \noindent
-For Level 1, only include the compute-node subsystem. For some systems, it may be impossible not to include a power contribution from some subsystems. In this case, provide a list of the measured subsystems, but do not subtract an estimated value for the included subsystem. 
+For Level 1, both the compute-node subsystem and the interconnect need reporting.  
+The compute-node subsystem power must be measured. 
+The interconnect subsystem participating in the workload must also be measured or, if not measured, the contribution must be estimated.
+Include everything that you need to operate the interconnect network that is not part of the compute subsystem. 
+This may include infrastructure that is shared, but excludes that part that is not servicing the current cluster.
+For some systems, it may be impossible not to include a power contribution from some subsystems. 
+In this case, provide a list of the measured subsystems, but do not subtract an estimated value for the included subsystem. 
 \wl
 
 \noindent
