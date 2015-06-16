@@ -65,7 +65,10 @@ The reported power values for Levels 1 and 2 are power-averaged measurements. A 
 \wl
 
 \noindent
-Consider Level 1, which requires only one reported power value. This reported power value may consist of several power measurements taken at a frequency of at least once per second and averaged over an interval. That interval must be at least 20\% of the run or one minute, whichever is longer. For example, if power measurements may be taken once per second for one minute for a total of 60 power measurements and then averaged, Level 1 reports one power-averaged value.
+Consider Level 1, which requires only one reported power value. 
+This reported power value may consist of several power measurements taken at a frequency of at least once per second and averaged over an interval. 
+That interval must cover the entire core phase of the run or one minute, whichever is longer.
+For example, if power measurements may be taken once per second for one minute for a total of 60 power measurements and then averaged, Level 1 reports one power-averaged value.
 \wl
 
 \noindent
@@ -116,7 +119,7 @@ Continuously integrated energy\\
 
 
 \textbf{1b:~Timing} &
-The longer of one minute or 20\% of the run &
+The longer of one minute or the entire core phase of the run &
 Equally spaced across the full run &
 Equally spaced across the full run   \\
 \hline
@@ -264,11 +267,11 @@ The device measurement granularity must be at least one instantaneous measuremen
 
 \noindent
 There must be at least one power-averaged measurement during the run.
-The total interval covered must be at least 20\% of the core phase of the run or one minute, whichever is longer. The power-averaged measurement must be taken within the middle 80\% of the core phase of the benchmark.  
+The total interval covered must be the core phase of the run or one minute, whichever is longer.
 \wl
 
 \noindent
-Figure~\ref{fig:a1l1pm} illustrates Aspect 1 Level 1 power measurement. If the minimum timespan turns out to be one minute, that minute must reside in the middle 80\% of the core phase. If, as required, the instantaneous measurement must be at least once per second and you are measuring for one minute, you have taken at least 60 instantaneous measurements and averaged them.
+Figure~\ref{fig:a1l1pm} illustrates Aspect 1 Level 1 power measurement. If, as required, the instantaneous measurement must be at least once per second and you are measuring for one minute, you have taken at least 60 instantaneous measurements and averaged them.
 
 %INCLUDE FIG 3-3
 \begin{figure}
