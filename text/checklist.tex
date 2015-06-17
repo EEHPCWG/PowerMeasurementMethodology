@@ -1,4 +1,3 @@
-\chapter{Checklist for Reporting Power Values}
 \label{sec:checklist}
 
 
@@ -57,7 +56,7 @@ The workload must run on all compute nodes of the system. Level 3 measures the p
 \textbf{Level 3 Power Measurement}
 \addcontentsline{toc}{subsection}{Level 3 Power Measurement}
 
-Level 3 submissions include the average power during the core phase of the run and the average power during the full run.
+Level 3 submissions include the average power during the core phase of the run and the average power during the full run (see \ref{sec:core_phase} for definition of core phase).
 
 The core phase is usually considered to be the section of the workload that undergoes parallel execution. The core phase typically does not include the parallel job launch and teardown.
 
@@ -82,7 +81,7 @@ With Level 3, the submitter need not be concerned about different types of compu
 \textbf{Level 2 Power Measurement}
 \addcontentsline{toc}{subsection}{Level 2 Power Measurement}
 
-Level 2 submissions include the average power during the core phase of the run and the average power during the full run.
+Level 2 submissions include the average power during the core phase of the run and the average power during the full run (see \ref{sec:core_phase} for definition of core phase).
 
 The complete set of power-averaged measurements used to calculate average power must also be provided. 
 Refer to Section~\ref{sec:PAaTEM} Power-Averaged and Total Energy Measurements for the definition of a power-averaged
@@ -110,7 +109,7 @@ The compute-node subsystem is the set of compute nodes. As with Level 1, if the 
 \textbf{Level 1 Power Measurement}
 \addcontentsline{toc}{subsection}{Level 1 Power Measurement}
 
-Level 1 submissions submissions include the average power over the entire core phase of the run.
+Level 1 submissions submissions include the average power over the entire core phase of the run (see \ref{sec:core_phase} for definition of core phase).
 
 For Level 1, the power must be sampled at least once per second and averaged over the entire core phase to produce the reported average power.
 The core phase is required to run for at least one minute.
