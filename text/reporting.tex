@@ -67,7 +67,7 @@ The reported power values for Levels 1 and 2 are power-averaged measurements. A 
 \noindent
 Consider Level 1, which requires only one reported power value. 
 This reported power value may consist of several power measurements taken at a frequency of at least once per second and averaged over an interval. 
-That interval must cover the entire core phase of the run which must be at least one minute long.
+That interval must cover the entire core phase of the run which must be at least one minute long (see \ref{sec:core_phase} for definition of core phase).
 For example, if power measurements may be taken once per second for one minute for a total of 60 power measurements and then averaged, Level 1 reports one power-averaged value.
 \wl
 
@@ -208,16 +208,25 @@ The number of reported average power measurements or total energy measurements i
 All levels specify that power measurements be performed within the core phase of a workload. Levels 2 and 3 specify that a power measurement for the entire application be reported. Consequently, these levels require measurements during the run but outside of the core phase.
 
 \subsection{Core Phase}
+\label{sec:core_phase}
 \noindent
 All submissions must include the average power within the core (parallel computation) phase of the run. 
 \wl
 
 \noindent
-Every workload has a core phase where it is maximally exercising the relevant component(s) of the system. More power is often consumed in a workload's core phase than in its startup and shutdown phases. The core phase typically coincides with maximum system power draw. 
+In order to correlate the power measurement and the performance measurement to obtain the power efficiency, power and performance must be measured over the exact same time period.
+Therefore, the core phase is defined as the time period that is used for the performance calculation.
 \wl
 
 \noindent
-For example, the core phase of the HPL workload is the portion of the core that actually solves the matrix. It is the numerically intensive solver phase of the calculation. Note that HPL now contains an HPL\_timer() routine that facilitates power measurements.
+For example, the core phase of the Linpack workload is the portion of the code that actually solves the matrix.
+It is the numerically intensive solver phase of the calculation.
+In case of the standard HPL implementation of the Linpack benchmark as provided by netlib.ork (\url{http://www.netlib.org/benchmark/hpl/}) this is the time spent in the routing {\ttfamily HPL\_pdgesv}.
+Note that HPL as of version 2.1 contains a timer routine that prints start and end time of the core phase to facilitate power measurements, which looks like:\newline
+{\ttfamily
+HPL\_pdgesv() start time Wed Jun 30 21:49:08 2015\newline
+HPL\_pdgesv() end time Wed Jun 30 22:23:15 2015
+}.
 
 \subsection{The Whole Run}
 \noindent
