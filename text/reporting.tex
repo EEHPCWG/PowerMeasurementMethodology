@@ -46,7 +46,11 @@ Levels 1 and 2 specify power measurements. Level 3 specifies an energy measureme
 
 \subsection{Sampling}
 \noindent
-For Levels 1 and 2, power measurements must be sampled at least once per second. The actual measurements that constitute a sample may be taken much more frequently than once per second. 
+For Levels 1 and 2, power measurements must be sampled at a constant frequency at least once per second.
+The actual measurements that constitute a sample may be taken much more frequently than once per second.
+Usually the net frequency varies by a small percentage around 50~Hz or 60~Hz.
+It is allowed that the measurement frequency is not strictly constant, but it can be adjusted such that each measurement interval covers a certain number of full sinus waves.
+In that case, the intervals must not exceed one second by more than one sinus wave and when building the final power average the power readings must be weighted by the duration of the measurement interval.
 \wl
 
 \noindent
