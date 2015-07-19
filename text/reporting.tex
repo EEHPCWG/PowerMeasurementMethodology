@@ -76,16 +76,22 @@ In that case, the sample must be weighted according to the sample intervals.
 \noindent
 Consider Level 1, which requires only one reported power value. 
 This reported power value may consist of several power measurements taken at a constant frequency of at least once per second and averaged over an interval. 
-That interval must cover the entire core phase of the run which must be at least one minute long (see \ref{sec:core_phase} for definition of core phase).
-For example, if power measurements may be taken once per second for one minute for a total of 60 power measurements and then averaged, Level 1 reports one power-averaged value.
+For Level 1, this interval must be the core phase of the run, which must be at least one minute long (see \ref{sec:core_phase} for definition of core phase).
+For example, if power measurements are taken once per second and the core phase takes 10 minutes, Level 1 reports one power-averaged value that averages over 600 samples.
 \wl
 
 \noindent
 Level 2 also requires that power measurements be taken at a constant frequency at least once per second.
-Level 2 requires that power values be reported for both the core phase of the workload and the total workload.
-The reported power value for the core phase must be the result of at least 10 power measurements.
-These 10 power measurements may themselves be power-averaged measurements.
-Each of the required equally spaced measurements required for L2 must power-average over the entire separating space.  
+It requires the submission of the power-averaged measurement for the core phase, for the full run, and for a series of equally spaced power-averaged measurements of equal length during the full run.
+These power-averaged measurements must be spaced close enough so that at least 10 measurements are reported during the core phase of the workload.
+Each of the required equally spaced measurements required for Level 2 must power-average over the entire separating space. 
+\wl
+
+\noindent
+The measurement for the core phase is identical to the measurement in Level 1.
+Assume again one sample per second, a core phase of 10 minutes and a full run of 15 minutes.
+In that case, the submission includes one power-averaged measurement over 600 samples for the core phase, one power-averaged measurement over 900 samples for the full run, and for instance a series of 15 power-averaged measurements over 60 samples every minute.
+Each of the required equally spaced measurements in the series must power-average over the entire separating space.
 \wl
 
 \noindent
@@ -105,7 +111,7 @@ For Levels 1 and 2, the units of the reported power values are watts.
 \wl
 
 \noindent
-Level 3 specifies a total energy measurement that, when divided by the measured time, also reports power. An integrated measurement is a continuing sum of energy measurements. Typically, there are hundreds of measurements per second.  Depending on the local frequency standard, there must be at least 120 or 100 measurements per second. The measuring device samples voltage and current many times per second and integrate those samples to determine the next total energy consumed reading. 
+Level 3 specifies a total energy measurement that, when divided by the measured time, also reports power. An integrated measurement is a continuing sum of energy measurements. Typically, there are hundreds of measurements per second.  Depending on the local frequency standard, there must be at least 120 or 100 measurements per second. The measuring device samples voltage and current many times per second and integrates those samples to determine the next total energy consumed reading. 
 \wl
 
 \noindent
