@@ -90,6 +90,7 @@ Level 2 submissions include the average power during the core phase of the run a
 The complete set of power-averaged measurements used to calculate average power must also be provided. 
 Refer to Section~\ref{sec:PAaTEM} Power-Averaged and Total Energy Measurements for the definition of a power-averaged
 measurement and how it differs from a total energy measurement.
+The core phase is required to run for at least one minute.
 
 For Level 2, the workload run must have a series of equally spaced power-averaged measurements of equal length, sampled at least once per second.
 These power-averaged measurements must be spaced close enough so that at least 10 measurements are reported during the
@@ -115,6 +116,7 @@ The compute-node subsystem is the set of compute nodes. As with Level 1, if the 
 Level 3 submissions include the average power during the core phase of the run and the average power during the full run (see \ref{sec:core_phase} for definition of core phase).
 
 The core phase is usually considered to be the section of the workload that undergoes parallel execution. The core phase typically does not include the parallel job launch and teardown.
+The core phase is required to run for at least one minute.
 
 Level 3 measures energy. Power is calculated by dividing the measured energy by the elapsed time . The measured energy is the last measured total energy within the core phase minus the first measured total energy within the core phase.
 
