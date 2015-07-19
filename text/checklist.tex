@@ -67,7 +67,7 @@ Level 1 power submission.
 For Level 1, both the compute-node subsystem and the interconnect must be reported.  
 The compute-node subsystem power must be measured. 
 For the compute subsystem measure a minimum of 2kw of power, 
-10\% of the system, or 15  nodes whichever is largest, or the whole machine if smaller than the largest requirement.
+10\% of the system, or 15 nodes whichever is largest, or the whole machine if smaller than the largest requirement.
 
 The interconnect subsystem participating in the workload must also be measured or, if not measured, the contribution must be estimated.
 Include everything that you need to operate the interconnect network that is not part of the compute subsystem. 
@@ -104,7 +104,7 @@ Refer to Section~\ref{sec:A1GTRM} Aspect 1: Granularity, Timespan and Reported M
 Refer to Section~\ref{sec:FoRM} for more information about the format of reported measurements.
 
 For Level 2, the compute node subsystem must be measured and all other subsystems participating in the workload must be measured or estimated. Level 2 requires that the 
-greater of $ \frac{1}{8} $ of the compute-node subsystem or 10 kW of power be measured. It is acceptable to exceed this requirement.
+greater of $ \frac{1}{8} $ of the compute-node subsystem or 10 kW of power or 15 compute nodes be measured. It is acceptable to exceed this requirement or to measure the whole machine if smaller than 15 nodes.
 
 The compute-node subsystem is the set of compute nodes. As with Level 1, if the compute-node subsystem contains different types of compute nodes, you must measure at least one member from each of the heterogeneous sets. The contribution from compute nodes not measured must be extrapolated. Refer to Section~\ref{sec:A3SIiIP} Aspect 3: Subsystems Included in Instrumented Power for information about heterogeneous sets of compute nodes.
 
@@ -166,7 +166,7 @@ In the case of estimated measurements for subsystems other than
 the compute-node subsystem, the submission must include the relevant 
 manufacturer specifications and formulas used for power estimation. 
 
-Measure the greater of at least 10KW of power or $ \frac{1}{8} $ of the compute-node subsystem.
+Measure the greater of at least 10KW of power or $ \frac{1}{8} $ of the compute-node subsystem or 15 compute nodes.
 
 \item
 For Level 3, all subsystems participating in the workload must be measured.
