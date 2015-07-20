@@ -166,11 +166,11 @@ The interconnect subsystem participating in the workload must also be measured o
 
 
 \item
-For Level 2, the compute node subsystem must be measured and all other subsystems participating in the workload must be measured and, if not measured, their contribution must be estimated. The Measured \% and the Derived \% must sum to the Total \%.
+For Level 2, the compute node subsystem must be measured and all other subsystems participating in the workload must be measured and, if not measured, their contribution must be estimated.
+The Measured \% and the Derived \% must sum to the Total \%.
 
-In the case of estimated measurements for subsystems other than 
-the compute-node subsystem, the submission must include the relevant 
-manufacturer specifications and formulas used for power estimation. 
+Estimation must be performed by substituting the measurement by an uppower bound derrived from the maximum specified power consumption of all hardware components.
+The submission must include the relevant manufacturer specifications and formulas used for power estimation. 
 
 Measure the greater of at least 10KW of power or $ \frac{1}{8} $ of the compute-node subsystem or 15 compute nodes.
 
