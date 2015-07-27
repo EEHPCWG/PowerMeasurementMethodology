@@ -22,15 +22,35 @@ Sections~\ref{sec:AQLevels} and \ref{sec:A1GTRM}. This section defines meter acc
 \wl
 
 \noindent
-For Level 3, it is required to use any revenue grade meter, any meter accepted by spec power, or any meter documented to have an accuracy of 3\% or better. 
+For Level 3, it is required to use any revenue grade meter, any meter accepted by spec power, or any meter documented to have an accuracy of 1\% or better. 
 Revenue grade meters are defined by ANSI C12.20.  
-Level 2 requires a meter with a minimum documented accuracy of 3\%.
+Level 2 requires a meter with a minimum documented accuracy of 2\%.
 Level 1 requires a meter with a minimum documented accuracy of 5\%.
 \wl
 
 \noindent
-Also, refer to 
-the {\itshape Power and Temperature Measurement Setup Guide \/} and the list of accepted power measurement devices from the Standard Performance Evaluation Corporation.
+The required accuracy as percentage refers to the relative error specified for the power meter.
+If the power meter has multiple measurement intervals with different accuracies, all measurement intervals used during the benchmark run must meet the above requirements.
+Error in this context refers to the sum of statistical and systematic error.
+It is acceptable if the error is documented either as a hard bound, as the 1$\sigma$ standard deviation, or as the full width at half maximum (FWHM).
+\wl
+
+\noindent
+If the site uses multiple independent power meters for a level 2 or a level 3 measurement, and if all employed power meters measure an identical fraction of the system, the requirements are relaxed in the following way.
+\begin{packed_item}
+\item 
+Each individual power meter must have at least a documented accuracy of 3\%.
+\item
+The documented error of the individual meters divided by the square root of the number of employed meters must meet the above requirements of 2\% for level 2 and 1\% for level 1.
+\end{packed_item}
+In this case, the second requirement ensures that the standard deviation of the measurement of the entire run, using error propagation, and assuming a gaussian distribution, and assuming that the errors of the power meters are uncorelated, meets the requirements.
+For example, assume 4 power meters for a level 3 measurement, each measuring 25\% of the total system.
+In that case, each meter must have a documented accuracy of~$1\% \cdot \sqrt{4} = 2\%$.
+In other words, you can use a single meter with 1\% accuracy, 4 meters with 2\% accuracy, or 9 meters with 3\% accuracy for level 3.
+\wl
+
+\noindent
+For meters accepted by the spec power, refer to the {\itshape Power and Temperature Measurement Setup Guide \/} and the list of accepted power measurement devices from the Standard Performance Evaluation Corporation.
 \wl
 
 \noindent
@@ -156,7 +176,7 @@ Equally spaced across the full run   \\
 \textbf{1c:~Measurements} &
 Core phase average power &
 $\bullet$ Core phase average power & 
-$\bullet$ Core phase total energy \\
+$\bullet$ Core phase total energy \\MDSpecs
 
  & &
 $\bullet$ Full run average power &
@@ -164,7 +184,7 @@ $\bullet$ Full run total energy \\
 
  & &
 $\bullet$ 10 average power measurements in the core phase &
-$\bullet$ 10 total energy measurements in the core phase \\
+$\bullet$ 10 total energy measureMDSpecsments in the core phase \\
 
  & &
 $\bullet$ idle power &
@@ -200,8 +220,8 @@ Conversion loss measured simultaneously \\
 \hline
 \textbf{4b: Meter accuracy} &
 5\% &
-3\% &
-3\% \\
+2\% (see Section~\ref{sec:MDSpecs})&
+1\% (see Section~\ref{sec:MDSpecs})\\
 \hline
 \end{tabular}
 \end{table}
