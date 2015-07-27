@@ -164,6 +164,8 @@ For Level 1, both the compute-node subsystem and the interconnect must be report
 The compute-node subsystem power must be measured. 
 The interconnect subsystem participating in the workload must also be measured or, if not measured, the contribution must be estimated.
 
+Measure the greater of at least 2kW of power or $ \frac{1}{10} $ of the compute-node subsystem or 15 compute nodes.
+
 \item
 For Level 2, the compute node subsystem must be measured and all other subsystems participating in the workload must be measured and, if not measured, their contribution must be estimated.
 The Measured \% and the Derived \% must sum to the Total \%.
@@ -171,7 +173,7 @@ The Measured \% and the Derived \% must sum to the Total \%.
 Measure the greater of at least 10kW of power or $ \frac{1}{8} $ of the compute-node subsystem or 15 compute nodes.
 
 \item
-For Level 3, all subsystems participating in the workload must be measured.
+For Level 3, all subsystems participating in the workload must be measured completely.
 \end{itemize}
 
 Estimation must be performed by substituting the measurement by an uppower bound derived from the maximum specified power consumption of all hardware components.
