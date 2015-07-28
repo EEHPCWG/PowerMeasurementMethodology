@@ -468,6 +468,13 @@ In that case, you have to measure entire chassis, including all the power suppli
 The measurement of a chassis is then considered a measurement of as many nodes as there are nodes in the chassis.
 \wl
 
+\noindent
+For a measurement of only a fraction of a subsystem, this fraction must be chosen randomly.
+In this context, random refers to the entity that are measured.
+For instance, if you measure nodes then choose random nodes, if you measure entire racks, choose random racks.
+It is not allowed to screen the system for components with lower power consumtion and then measure only that fraction nor is it allowed to replace components in the chosen fraction by ones with lower power consumption.
+\wl
+
 \section{Aspect 3: Subsystems Included in Instrumented Power}
 \label{sec:A3SIiIP}
 \noindent
