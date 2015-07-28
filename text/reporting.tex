@@ -64,12 +64,13 @@ For meters accepted by the spec power, refer to the {\itshape Power and Temperat
 \noindent
 Levels 1 and 2 specify power measurements. Level 3 specifies an energy measurement, but reports a power value.
 
-\subsection{Sampling}
+\subsection{Sampling and Power Readings}
 \noindent
 For Levels 1 and 2, the power meter must internally sample the instantaneous power at a constant frequency of at least once per second.
-The actual measurements that constitute a sample may be taken much more frequently than once per second.
+(Internally, one such power sample will usually require many more measurements of voltage and current taken much more frequently than once per second.
+The power meter will either integrate the measurements at a high frequency, or fit a sinus wave curve to it and determine the power factor and in this way produce a power consumption reading.)
 Usually the net frequency varies by a small percentage around 50~Hz or 60~Hz.
-It is allowed that the measurement frequency is not strictly constant, but it can be adjusted such that each sample interval covers a certain number of full sinus waves.
+It is allowed that the measurement sample frequency is not strictly constant, but it can be adjusted such that each sample interval covers a certain number of full sinus waves.
 In that case, the intervals must not exceed one second by more than one sinus wave and when building the final power average the power readings must be weighted by the duration of the sample interval.
 \wl
 
@@ -81,6 +82,20 @@ Sampling delivered electrical power in a DC context refers to a single simultane
 \noindent
 If the submitter is sampling in a DC context, most likely it will be necessary to adjust for power loss in the AC/DC conversion stage. 
 Refer to Section~\ref{sec:A3SIiIP} Aspect 3: Subsystems Included in Instrumented Power for details.
+\wl
+
+\noindent
+It is allowed that the power meter does not report every sample.
+Instead, the power meter may use an internal buffer and aggregate several samples over time and then only report one average power reading at a certain constant frequency.
+In the following, we refer to such a reported power measurement of the power meter as ``power reading''.
+It is required that the power meter reports at least one power reading every 10 seconds for level 2 and every minute for level 1.
+If the power meter reports every sample, then a power sample and a power reading is the same.
+\wl
+
+\noindent
+The power meter must use all power samples taken during an interval to compute the average power reading.
+Consider that the limits of one sample per second and one power reading per 10 seconds / 1 minute are upper bounds.
+Usually, the power meter will take many samples per second and report power readings on about a per second basis.
 
 \subsection{Power-Averaged and Total Energy Measurements}
 \label{sec:PAaTEM}
@@ -92,31 +107,32 @@ This subsection describes the difference of power-averaged measurements as requi
 \noindent
 The reported power values for Levels 1 and 2 are power-averaged measurements over a certain time period (e.g. the core phase or the full run).
 A power-averaged measurement is one taken by a device that samples the instantaneous power used by a system at some fine time resolution for a specified interval.
+This interval is short compared to the full time of the power-averaged measurement.
 The power meter device numerically averages of all the instantaneous power measurements sampled during that interval.
-This constitutes one reported measurement covering that interval.
-Finally, the power-averaged measurement for the required time period is the average of the power measurements obtained from the device in that period.
+This constitutes one measurement reported by the device covering that interval.
+Finally, the power-averaged measurement for the required time period is the average of all these power readings obtained from the device in that period.
 All power readings reported by the device for that period must be used except for one case:
 Exclude those readings for intervals that do not lie completely in the requested time period.
+(Usually the reading intervals and the measured time period (e.g. the core phase) are not synchronized.)
 We require that the internal device sampling frequncy must be at least 1 Hz and constant.
-Also the measurement intervals must be of constant length and no longer than 10 seconds.
+The intervals between the power readings must be constant and no longer than 1 minute for level 1 and 10 seconds for level 2.
+In any case the intervals between the power readings must not be longer than 1\% of the duration of the core phase.
+(This ensures that the parts of the core phase that are not measured at beginning and end are short.)
 As noted in the previous subsection, the frequency may vary slightly to accomodate for variations in the net frequency.
 In that case, the averaging process must weight the power readings from the power meter according to the respective interval lengths.
 \wl
 
 \noindent
-For instance, a meter may sample internally at 1 Hz and report one power reading every 5 seconds.
-Then, the measurement of the core phase is the average of all these power readings obtained every 5 seconds.
-\wl
-
-\noindent
 Consider Level 1, which requires only one reported power value. 
-This reported power value may consist of several power measurements taken at a constant frequency of at least once per second and averaged over an interval.
+This reported power value may consist of several power readings taken at a constant frequency of at least once per minute.
+Each such reading itself must be the average of instantaneous power samples measured at least once per second and averaged over reading interval.
 For Level 1, the time period that is measured must be the core phase of the run, which must be at least one minute long (see \ref{sec:core_phase} for definition of core phase).
 For example, if the device reports one power measurement every 5 seconds (each being the average of at least 5 power samples) and the core phase takes 10 minutes, Level 1 reports one power-averaged value that averages over all the 120 measurements obtained during the core phase.
+(Usually the power reading intervals and the core phase are not synchronized, such that the first reding does not lie completely in the core phase. In that case the average is only over the 119 readings completely in the core phase.)
 \wl
 
 \noindent
-Level 2 also requires that power measurements be taken at a constant frequency and device must internally sample at least once per second.
+Level 2 also requires that power measurements be taken at a constant frequency and the device must internally sample internally at least once per second.
 It requires the submission of the power-averaged measurement for the core phase, for the full run, and for a series of equally spaced power-averaged measurements of equal length during the full run.
 These power-averaged measurements in the series must be spaced close enough so that at least 10 measurements are reported during the core phase of the workload.
 There must not be any delay between the power measurement in this series and they must cover the entire core phase.
@@ -124,9 +140,9 @@ Alternatively, instead of the 10 power-averaged measurements, it is allowed to s
 \wl
 
 \noindent
-The measurement for the core phase is identical to the measurement in Level 1.
+The measurement for the core phase for Level 2 is identical to the measurement in Level 1.
 Assume again one measurement every 5 seconds (consisting of 5 samples each), a core phase of 10 minutes and a full run of 15 minutes.
-In that case, the submission includes one power-averaged measurement over 120 power readings for the core phase, one power-averaged measurement over 180 readings for the full run, and for instance a series of 15 power-averaged measurements over 12 power readings each, once per minute.
+In that case, the submission includes one power-averaged measurement over 120 power readings for the core phase, one power-averaged measurement over 180 readings for the full run, and for instance a series of 30 power-averaged measurements over 6 power readings each, once every 30 seconds.
 \wl
 
 \noindent
@@ -163,8 +179,8 @@ Table~\ref{tab:levels} summarizes the aspect and quality levels introduced in Se
 \textbf{Aspect}&\textbf{Level 1}&\textbf{Level 2}&\textbf{Level 3}\\ \hline
 
 \textbf{1a:~Granularity} &
-One power sample per second &
-One power sample per second &
+One power sample per second, one reported power reading per minute &
+One power sample per second, one reported power reading per 10 seconds &
 Continuously integrated energy\\
 \hline
 
