@@ -505,16 +505,17 @@ In this case, provide a list of the measured subsystems, but do not subtract an 
 \wl
 
 \noindent
-For Level 2,  include the compute node subsystem. Other subsystems participating in the workload must be measured or estimated. The estimations must be based on derived numbers from the equipment manufacturer's specifications. 
+For Level 2, include the compute node subsystem.
+Other subsystems participating in the workload must be measured or estimated.
 \wl
-
 
 \noindent
 For Level 3, all power going to the parts of a computer system that participate in a workload must be included in the power measurement. 
+The reported power measurement must include all computational nodes, any interconnect network the application uses, any head or control nodes, any storage system the application uses, all power conversion losses inside the computer, and any internal cooling devices (self-contained liquid cooling systems and fans).  
 \wl
 
 \noindent
-For Level 3, the reported power measurement must include all computational nodes, any interconnect network the application uses, any head or control nodes, any storage system the application uses, all power conversion losses inside the computer, and any internal cooling devices (self-contained liquid cooling systems and fans).  
+For Levels 1 and 2, estimations of other subsystems besides the compute subsystem must be performed by substituting the measurement by an uppower bound derived from the maximum specified power consumption of all hardware components.
 \wl
 
 \noindent
