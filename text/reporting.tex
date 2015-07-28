@@ -449,6 +449,13 @@ L3: the power use of the whole machine must be measured
 
 \noindent
 For measurements of other subsystems (network, storage, etc.), measure at least $\frac{1}{10}$ for level 1, $\frac{1}{8}$ for level 2, and everything for level 3.
+\wl
+
+\noindent
+The fraction of a subsystem that is measured must be chosen such, that the entire subsystem is a real multiple of the fraction.
+For instance, a cluster consisting of blade servers with 8 nodes per chassis requires a measurement of entire chassis, hence a multiple of 8 nodes.
+Even if individual node power could be measured, that would not be valid as it would not include the common chassis.
+\wl
 
 
 
