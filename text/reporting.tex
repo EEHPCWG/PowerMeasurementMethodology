@@ -88,7 +88,7 @@ Refer to Section~\ref{sec:A3SIiIP} Aspect 3: Subsystems Included in Instrumented
 It is allowed that the power meter does not report every sample.
 Instead, the power meter may use an internal buffer and aggregate several samples over time and then only report one average power reading at a certain constant frequency.
 In the following, we refer to such a reported power measurement of the power meter as ``power reading''.
-It is required that the power meter reports at least one power reading every 10 seconds for level 2 and every minute for level 1.
+The intervals between the power readings must be no longer than 10\% of the duration of the core phase.
 If the power meter reports every sample, then a power sample and a power reading is the same.
 \wl
 
@@ -115,9 +115,8 @@ All power readings reported by the device for that period must be used except fo
 Exclude those readings for intervals that do not lie completely in the requested time period.
 (Usually the reading intervals and the measured time period (e.g. the core phase) are not synchronized.)
 We require that the internal device sampling frequncy must be at least 1 Hz and constant.
-The intervals between the power readings must be constant and no longer than 1 minute for level 1 and 10 seconds for level 2.
-In any case the intervals between the power readings must not be longer than 1\% of the duration of the core phase.
-(This ensures that the parts of the core phase that are not measured at beginning and end are short.)
+The intervals between the power readings must be constant and no longer than 10\% of the duration of the core phase.
+(This ensures that the parts of the core phase that are not measured at beginning and end are not significant.)
 As noted in the previous subsection, the frequency may vary slightly to accomodate for variations in the net frequency.
 In that case, the averaging process must weight the power readings from the power meter according to the respective interval lengths.
 \wl
@@ -179,8 +178,8 @@ Table~\ref{tab:levels} summarizes the aspect and quality levels introduced in Se
 \textbf{Aspect}&\textbf{Level 1}&\textbf{Level 2}&\textbf{Level 3}\\ \hline
 
 \textbf{1a:~Granularity} &
-One power sample per second, one reported power reading per minute &
-One power sample per second, one reported power reading per 10 seconds &
+One power sample per second &
+One power sample per second &
 Continuously integrated energy\\
 \hline
 
