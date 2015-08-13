@@ -147,7 +147,7 @@ For Levels 1 and 2, the units of the reported power values are watts.
 \subsubsection{Total Energy Measurements}
 
 \noindent
-Level 3 specifies a total energy measurement that, when divided by the measured time, also reports power. An integrated measurement is a continuing sum of energy measurements. Typically, there are hundreds of measurements per second.  Depending on the local frequency standard, there must be at least 120 or 100 measurements per second. The measuring device samples voltage and current many times per second and integrates those samples to determine the next total energy consumed reading. 
+Level~3 specifies a total energy measurement that, when divided by the measured time, also reports power. An integrated measurement is a continuing sum of energy measurements. Typically, there are hundreds of measurements per second.  Depending on the local AC power line frequency, there must be at least 120 or 100 measurements per second. The measuring device samples voltage and current many times per second and integrate those samples to determine the next total energy consumed reading. 
 \wl
 
 \noindent
@@ -156,10 +156,6 @@ Level 3 reports an average power value for the core phase, an average power valu
 These last and first measurements in the core phase must be timed such that no more than a total of ten seconds (five each at begin and end) of the core phase are not covered by the total energy measurement.
 The final average power value for the core phase is the difference between the first and last energy readings divided by the elapsed time between first and last reading.
 The final value for the full run must be obtained analogously.
-=======
-
-Level~3 specifies a total energy measurement that, when divided by the measured time, also reports power. An integrated measurement is a continuing sum of energy measurements. Typically, there are hundreds of measurements per second.  Depending on the local AC power line frequency, there must be at least 120 or 100 measurements per second. The measuring device samples voltage and current many times per second and integrate those samples to determine the next total energy consumed reading. 
->>>>>>> Various clarifications
 \wl
 
 \noindent
@@ -210,8 +206,9 @@ $\bullet$ idle power \\
 \hline
 
 \textbf{2: Machine \newline fraction}  &
-The greater of 1/10 of the compute subsystem or 2 kW or 15 compute nodes. Alternatively at least 40 kW. &
-The greater of 1/8 of the compute-node subsystem or 10 kW or 15 compute nodes &
+<<<<<<< aeb65cd8bd3a9fbf4dbe4afeb92239ca0103e6c5
+The greater of 1/10 of the compute subsystem or 2~kW or 15~compute nodes. Alternatively at least 40~kW or the entire system. &
+The greater of 1/8 of the compute-node subsystem or 10~kW or 15~compute nodes &
 The whole of all included subsystems \\
 \hline
 
@@ -461,11 +458,11 @@ The requirements with respect to the compute-node subsystem for each quality lev
 
 \begin{itemize}
 \item
-L1: $\frac{1}{10}$ of the compute-node subsystem or 2 kW or 15 compute nodes, whichever is greater
+L1: $\frac{1}{10}$ of the compute-node subsystem or at least 2~kW or 15 compute nodes, whichever is greater. Alternatively, at least 40~kW or the entiry system.
 \item
-L2: $\frac{1}{8}$ of the compute-node subsystem or at least 10 kW or 15 compute nodes, whichever is greater
+L2: $\frac{1}{8}$ of the compute-node subsystem or at least 10~kW or 15 compute nodes, whichever is greater.
 \item
-L3: the power use of the whole machine must be measured
+L3: the power use of the whole machine must be measured.
 \end{itemize}
 
 \noindent
