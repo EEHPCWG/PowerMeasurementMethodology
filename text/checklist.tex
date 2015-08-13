@@ -1,6 +1,5 @@
 \label{sec:checklist}
 
-
 \noindent
 This section contains a checklist with an overview of all the items of information you need to consider when making a power measurement.
 Afterward, Section~\ref{sec:reporting} provides a detailed and more elaborate description of all these items.
@@ -75,7 +74,7 @@ Estimation is performed by substituting the measurement by an uppower bound deri
 Include everything that you need to operate the interconnect network that is not part of the compute subsystem. 
 This may include infrastructure that is shared, but excludes that part that is not servicing the current cluster.
 
-For some systems, it may be impossible not to include a power contribution from some subsystems that are not used for the benchmark run.
+For some systems, it may be impossible not to include a power contribution from a certain subsystems that is not used for the benchmark run.
 In this case, list what you are including, but do not subtract an estimated value for the subsystem that are not needed.
 
 If the compute node-subsystem contains different types of compute nodes, measure at least one member from each of the heterogeneous sets. The contribution from compute nodes not measured must be extrapolated. Refer to 
@@ -97,8 +96,7 @@ The core phase is required to run for at least one minute.
 On top of these full measurements, Level 2 also requires a set of intermediate measurements in order to see how the power consumption varies over time.
 For this purpose, a series of equally spaced power-averaged measurements of equal length must be submitted.
 These power-averaged measurements must be spaced close enough so that at least 10 measurements are reported during the core phase of the workload.
-Each of the required equally spaced measurements required for Level 2 must be a power-averaged measurement over the entire separating space. 
-
+Each of these required equally spaced measurements required for Level 2 must be a power-averaged measurement over the entire separating space. 
 
 Refer to Section~\ref{sec:A1GTRM} Aspect 1: Granularity, Timespan and Reported Measurement for more information about the Level 2 Power Submission. 
 

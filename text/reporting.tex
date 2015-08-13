@@ -151,10 +151,15 @@ Level 3 specifies a total energy measurement that, when divided by the measured 
 \wl
 
 \noindent
+<<<<<<< 2e6c0c1b4d5155ec37469b3883dc8710baf352da
 Level 3 reports an average power value for the core phase, an average power value for the whole run, at least 10 equally spaced energy values within the core phase, and the elapsed times between the first and last energy readings in both the core phase and the full run.
 These last and first measurements in the core phase must be timed such that no more than a total of ten seconds (five each at begin and end) of the core phase are not covered by the total energy measurement.
 The final average power value for the core phase is the difference between the first and last energy readings divided by the elapsed time between first and last reading.
 The final value for the full run must be obtained analogously.
+=======
+
+Level~3 specifies a total energy measurement that, when divided by the measured time, also reports power. An integrated measurement is a continuing sum of energy measurements. Typically, there are hundreds of measurements per second.  Depending on the local AC power line frequency, there must be at least 120 or 100 measurements per second. The measuring device samples voltage and current many times per second and integrate those samples to determine the next total energy consumed reading. 
+>>>>>>> Various clarifications
 \wl
 
 \noindent
@@ -395,7 +400,7 @@ Level 3 requires continuously integrated total energy measurements rather than p
 \wl
 
 \noindent
-The measuring device must sample voltage and current, whether AC or DC, at least 120 times or 100 times per second (depending on what the frequency standard in the current location is) and integrate those samples to determine the next total energy consumed reading.  Sampling at a greater rate is permitted. 
+The measuring device must sample voltage and current, whether AC or DC, at least 120 times or 100 times per second (depending on the local AC power line frequency) and integrate those samples to determine the next total energy consumed reading.  Sampling at a greater rate is permitted. 
 \wl
 
 \noindent
@@ -620,7 +625,7 @@ At the entry point to the first power-modifying component (for example, the Blue
 \end{itemize}
 
 \noindent
-If the measuring device or devices used to satisfy Aspect 1 also meet the ABC location requirements just specified above, then those devices are sufficient to obtain the measurements needed for submission.
+If the measuring device or devices used to satisfy Aspect 1 also meet the ABC location requirements specified above, then those devices are sufficient to obtain the measurements needed for submission.
 \wl
 
 \noindent
