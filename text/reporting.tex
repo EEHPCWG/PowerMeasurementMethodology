@@ -72,7 +72,7 @@ Level 2 also requires that power measurements be taken at a constant frequency a
 Level 2 requires that power values be reported for both the core phase of the workload and the total workload.
 The reported power value for the core phase must be the result of at least 10 power measurements.
 These 10 power measurements may themselves be power-averaged measurements.
-Each of the required equally spaced measurements required for L2 must power-average over the entire separating space.  
+Each of the measurements required for L2 must power-average over the entire interval between two reported measurements.
 \wl
 
 \noindent
@@ -80,11 +80,11 @@ All the values reported by the meter must be used in the calculation.
 \wl
 
 \noindent
-For example, the meter may sample at one-second intervals and report a value every minute. Assume that the core phase is 600 minutes long. Assume further that the requirement for 10 equally spaced measurements can be satisfied with 10 measurements spaced 50 minutes apart. Using just those 10 measurements does not conform to this specification because all the values reported by the meter during the core phase are not used. 
+For example, the meter may sample at one-second intervals and report a value every minute. Assume that the core phase is 600 minutes long. Assume further that the requirement for 10  measurements can be satisfied with 10 measurements at an interval of 50 minutes. Using just those 10 measurements does not conform to this specification because not all the values reported by the meter during the core phase are used.
 \wl
 
 \noindent
-Although those two measurements were equally spaced over 500 minutes , each averaged only over a minute. So some (the majority) of the separating space between the measurements was not included in the average. 
+Although those measurements were reported at an interval of 50 minutes, each averaged only over a minute. So a portion of the time interval between the measurements was not included in the average. 
 \wl
 
 \noindent
@@ -97,7 +97,7 @@ Level~3 specifies a total energy measurement that, when divided by the measured 
 \wl
 
 \noindent
-Level 3 reports an average power value for the core phase, an average power value for the whole run, at least 10 equally spaced energy values within the core phase, and the elapsed time between the initial and final energy readings in the core phase. The average power value for the core phase is the difference between the initial and final energy readings divided by the elapsed time.
+Level 3 reports an average power value for the core phase, an average power value for the whole run, at least 10 energy at regular intervals values within the core phase, and the elapsed time between the initial and final energy readings in the core phase. The average power value for the core phase is the difference between the initial and final energy readings divided by the elapsed time.
 
 \section{Aspect and Quality Levels}
 \label{sec:AQLevels}
@@ -121,8 +121,8 @@ Continuously integrated energy\\
 
 \textbf{1b:~Timing} &
 The entire core phase of the run, at least one minute &
-Equally spaced across the full run &
-Equally spaced across the full run   \\
+At equal intervals across the full run &
+At equal intervals across the full run   \\
 \hline
 
 \textbf{1c:~Measurements} &
@@ -295,7 +295,7 @@ Figure~\ref{fig:a1l1pm} illustrates Aspect 1 Level 1 power measurement. If, as r
 
 \subsection{Level 2}
 \noindent
-Level 2 submissions include a measurement of the average power during the core phase of the run and the average power during the full run. The workload run must have a series of equally spaced power-averaged measurements of equal length. These power-averaged measurements must be spaced close enough so that at least 10 measurements are reported during the core phase of the workload. The reported average power for the core phase of the run will be the numerical average of the 10 (or more) power-averaged measurements collected during the core phase.  
+Level 2 submissions include a measurement of the average power during the core phase of the run and the average power during the full run. The workload run must have a series of power-averaged measurements at constant time intervals. These measurement intervals must be short enough so that at least 10 measurements are reported during the core phase of the workload. The reported average power for the core phase of the run will be the numerical average of the 10 (or more) power-averaged measurements collected during the core phase.  
 \wl
 
 \noindent
@@ -337,7 +337,7 @@ The measuring device must sample voltage and current, whether AC or DC, at least
 \wl
 
 \noindent
-The reported total energy readings must be spaced so that at least 10 reported readings fall within the core phase of the workload. Note that each reported reading is the average of many samples.
+The intervals at which total energy readings are reported must be short enough so that at least 10 reported readings fall within the core phase of the workload. Note that each reported reading is the average of many samples.
 \wl
 
 
