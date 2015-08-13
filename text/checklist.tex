@@ -67,9 +67,8 @@ Refer to Section~\ref{sec:A1GTRM} Aspect 1: Granularity, Timespan and Reported M
 
 For Level 1, both the compute-node subsystem and the interconnect must be reported.  
 The compute-node subsystem power must be measured. 
-For the compute subsystem measure a minimum of 2kW of power, 
-10\% of the system, or 15 nodes whichever is largest.
-It is allowed to measure either at least 40kW or the whole machine if smaller than the largest requirement.
+For the compute subsystem measure a minimum of 2~kW of power, 10\% of the system, or 15 nodes whichever is largest.
+Alternatively, it is allowed to measure either at least 40~kW or the whole machine.
 
 The interconnect subsystem participating in the workload must also be measured or, if not measured, the contribution must be estimated.
 Estimation is performed by substituting the measurement by an uppower bound derived from the maximum specified power consumption of all hardware components.
@@ -100,13 +99,14 @@ For this purpose, a series of equally spaced power-averaged measurements of equa
 These power-averaged measurements must be spaced close enough so that at least 10 measurements are reported during the core phase of the workload.
 Each of the required equally spaced measurements required for Level 2 must be a power-averaged measurement over the entire separating space. 
 
+
 Refer to Section~\ref{sec:A1GTRM} Aspect 1: Granularity, Timespan and Reported Measurement for more information about the Level 2 Power Submission. 
 
 Refer to Section~\ref{sec:FoRM} for more information about the format of reported measurements.
 
 For Level 2, the compute node subsystem must be measured and all other subsystems participating in the workload must be measured or estimated.
 As for level 1, estimation is performed by substituting the measurement by an uppower bound derived from the maximum specified power consumption of all hardware components.
-Level 2 requires that the greater of $ \frac{1}{8} $ of the compute-node subsystem or 10 kW of power or 15 compute nodes be measured.
+Level 2 requires that the greater of $\frac{1}{8}$ of the compute-node subsystem or 10~kW of power or 15 compute nodes be measured.
 It is acceptable to exceed this requirement or to measure the whole machine if smaller than 15 nodes.
 
 The compute-node subsystem is the set of compute nodes. As with Level 1, if the compute-node subsystem contains different types of compute nodes, you must measure at least one member from each of the heterogeneous sets. The contribution from compute nodes not measured must be extrapolated. Refer to Section~\ref{sec:A3SIiIP} Aspect 3: Subsystems Included in Instrumented Power for information about heterogeneous sets of compute nodes.
@@ -164,13 +164,13 @@ For Level 1, both the compute-node subsystem and the interconnect must be report
 The compute-node subsystem power must be measured. 
 The interconnect subsystem participating in the workload must also be measured or, if not measured, the contribution must be estimated.
 
-Measure the greater of at least 2kW of power or $ \frac{1}{10} $ of the compute-node subsystem or 15 compute nodes.
+Measure the greater of at least 2~kW of power or $\frac{1}{10}$ of the compute-node subsystem or 15 compute nodes.
 
 \item
 For Level 2, the compute node subsystem must be measured and all other subsystems participating in the workload must be measured and, if not measured, their contribution must be estimated.
-The Measured \% and the Derived \% must sum to the Total \%.
+The Measured~\% and the Derived~\% must sum to the Total~\%.
 
-Measure the greater of at least 10kW of power or $ \frac{1}{8} $ of the compute-node subsystem or 15 compute nodes.
+Measure the greater of at least 10~kW of power or $\frac{1}{8}$ of the compute-node subsystem or 15 compute nodes.
 
 \item
 For Level 3, all subsystems participating in the workload must be measured completely.
