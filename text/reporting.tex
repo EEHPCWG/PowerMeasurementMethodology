@@ -151,7 +151,7 @@ All participating subsystems, either measured or estimated &
 All participating subsystem must be measured \\
 \hline
 
-\textbf{4: Point of measurement} &
+\textbf{4: Location of measurement} &
 Upstream of power conversion &
 Upstream of power conversion &
 Upstream of power conversion\\
@@ -184,21 +184,22 @@ The reported measurements. This aspect describes how the power measurements are 
 \end{itemize}
 
 \noindent
-For all required measurements, the submission must also include the data used to calculate them. For Level 2 and Level 3 submissions, the supporting data must include at least 10 equally spaced points in the core of the run. 
+For all required measurements, the submission must also include the data used to calculate them. For Level 2 and Level 3 submissions, the supporting data must include at least 10 measurement values at a regular sampling rate in the core of the run. 
 \wl
 
 \noindent
-Levels 2 and 3 require a number of equally spaced measurements to be reported for two reasons.  
+Levels 2 and 3 require reported measurement values at regular intervals for the following reasons:
 
 \begin{itemize}
 \item
-One is that facility or infrastructure level power measurements are typically taken by a system separate from the system OS and thus cannot be easily synchronized with running the benchmark.  
+Facility or infrastructure level power measurements are typically taken by a system separate from the system OS and thus cannot be easily synchronized with running the benchmark.
 \item
-Secondly, with multiple periodic measurements, more reporting points are included before and after the benchmark run to ensure that a uniform standard of "beginning" and "end" of the power measurement can be applied to all the power measurements on a list.  
+With multiple periodic measurements, more measurement values are included before and after the benchmark run.
+This ensures that a uniform standard of \textit{beginning} and \textit{end} of the power measurement can be applied to all the power measurements from different sensors.
 \end{itemize}
 
 \noindent
-There is no maximum number of reported points, although one reported measurement per second is probably a reasonable upper limit. The submitter may choose to include more than 10 such points.
+There is no maximum number of reported measurement values, although one reported measurement per second is a reasonable upper limit. The submitter may choose to include more than 10 such measurement values.
 \wl
 
 \noindent
@@ -485,13 +486,13 @@ The total power measurement reported for compute nodes would then be
 The assumption of Levels 2 and 1 is that all the compute nodes in a set react identically to the workload.
 
 
-\section{Aspect 4: Point where the Electrical Measurements are Taken}
+\section{Aspect 4: Instrumentation Location where the Electrical Measurements are Taken}
 \label{sec:A4wEMaT}
-Aspect 4 specifies where in the power distribution system the power delivery is measured.  For all quality levels, the submission indicates where power is measured and the quantity of parallel measurements points.
+Aspect 4 specifies where in the power distribution system the power delivery is measured.  For all quality levels, the submission indicates where power is measured and the quantity of parallel measurements.
 \wl
 
 \noindent
-Measurements of power or energy are typically made at multiple points in parallel across the computer system. For example, such locations can be at the entrance to each separate rack, or at the exit points of multiple building transformers. 
+Measurements of power or energy are typically made at multiple locations in parallel across the computer system. For example, such locations can be at the entrance to each separate rack, or at the output connector of multiple building transformers. 
 \wl
 
 \noindent
@@ -508,23 +509,23 @@ Electrical power or energy measurements shall be taken in one of the following l
 
 \begin{itemize}
 \item[{A)}]
-At a point upstream of where the electrical supply from the data center is delivered to the computer system
+At a location upstream of where the electrical supply from the data center is delivered to the computer system
 
 OR
 
 \item[{B)}]
-At the point of the electrical supply delivery to the computer system from the data center
+At the location of the electrical supply delivery to the computer system from the data center
 
 OR
 
 \item[{C)}]
-At a point just inside of the computer system that is electrically equivalent to location B) above.  This includes the following. 
+At a location just inside of the computer system that is electrically equivalent to location B) above.  This includes the following. 
 
 \begin{itemize}
 \item
-At any point within a passive PDU, at the input to the PDU, at the exit point(s) of the PDU, or anywhere in between 
+At any location within a passive PDU, at the input to the PDU, at the output connector(s) of the PDU, or anywhere in between 
 \item
-At the entry point to the first power-modifying component (for example, the Blue Gene bulk power module, Cray AC/DC converters, and possibly the input point to one or more crate power supplies)
+At the input connector to the first power-modifying component (for example, the Blue Gene bulk power module, Cray AC/DC converters, and possibly the input connector to one or more crate power supplies)
 \end{itemize}
 \end{itemize}
 
@@ -542,7 +543,7 @@ For a Level 1 measurement, the power loss may be a load-varying model based on s
 \item
 For a Level 2 measurement, the power loss may be a load-varying model based on an actual physical measurement of one power supply in the system.  
 \item
-For a Level 3 submission, the power loss must be measured simultaneously by a device at the required point (one of the ABC locations) measured at least once every five minutes, averaged long enough to average out the AC transients. 
+For a Level 3 submission, the power loss must be measured simultaneously by a device at the required location (one of the ABC locations) measured at least once every five minutes, averaged long enough to average out the AC transients. 
 \end{itemize}
 
 \noindent
@@ -550,7 +551,7 @@ For all three levels, the power losses used and how they were determined must be
 
 \subsection{Data Center Schematic}
 \noindent
-Figure~\ref{fig:powmeasschem} is an example of a simple power measurement schematic. This example shows only one power measurement point.
+Figure~\ref{fig:powmeasschem} is an example of a simple power measurement schematic. This example shows only one power measurement location.
 \wl
 
 
