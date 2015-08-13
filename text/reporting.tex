@@ -151,7 +151,6 @@ Level~3 specifies a total energy measurement that, when divided by the measured 
 \wl
 
 \noindent
-<<<<<<< 2e6c0c1b4d5155ec37469b3883dc8710baf352da
 Level 3 reports an average power value for the core phase, an average power value for the whole run, at least 10 equally spaced energy values within the core phase, and the elapsed times between the first and last energy readings in both the core phase and the full run.
 These last and first measurements in the core phase must be timed such that no more than a total of ten seconds (five each at begin and end) of the core phase are not covered by the total energy measurement.
 The final average power value for the core phase is the difference between the first and last energy readings divided by the elapsed time between first and last reading.
@@ -183,8 +182,8 @@ Continuously integrated energy\\
 
 \textbf{1b:~Timing} &
 The entire core phase of the run, at least one minute &
-Equally spaced across the full run &
-Equally spaced across the full run   \\
+At equal intervals across the full run &
+At equal intervals across the full run   \\
 \hline
 
 \textbf{1c:~Measurements} &
@@ -206,7 +205,6 @@ $\bullet$ idle power \\
 \hline
 
 \textbf{2: Machine \newline fraction}  &
-<<<<<<< aeb65cd8bd3a9fbf4dbe4afeb92239ca0103e6c5
 The greater of 1/10 of the compute subsystem or 2~kW or 15~compute nodes. Alternatively at least 40~kW or the entire system. &
 The greater of 1/8 of the compute-node subsystem or 10~kW or 15~compute nodes &
 The whole of all included subsystems \\
@@ -360,7 +358,7 @@ least one minute long.
 
 \subsection{Level 2}
 \noindent
-Level 2 submissions include a measurement of the average power during the core phase of the run and the average power during the full run. The workload run must have a series of equally spaced power-averaged measurements of equal length. These power-averaged measurements must be spaced close enough so that at least 10 measurements are reported during the core phase of the workload. The reported average power for the core phase of the run will be the numerical average of the 10 (or more) power-averaged measurements collected during the core phase.  
+Level 2 submissions include a measurement of the average power during the core phase of the run and the average power during the full run. The workload run must have a series of power-averaged measurements at constant time intervals. These measurement intervals must be short enough so that at least 10 measurements are reported during the core phase of the workload. The reported average power for the core phase of the run will be the numerical average of the 10 (or more) power-averaged measurements collected during the core phase.  
 \wl
 
 \noindent
@@ -402,7 +400,7 @@ The measuring device must sample voltage and current, whether AC or DC, at least
 \wl
 
 \noindent
-The reported total energy readings must be spaced so that at least 10 reported readings fall within the core phase of the workload. Note that each reported reading is the average of many samples.
+The intervals at which total energy readings are reported must be short enough so that at least 10 reported readings fall within the core phase of the workload. Note that each reported reading is the average of many samples.
 \wl
 
 
