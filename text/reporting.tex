@@ -62,13 +62,13 @@ The reported power values for Levels 1 and 2 are power-averaged measurements. A 
 
 \noindent
 Consider Level 1, which requires only one reported power value. 
-This reported power value may consist of several power measurements taken at a constant frequency of at least once per second and averaged over an interval. 
+This reported power value may consist of several power measurements taken at a constant rate of at least once per second and averaged over an interval. 
 That interval must cover the entire core phase of the run which must be at least one minute long (see \ref{sec:core_phase} for definition of core phase).
 For example, if power measurements may be taken once per second for one minute for a total of 60 power measurements and then averaged, Level 1 reports one power-averaged value.
 \wl
 
 \noindent
-Level 2 also requires that power measurements be taken at a constant frequency at least once per second.
+Level 2 also requires that power measurements be taken at a constant rate of at least once per second.
 Level 2 requires that power values be reported for both the core phase of the workload and the total workload.
 The reported power value for the core phase must be the result of at least 10 power measurements.
 These 10 power measurements may themselves be power-averaged measurements.
@@ -265,7 +265,7 @@ Note that the power drops by 8\% or so during the computational phase of the run
 \end{figure}
 
 \noindent
-The boxes are individual one-second power samples.  This fast up-down fluctuation is not caused by the behavior of an individual power supply; the power being sampled is over the entire computer system doing the HPL run.  The reason that L3 requires integrating total energy meters is because they measure at a high enough frequency to not be subject to these sampling artifacts.
+The boxes are individual one-second power samples.  This fast up-down fluctuation is not caused by the behavior of an individual power supply; the power being sampled is over the entire computer system doing the HPL run.  The reason that L3 requires integrating total energy meters is because they measure at a high enough sampling rates to not be subject to these sampling artifacts.
 \wl
 
 \noindent
