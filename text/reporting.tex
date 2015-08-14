@@ -344,7 +344,7 @@ The intervals at which total energy readings are reported must be short enough s
 Figure~\ref{fig:a1l3pm} illustrates Aspect 1 Level~3 power measurement. The figure shows 10 readings in the core phase of the workload. Note that these are integrated readings.  To obtain a power reading, one must subtract two integrated readings and divide by the time between the readings.
 
 %INCLUDE FIG 3-5
-\begin{figure}
+\begin{figure}[t]
 \centering
 \includegraphics[width=4in]{fig3-5}
 \caption{Aspect 1 Level~3 Power Measurements}
@@ -381,7 +381,7 @@ Level~3 requires that the entire machine be measured. Level~2 requires a higher 
 \wl
 
 \noindent
-When calculating the average power of the full machine for Levels 1 and 2, the measured power must be divided by this fraction to 
+When calculating the average power of the full machine for Levels 1 and 2, the measured power must be multiplied by this fraction to 
 estimate the average power drawn by the whole machine. For example, if the submitter measures the power delivered 
 to $ \frac{1}{4} $ of the machine, the submitter must then multiply the measured power by 4 to estimate power for the whole machine.  
 The higher machine fractions are required at the higher quality levels to reduce the effects of random fluctuations and minor differences in hardware influencing the power measurements.  The larger the sample, the more transients will tend to cancel out.
@@ -394,7 +394,7 @@ The requirements for each quality level are as follows.
 \item
 L1: $ \frac{1}{64} $ of the compute-node subsystem or 1 kW, whichever is greater
 \item
-L2: $ \frac{1}{8} $ of the compute-node subsystem, 10 kW, or 15~compute nodes whichever is greater
+L2: the largest of $ \frac{1}{8} $ of the compute-node subsystem, 10 kW, or 15~compute nodes
 \item
 L3: the power use of the whole machine must be measured
 \end{itemize}
@@ -423,7 +423,7 @@ For Level~1, both the compute-node subsystem and the interconnect must be report
 The compute-node subsystem power must be measured. 
 The interconnect subsystem participating in the workload must also be measured or, if not measured, the contribution must be estimated.
 Include everything that you need to operate the interconnect network that is not part of the compute subsystem. 
-This may include infrastructure that is shared, but excludes that part that is not servicing the current cluster.
+This may include infrastructure that is shared, but excludes parts that are not servicing the system under test.
 For some systems, it may be impossible not to include a power contribution from some subsystems. 
 In this case, provide a list of the measured subsystems, but do not subtract an estimated value for the included subsystem. 
 \wl
@@ -562,7 +562,7 @@ Submitters may find it useful to create such a schematic to identify the power m
 \centering
 \includegraphics[width=4in]{fig3-7}
 \caption{Example of a Power Measurement Schematic}
-(used with permission from Universit Laval, Calcul Qubec, Compute Canada)
+(used with permission from Universit\'{e} Laval, Calcul Qu\'{e}bec, Compute Canada)
 \label{fig:powmeasschem}
 \end{figure}
 
@@ -582,11 +582,11 @@ Other environmental data may include factors such as:
 
 \begin{packed_item}
 \item[{-}]
-\% deviation between supply and rated voltage and frequency (recommended +/-5\%)
+\% deviation between supply and rated voltage and frequency (recommended $\pm$\,5\%)
 \item[{-}]
-\% total harmonic distortion (recommended \textless 2\% THD )
+\% total harmonic distortion (recommended \textless\,2\% THD )
 \item[{-}]
-line impedance (recommended \textless 0.25 ohm)
+line impedance (recommended \textless\,0.25 ohm)
 \item[{-}]
 relative humidity
 \end{packed_item}
