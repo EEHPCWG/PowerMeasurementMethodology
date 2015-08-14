@@ -24,8 +24,8 @@ Sections~\ref{sec:A1GTRM} through \ref{sec:A4wEMaT} describe the details of the 
 \textbf{Power Measurement Locations}
 \addcontentsline{toc}{subsection}{Power Measurement Locations}
 
-Measurements of power or energy are often made at multiple points in parallel across the computer system. A typical location might be the output of the building transformer.
-Refer to Section~\ref{sec:A4wEMaT} Aspect 4: Point where the Electrical Measurements are Taken 
+Measurements of power or energy are often made at multiple locations in parallel across the computer system. A typical location might be the output of the building transformer.
+Refer to Section~\ref{sec:A4wEMaT}, \nameref{sec:A4wEMaT}
 for more information about power measurement locations.
 
 Note that in some cases, you may have to adjust for power loss. For information about power loss, refer to 
@@ -50,89 +50,89 @@ If multiple meters are used, describe how the data aggregation and synchronizati
 \textbf{Workload Requirement}
 \addcontentsline{toc}{subsection}{Workload Requirement}
 
-The workload must run on all compute nodes of the system. Level 3 measures the power for the entire system. Levels 1 and 2 measure the power for a portion of the system and extrapolate a value for the entire system. 
+The workload must run on all compute nodes of the system. Level~3 measures the power for the entire system. Levels 1 and 2 measure the power for a portion of the system and extrapolate a value for the entire system. 
 
 \item[{[ ]}]
-\textbf{Level 1 Power Measurement}
-\addcontentsline{toc}{subsection}{Level 1 Power Measurement}
+\textbf{Level~1 Power Measurement}
+\addcontentsline{toc}{subsection}{Level~1 Power Measurement}
 
-Level 1 submissions submissions include the average power over the entire core phase of the run (see \ref{sec:core_phase} for definition of core phase).
+Level~1 submissions submissions include the average power over the entire core phase of the run (see \ref{sec:core_phase} for definition of core phase).
 
-For Level 1, the power must be sampled at least once per second and averaged over the entire core phase to produce the reported average power.
+For Level~1, the power must be sampled at least once per second and averaged over the entire core phase to produce the reported average power.
 The core phase is required to run for at least one minute.
 
 Refer to Section~\ref{sec:A1GTRM} Aspect 1: Granularity, Timespan and Reported Measurement for more information about the
-Level 1 power submission.
+Level~1 power submission.
 
-For Level 1, both the compute-node subsystem and the interconnect must be reported.  
+For Level~1, both the compute-node subsystem and the interconnect must be reported.  
 The compute-node subsystem power must be measured. 
-For the compute subsystem measure a minimum of 2kw of power, 
+For the compute subsystem measure a minimum of 2~kW of power, 
 10\% of the system, or 15 nodes whichever is largest, or the whole machine if smaller than the largest requirement.
 
 The interconnect subsystem participating in the workload must also be measured or, if not measured, the contribution must be estimated.
 Include everything that you need to operate the interconnect network that is not part of the compute subsystem. 
 This may include infrastructure that is shared, but excludes that part that is not servicing the current cluster.
 
-For some systems, it may be impossible not to include a power contribution from some subsystems. 
+For some systems, it may be impossible not to include a power contribution from a certain subsystems. 
 In this case, list what you are including, but do not subtract an estimated value for the included subsystem.
 
-If the compute node-subsystem contains different types of compute nodes, measure at least one member from each of the heterogeneous sets. The contribution from compute nodes not measured must be extrapolated. Refer to 
+If the compute-node subsystem contains different types of compute nodes, measure at least one member from each of the heterogeneous sets. The contribution from compute nodes not measured must be extrapolated. Refer to 
 Section~\ref{sec:A3SIiIP} Aspect 3: Subsystems Included in Instrumented Power for information about
  heterogeneous sets of compute nodes.
 
 \newpage
 \item[{[ ]}]
-\textbf{Level 2 Power Measurement}
-\addcontentsline{toc}{subsection}{Level 2 Power Measurement}
+\textbf{Level~2 Power Measurement}
+\addcontentsline{toc}{subsection}{Level~2 Power Measurement}
 
-Level 2 submissions include the average power during the core phase of the run and the average power during the full run (see \ref{sec:core_phase} for definition of core phase).
+Level~2 submissions include the average power during the core phase of the run and the average power during the full run (see \ref{sec:core_phase} for definition of core phase).
 
 The complete set of power-averaged measurements used to calculate average power must also be provided. 
 Refer to Section~\ref{sec:PAaTEM} Power-Averaged and Total Energy Measurements for the definition of a power-averaged
 measurement and how it differs from a total energy measurement.
 The core phase is required to run for at least one minute.
 
-For Level 2, the workload run must have a series of equally spaced power-averaged measurements of equal length, sampled at least once per second.
-These power-averaged measurements must be spaced close enough so that at least 10 measurements are reported during the
-core phase of the workload. The reported average power for the core phase of the run is the numerical average of the
-10 (or more) power-averaged measurements collected during the core phase.
+For Level~2, the workload run must have a series of power-averaged measurements, sampled at a constant rate of at least once per second.
+These power-averaged measurements must be sampled often enough so that at least 10 measurements are reported during the
+core phase of the workload. The reported average power for the core phase of the run is the numerical average of
+all power-averaged measurements collected during the core phase.
+Each of the measurements required for L2 must be a power-average over the entire time interval between two samples. 
 
-Each of the required equally spaced measurements required for L2 must power-average over the entire separating space. 
 
-Refer to Section~\ref{sec:A1GTRM} Aspect 1: Granularity, Timespan and Reported Measurement for more information about the Level 2 Power Submission. 
+Refer to Section~\ref{sec:A1GTRM} Aspect 1: Granularity, Timespan and Reported Measurement for more information about the Level~2 Power Submission. 
 
 Refer to Section~\ref{sec:FoRM} for more information about the format of reported measurements.
 
-For Level 2, the compute node subsystem must be measured and all other subsystems participating in the workload must be measured or estimated. Level 2 requires that the 
-greater of $ \frac{1}{8} $ of the compute-node subsystem or 10 kW of power or 15 compute nodes be measured. It is acceptable to exceed this requirement or to measure the whole machine if smaller than 15 nodes.
+For Level~2, the compute node subsystem must be measured and all other subsystems participating in the workload must be measured or estimated. Level~2 requires that the 
+greater of $ \frac{1}{8} $ of the compute-node subsystem or 10~kW of power or 15 compute nodes be measured. It is acceptable to exceed this requirement or to measure the whole machine if smaller than 15 nodes.
 
-The compute-node subsystem is the set of compute nodes. As with Level 1, if the compute-node subsystem contains different types of compute nodes, you must measure at least one member from each of the heterogeneous sets. The contribution from compute nodes not measured must be extrapolated. Refer to Section~\ref{sec:A3SIiIP} Aspect 3: Subsystems Included in Instrumented Power for information about heterogeneous sets of compute nodes.
+The compute-node subsystem is the set of compute nodes. As with Level~1, if the compute-node subsystem contains different types of compute nodes, you must measure at least one member from each of the heterogeneous sets. The contribution from compute nodes not measured must be extrapolated. Refer to Section~\ref{sec:A3SIiIP} Aspect 3: Subsystems Included in Instrumented Power for information about heterogeneous sets of compute nodes.
 
 \newpage
 \item[{[ ]}]
-\textbf{Level 3 Power Measurement}
-\addcontentsline{toc}{subsection}{Level 3 Power Measurement}
+\textbf{Level~3 Power Measurement}
+\addcontentsline{toc}{subsection}{Level~3 Power Measurement}
 
-Level 3 submissions include the average power during the core phase of the run and the average power during the full run (see \ref{sec:core_phase} for definition of core phase).
+Level~3 submissions include the average power during the core phase of the run and the average power during the full run (see \ref{sec:core_phase} for definition of core phase).
 
 The core phase is usually considered to be the section of the workload that undergoes parallel execution. The core phase typically does not include the parallel job launch and teardown.
 The core phase is required to run for at least one minute.
 
-Level 3 measures energy. Power is calculated by dividing the measured energy by the elapsed time . The measured energy is the last measured total energy within the core phase minus the first measured total energy within the core phase.
+Level~3 measures energy. Power is calculated by dividing the measured energy by the elapsed time . The measured energy is the furst measured total energy after the core phase minus the first measured total energy within the core phase.
 
 Refer to Section~\ref{sec:PAaTEM} Power-Averaged and Total Energy Measurements for information about the distinction between energy and power.
 
 The complete set of total energy readings used to calculate average power (at least 10 during the core computation phase) must be included, along with the execution time for the core phase and the execution time for the full run.
 
 Refer to Section~\ref{sec:A1GTRM} Aspect 1: Granularity, Timespan and Reported Measurement for more 
-information about the Level 3 Power Submission.
+information about the Level~3 Power Submission.
 
 Refer to Section~\ref{sec:FoRM} for more information about the format of reported measurements.
 
-For Level 3, all subsystems participating in the workload must be measured. Refer to 
+For Level~3, all subsystems participating in the workload must be measured. Refer to 
 Section~\ref{sec:A3SIiIP} Aspect 3: Subsystems Included in Instrumented Power for more information about included subsystems.
 
-With Level 3, the submitter need not be concerned about different types of compute nodes because Level 3 measures the entire system.
+With Level~3, the submitter need not be concerned about different types of compute nodes because Level~3 measures the entire system.
 
 
 \item[{[ ]}]
@@ -143,7 +143,7 @@ Idle power is defined as the power used by the system when it is not running a w
 
 An idle measurement need not be linked to a particular workload. The idle measurement need not be made just before or after the workload is run. Think of the idle power measurement as a constant of the system. Think of idle power as a baseline power consumption when no workload is running. 
 
-For Levels 2 and 3, there must be at least one idle measurement. An idle measurement is optional for Level 1. 
+For Levels 2 and 3, there must be at least one idle measurement. An idle measurement is optional for Level~1. 
 
 \newpage
 \item[{[ ]}]
@@ -154,22 +154,22 @@ Subsystems include (but are not limited to) computational nodes, any interconnec
 
 \begin{itemize}
 \item
-For Level 1, both the compute-node subsystem and the interconnect must be reported.  
+For Level~1, both the compute-node subsystem and the interconnect must be reported.  
 The compute-node subsystem power must be measured. 
 The interconnect subsystem participating in the workload must also be measured or, if not measured, the contribution must be estimated.
 
 
 \item
-For Level 2, the compute node subsystem must be measured and all other subsystems participating in the workload must be measured and, if not measured, their contribution must be estimated. The Measured \% and the Derived \% must sum to the Total \%.
+For Level~2, the compute node subsystem must be measured and all other subsystems participating in the workload must be measured and, if not measured, their contribution must be estimated. The Measured~\% and the Derived~\% must sum to the Total~\%.
 
 In the case of estimated measurements for subsystems other than 
 the compute-node subsystem, the submission must include the relevant 
 manufacturer specifications and formulas used for power estimation. 
 
-Measure the greater of at least 10KW of power or $ \frac{1}{8} $ of the compute-node subsystem or 15 compute nodes.
+Measure the largest of at least 10~kW of power or $ \frac{1}{8} $ of the compute-node subsystem or 15 compute nodes.
 
 \item
-For Level 3, all subsystems participating in the workload must be measured.
+For Level~3, all subsystems participating in the workload must be measured.
 \end{itemize}
 
 Include additional subsystems if needed.
