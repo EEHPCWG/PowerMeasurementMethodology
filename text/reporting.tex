@@ -89,6 +89,7 @@ If the power meter reports every sample, then a power sample and a power reading
 \wl
 
 \noindent
+<<<<<<< 6eeac015b98513fb43fe8cfe1f2adf00ae545965
 The power meter must use all power samples taken during an interval to compute the average power reading.
 Consider that the limits of one sample per second and one power reading per 10 seconds / 1 minute are upper bounds.
 Usually, the power meter will take many samples per second and report power readings on about a per second basis.
@@ -110,10 +111,10 @@ Finally, the power-averaged measurement for the required time period is the aver
 All power readings reported by the device for that period must be used except for one case:
 Exclude those readings for intervals that do not lie completely in the requested time period.
 (Usually the reading intervals and the measured time period (e.g. the core phase) are not synchronized.)
-We require that the internal device sampling frequncy must be at least 1 Hz and constant.
+We require that the internal device sampling rate must be at least 1 Hz and constant.
 The intervals between the power readings must be constant and no longer than 10\% of the duration of the core phase.
 (This ensures that the parts of the core phase that are not measured at beginning and end are not significant.)
-As noted in the previous subsection, the frequency may vary slightly to accomodate for variations in the net frequency.
+As noted in the previous subsection, the sampling rate may vary slightly to accomodate for variations in the net frequency.
 In that case, the averaging process must weight the power readings from the power meter according to the respective interval lengths.
 \wl
 
@@ -337,7 +338,7 @@ Note that the power drops by 8\% or so during the computational phase of the run
 \end{figure}
 
 \noindent
-The boxes are individual one-second power samples.  This fast up-down fluctuation is not caused by the behavior of an individual power supply; the power being sampled is over the entire computer system doing the HPL run.  The reason that L3 requires integrating total energy meters is because they measure at a high enough frequency to not be subject to these sampling artifacts.
+The boxes are individual one-second power samples.  This fast up-down fluctuation is not caused by the behavior of an individual power supply; the power being sampled is over the entire computer system doing the HPL run.  The reason that L3 requires integrating total energy meters is because they measure at a high enough sampling rates to not be subject to these sampling artifacts.
 \wl
 
 \noindent
