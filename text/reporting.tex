@@ -282,7 +282,12 @@ All levels specify that power measurements be performed within the core phase of
 \subsection{Core Phase}
 \label{sec:core_phase}
 \noindent
-All submissions must include the average power within the core (parallel computation) phase of the run. 
+All submissions must include the average power within the core phase of the run. 
+\wl
+
+\noindent
+The core phase is usually considered to be the section of the workload that undergoes parallel execution. 
+It typically does not include the parallel job launch and teardown and is required to run for at least one minute.
 \wl
 
 \noindent

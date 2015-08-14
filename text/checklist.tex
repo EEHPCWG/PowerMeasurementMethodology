@@ -116,9 +116,6 @@ The compute-node subsystem is the set of compute nodes. As with Level~1, if the 
 
 Level~3 submissions include the average power during the core phase of the run and the average power during the full run (see \ref{sec:core_phase} for definition of core phase).
 
-The core phase is usually considered to be the section of the workload that undergoes parallel execution. The core phase typically does not include the parallel job launch and teardown.
-The core phase is required to run for at least one minute.
-
 Level~3 measures energy.
 The measured energy is the last measured total energy within the core phase minus the first measured total energy within the core phase.
 The final power is calculated by dividing this energy by the elapsed time between these first and last energy readings.
