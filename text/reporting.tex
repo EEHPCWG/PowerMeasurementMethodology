@@ -408,7 +408,7 @@ The intervals at which total energy readings are reported must be short enough s
 Figure~\ref{fig:a1l3pm} illustrates Aspect~1 of  Level~3 power measurement. The figure shows 10 readings in the core phase of the workload. Note that these are integrated readings.  To obtain a power reading, one must subtract two integrated readings and divide by the time between the readings.
 
 %INCLUDE FIG 3-5
-\begin{figure}
+\begin{figure}[t]
 \centering
 \includegraphics[width=4in]{fig3-5}
 \caption{Aspect~1 of Level~3 Power Measurements}
@@ -457,9 +457,9 @@ The requirements with respect to the compute-node subsystem for each quality lev
 
 \begin{itemize}
 \item
-L1: $\frac{1}{10}$ of the compute-node subsystem or at least 2~kW or 15 compute nodes, whichever is greater. Alternatively, at least 40~kW or the entiry system.
+L1: The largest of $\frac{1}{10}$ of the compute-node subsystem or at least 2~kW or 15 compute nodes. Alternatively, at least 40~kW or the entiry system.
 \item
-L2: $\frac{1}{8}$ of the compute-node subsystem or at least 10~kW or 15 compute nodes, whichever is greater.
+L2: The largest of $\frac{1}{8}$ of the compute-node subsystem or at least 10~kW or 15 compute nodes.
 \item
 L3: the power use of the whole machine must be measured.
 \end{itemize}
@@ -514,7 +514,7 @@ For Level~1, both the compute-node subsystem and the interconnect must be report
 The compute-node subsystem power must be measured. 
 The interconnect subsystem participating in the workload must also be measured or, if not measured, the contribution must be estimated.
 Include everything that you need to operate the interconnect network that is not part of the compute subsystem. 
-This may include infrastructure that is shared, but excludes that part that is not servicing the current cluster.
+This may include infrastructure that is shared, but excludes parts that are not servicing the system under test.
 For some systems, it may be impossible not to include a power contribution from some subsystems. 
 In this case, provide a list of the measured subsystems, but do not subtract an estimated value for the included subsystem. 
 \wl
@@ -658,7 +658,7 @@ Submitters may find it useful to create such a schematic to identify the power m
 \centering
 \includegraphics[width=4in]{fig3-7}
 \caption{Example of a Power Measurement Schematic}
-(used with permission from Universit Laval, Calcul Qubec, Compute Canada)
+(used with permission from Universit\'{e} Laval, Calcul Qu\'{e}bec, Compute Canada)
 \label{fig:powmeasschem}
 \end{figure}
 
@@ -678,11 +678,11 @@ Other environmental data may include factors such as:
 
 \begin{packed_item}
 \item[{-}]
-\% deviation between supply and rated voltage and frequency (recommended +/-5\%)
+\% deviation between supply and rated voltage and frequency (recommended $\pm$\,5\%)
 \item[{-}]
-\% total harmonic distortion (recommended \textless 2\% THD )
+\% total harmonic distortion (recommended \textless\,2\% THD )
 \item[{-}]
-line impedance (recommended \textless 0.25 ohm)
+line impedance (recommended \textless\,0.25 ohm)
 \item[{-}]
 relative humidity
 \end{packed_item}
