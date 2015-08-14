@@ -25,7 +25,10 @@
 
 
 \newcommand*{\numnameref}[1]{\ref{#1} \nameref{#1}}
-
+% prevent bad page breaks
+\clubpenalty10000
+\widowpenalty10000
+\displaywidowpenalty=10000
 
 \def\wl{\par \vspace{\baselineskip}}
 
