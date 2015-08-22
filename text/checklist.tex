@@ -16,18 +16,20 @@ information when you run your workload.
 \textbf{Quality Level}
 \addcontentsline{toc}{subsection}{Quality Level}
 
-Choosing a quality level is the first important decision a submitter must make. Refer to 
-Section~\numnameref{sec:AQLevels} for general information about the three quality levels.  
+Choosing a quality level is the first important decision a submitter must make.
+Refer to Section~\numnameref{sec:AQLevels} for general information about the three quality levels.
 Sections~\ref{sec:A1GTRM} through \ref{sec:A4wEMaT} describe the details of the three quality levels
 
 \item[{[ ]}]
 \textbf{Power Measurement Locations}
 \addcontentsline{toc}{subsection}{Power Measurement Locations}
 
-Measurements of power or energy are often made at multiple locations in parallel across the computer system. A typical location might be the output of the building transformer.
+Measurements of power or energy are often made at multiple locations in parallel across the computer system.
+A typical location might be the output of the building transformer.
 Refer to Section~\numnameref{sec:A4wEMaT} for more information about power measurement locations.
 
-Note that in some cases, you may have to adjust for power loss. For information about power loss, refer to Section~\numnameref{sec:AfPL}.
+Note that in some cases, you may have to adjust for power loss.
+For information about power loss, refer to Section~\numnameref{sec:AfPL}.
 If you adjust for power loss, how you determined the power losses must be part of the submission.
 
 
@@ -37,19 +39,24 @@ If you adjust for power loss, how you determined the power losses must be part o
 \textbf{Measuring Devices}
 \addcontentsline{toc}{subsection}{Measuring Devices}
 
-Specify the measuring device or devices used. A reference to the device specifications is useful.
+Specify the measuring device or devices used.
+A reference to the device specifications is useful.
 
-Refer to Section~\ref{sec:MDTerm} for some terminology about the measuring device specific to the power submissions described in this document. This section describes the difference between power-averaged measurements and total energy measurements.
+Refer to Section~\ref{sec:MDTerm} for some terminology about the measuring device specific to the power submissions described in this document.
+This section describes the difference between power-averaged measurements and total energy measurements.
 
 Refer to Section~\ref{sec:MDSpecs} for information about the required measuring device.
 
-If multiple meters are used, describe how the data aggregation and synchronization were performed. One possibility is to have the nodes NTP-synchronized; the power meter's controller is then also NTP-synchronized prior to the run.
+If multiple meters are used, describe how the data aggregation and synchronization were performed.
+One possibility is to have the nodes NTP-synchronized; the power meter's controller is then also NTP-synchronized prior to the run.
 
 \item[{[ ]}]
 \textbf{Workload Requirement}
 \addcontentsline{toc}{subsection}{Workload Requirement}
 
-The workload must run on all compute nodes of the system. Level~3 measures the power for the entire system. Levels 1 and 2 measure the power for a portion of the system and extrapolate a value for the entire system. 
+The workload must run on all compute nodes of the system.
+Level~3 measures the power for the entire system.
+Levels~1 and~2 measure the power for a portion of the system and extrapolate a value for the entire system.
 
 \item[{[ ]}]
 \textbf{Level~1 Power Measurement Summary}
@@ -64,21 +71,22 @@ The core phase is required to run for at least one minute.
 
 Refer to Section~\numnameref{sec:A1GTRM} for more information about the Level~1 power submission.
 
-For Level~1, both the compute-node subsystem and the interconnect must be reported.  
-The compute-node subsystem power must be measured. 
+For Level~1, both the compute-node subsystem and the interconnect must be reported.
+The compute-node subsystem power must be measured.
 For the compute subsystem measure a minimum of 2~kW of power, 10\% of the system, or 15 nodes whichever is largest.
 Alternatively, it is allowed to measure either at least 40~kW or the whole machine.
 
 The interconnect subsystem participating in the workload must also be measured or, if not measured, the contribution must be estimated.
 Estimation is performed by substituting the measurement by an uppower bound derived from the maximum specified power consumption of all hardware components.
-Include everything that you need to operate the interconnect network that is not part of the compute subsystem. 
+Include everything that you need to operate the interconnect network that is not part of the compute subsystem.
 This may include infrastructure that is shared, but excludes parts that are not servicing the system under test.
 
 For some systems, it may be impossible not to include a power contribution from certain subsystems that are not used for the benchmark run.
 In this case, list what you are including, but do not subtract an estimated value for the subsystem that are not needed.
 
-If the compute-node-subsystem contains different types of compute nodes, measure at least 10\% of each of the heterogeneous sets. The contribution from compute nodes not measured must be extrapolated. Refer to 
-Section~\numnameref{sec:A3SIiIP} for information about heterogeneous sets of compute nodes.
+If the compute-node-subsystem contains different types of compute nodes, measure at least 10\% of each of the heterogeneous sets.
+The contribution from compute nodes not measured must be extrapolated.
+Refer to Section~\numnameref{sec:A3SIiIP} for information about heterogeneous sets of compute nodes.
 
 \newpage
 \item[{[ ]}]
@@ -96,9 +104,9 @@ The core phase is required to run for at least one minute.
 On top of these full measurements, Level~2 also requires a set of intermediate measurements in order to see how the power consumption varies over time.
 For this purpose, a series of equally spaced power-averaged measurements of equal length must be submitted.
 These power-averaged measurements must be taken often enough so that at least 10 measurements are reported during the core phase of the workload.
-Each of these required equally spaced measurements required for Level~2 must be a power-averaged measurement over the entire separating space. 
+Each of these required equally spaced measurements required for Level~2 must be a power-averaged measurement over the entire separating space.
 
-Refer to Section~\numnameref{sec:A1GTRM} for more information about the Level~2 Power Submission. 
+Refer to Section~\numnameref{sec:A1GTRM} for more information about the Level~2 Power Submission.
 
 Refer to Section~\ref{sec:FoRM} for more information about the format of reported measurements.
 
@@ -107,7 +115,9 @@ As for Level~1, estimation is performed by substituting the measurement by an up
 Level~2 requires that the largest of $\frac{1}{8}$ of the compute-node subsystem, or 10~kW of power, or 15 compute nodes be measured.
 It is acceptable to exceed this requirement or to measure the whole machine if smaller than 15 nodes.
 
-The compute-node subsystem is the set of compute nodes. As with Level~1, if the compute-node subsystem contains different types of compute nodes, you must measure at least \frac{1}{8} from each of the heterogeneous sets. The contribution from compute nodes not measured must be extrapolated.
+The compute-node subsystem is the set of compute nodes.
+As with Level~1, if the compute-node subsystem contains different types of compute nodes, you must measure at least $\frac{1}{8}$ from each of the heterogeneous sets.
+The contribution from compute nodes not measured must be extrapolated.
 Refer to Section~\numnameref{sec:A3SIiIP} for information about heterogeneous sets of compute nodes.
 
 \newpage
@@ -130,8 +140,8 @@ Refer to Section~\numnameref{sec:A1GTRM} for more information about the Level~3 
 
 Refer to Section~\numnameref{sec:FoRM} for more information about the format of reported measurements.
 
-For Level~3, all subsystems participating in the workload must be measured. Refer to 
-Section~\numnameref{sec:A3SIiIP} for more information about included subsystems.
+For Level~3, all subsystems participating in the workload must be measured.
+Refer to Section~\numnameref{sec:A3SIiIP} for more information about included subsystems.
 
 With Level~3, the submitter need not be concerned about different types of compute nodes because Level~3 measures the entire system.
 
@@ -140,23 +150,28 @@ With Level~3, the submitter need not be concerned about different types of compu
 \textbf{Idle Power}
 \addcontentsline{toc}{subsection}{Idle Power}
 
-Idle power is defined as the power used by the system when it is not running a workload, but it is in a state where it is ready to accept a workload. The idle state is not a sleep or a hibernation state.
+Idle power is defined as the power used by the system when it is not running a workload, but it is in a state where it is ready to accept a workload.
+The idle state is not a sleep or a hibernation state.
 
-An idle measurement need not be linked to a particular workload. The idle measurement need not be made just before or after the workload is run. Think of the idle power measurement as a constant of the system. Think of idle power as a baseline power consumption when no workload is running. 
+An idle measurement need not be linked to a particular workload.
+The idle measurement need not be made just before or after the workload is run.
+Think of the idle power measurement as a constant of the system.
+Think of idle power as a baseline power consumption when no workload is running.
 
-For Levels 2 and 3, there must be at least one idle measurement. An idle measurement is optional for Level~1. 
+For Levels 2 and 3, there must be at least one idle measurement.
+An idle measurement is optional for Level~1.
 
 \newpage
 \item[{[ ]}]
 \textbf{Included Subsystems}
 \addcontentsline{toc}{subsection}{Included Subsystems}
 
-Subsystems include (but are not limited to) computational nodes, any interconnect network the application uses, any head or control nodes, any storage system the application uses, and any internal cooling devices (self-contained liquid cooling systems and fans).  
+Subsystems include (but are not limited to) computational nodes, any interconnect network the application uses, any head or control nodes, any storage system the application uses, and any internal cooling devices (self-contained liquid cooling systems and fans).
 
 \begin{itemize}
 \item
-For Level~1, both the compute-node subsystem and the interconnect must be reported.  
-The compute-node subsystem power must be measured. 
+For Level~1, both the compute-node subsystem and the interconnect must be reported.
+The compute-node subsystem power must be measured.
 The interconnect subsystem participating in the workload must also be measured or, if not measured, the contribution must be estimated.
 
 Measure the greater of at least 2~kW of power or $\frac{1}{10}$ of the compute-node subsystem or 15 compute nodes.
@@ -172,7 +187,7 @@ For Level~3, all subsystems participating in the workload must be measured compl
 \end{itemize}
 
 Estimation must be performed by substituting the measurement by an uppower bound derived from the maximum specified power consumption of all hardware components.
-The submission must include the relevant manufacturer specifications and formulas used for power estimation. 
+The submission must include the relevant manufacturer specifications and formulas used for power estimation.
 
 Include additional subsystems if needed.
 
@@ -185,7 +200,8 @@ Refer to Section~\numnameref{sec:A2MFI} for information about \% requirements fo
 \addcontentsline{toc}{subsection}{Tunable Parameters}
 
 Listing tunable parameters for all levels is optional.
-Typical tunable values are the CPU frequency, memory settings, and internal network settings. Be conservative, but list any other values you consider important.
+Typical tunable values are the CPU frequency, memory settings, and internal network settings.
+Be conservative, but list any other values you consider important.
 
 A tunable parameter is one that has a default value that you can easily change before running the workload.
 
