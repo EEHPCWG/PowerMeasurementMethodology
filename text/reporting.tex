@@ -2,14 +2,14 @@
 \label{sec:reporting}
 
 \noindent
-This section describes the information that must be included with a power measurement submission.
-It also describes some optional information that submitters may decide to include.
+This section contains:
+\begin{itemize}
+ \item The exact requirements for each quality level of each aspect.
+ \item A description what must be included with a power measurement submission.
+       It also describes some optional information that submitters may decide to include.
+ \item Definitions of the terms used to describe the elements of a power submission, some background information, motivation about why the list contains the elements it does, and any other details that may be helpful.
+\end{itemize}
 \wl
-
-\noindent
-The section contains definitions of the terms used to describe the elements of a power submission, some background information, motivation about why the list contains the elements it does, and any other details that may be helpful.
-\noindent
-
 
 \section{Measuring Device Specifications}
 \label{sec:MDSpecs}
@@ -20,7 +20,7 @@ This section defines meter accuracy requirements.
 \wl
 
 \noindent
-For Level~3, it is required to use any revenue grade meter, any meter accepted by spec power, or any meter documented to have an accuracy of 1\% or better.
+For Level~3, it is required to use any revenue grade meter, any meter accepted by SPEC power, or any meter documented to have an accuracy of 1\% or better.
 Level~2 requires a meter with a minimum documented accuracy of 2\%.
 Level~1 requires a meter with a minimum documented accuracy of 5\%.
 \wl
@@ -53,7 +53,7 @@ In other words, you can use a single meter with 1\% accuracy, 4 meters with 2\% 
 
 \noindent
 Revenue grade meters are defined by ANSI C12.20.
-For meters accepted by the spec power, refer to the {\itshape Power and Temperature Measurement Setup Guide \/} and the list of accepted power measurement devices from the Standard Performance Evaluation Corporation.
+For meters accepted by the SPEC power, refer to the {\itshape Power and Temperature Measurement Setup Guide \/} and the list of accepted power measurement devices from the Standard Performance Evaluation Corporation.
 \begin{packed_item}
 \item 
 \url{http://www.spec.org/power_ssj2008/}
@@ -74,13 +74,13 @@ For Levels 1 and 2, the power meter must internally sample the instantaneous pow
 (Internally, one such power sample will usually require many more measurements of voltage and current taken much more frequently than once per second.
 The power meter will either integrate the measurements at a high frequency, or fit a sine wave curve to it and determine the power factor and in this way produce a power consumption reading.)
 Usually the net frequency varies by a small percentage around 50~Hz or 60~Hz.
-It is allowed that the measurement sample frequency is not strictly constant, but it can be adjusted such that each sample interval covers a certain number of full sine waves.
+It is allowed that the measurement sample rate is not strictly constant, but it can be adjusted such that each sample interval covers a certain constant number of full sine waves.
 In that case, the intervals must not exceed one second by more than one sine wave and when building the final power average the power readings must be weighted by the duration of the sample interval.
 \wl
 
 \noindent
 Sampling in an AC context requires a measurement stage that determines the true power delivered at that point and enters that value into a buffer where it is then used to calculate average power over a longer time.
-So ``sampled once per second'' in this context means that the times in the buffer are averaged and recorded once per second.
+So ``sampled once per second'' in this context means that once per second a sample is added to the buffer used to calculate the average.
 Sampling delivered electrical power in a DC context refers to a single simultaneous measurement of the voltage and the current to determine the delivered power at that point.
 The sampling rate in this case is how often such a sample is taken and recorded internally within the device.
 \wl
@@ -91,16 +91,16 @@ Refer to Section~\numnameref{sec:A3SIiIP} for details.
 \wl
 
 \noindent
-It is allowed that the power meter does not report every sample.
+It is allowed that the power meter does not report every power sample it takes.
 Instead, the power meter may use an internal buffer and aggregate several samples over time and then only report one average power reading at a certain constant frequency.
 In the following, we refer to such a reported power measurement of the power meter as ``power reading''.
 The intervals between the power readings must be no longer than 10\% of the duration of the core phase.
-If the power meter reports every sample, then a power sample and a power reading is the same.
+If the power meter reports every sample, then a power sample and a power reading are the same.
 \wl
 
 \noindent
 The power meter must use all power samples taken during an interval to compute the average power reading.
-Consider that the limits of one sample per second and one power reading per 10 seconds / 1 minute are upper bounds.
+Consider that the limits of one sample per second is an upper bound.
 Usually, the power meter will take many samples per second and report power readings on about a per second basis.
 
 \subsection{Power-Averaged and Total Energy Measurements}
@@ -114,8 +114,8 @@ This subsection describes the difference of power-averaged measurements as requi
 The reported power values for Levels~1 and~2 are power-averaged measurements over a certain time period (e.g.~the core phase or the full run).
 A power-averaged measurement is one taken by a device that samples the instantaneous power used by a system at some fine time resolution for a specified interval.
 This interval is short compared to the full time of the power-averaged measurement.
-The power meter device numerically averages of all the instantaneous power measurements sampled during that interval.
-This constitutes one measurement reported by the device covering that interval.
+The power meter device numerically averages of all the instantaneous power measurements samples during that interval.
+This constitutes one power reading reported by the device covering that interval.
 Finally, the power-averaged measurement for the required time period is the average of all these power readings obtained from the device in that period.
 All power readings reported by the device for that period must be used except for one case:
 Exclude those readings for intervals that do not lie completely in the requested time period.
@@ -129,8 +129,8 @@ In that case, the averaging process must weight the power readings from the powe
 
 \noindent
 Consider Level~1, which requires only one reported power value.
-This reported power value may consist of several power readings taken at a constant frequency of at least once per minute.
-Each such reading itself must be the average of instantaneous power samples measured at least once per second and averaged over reading interval.
+This reported power value may consist of several power readings taken at a constant frequency with interval length shorter than 10\% of the core phase.
+Each such reading itself must be the average of instantaneous power samples measured at least once per second and averaged over the reading interval.
 For Level~1, the time period that is measured must be the core phase of the run, which must be at least one minute long (see \ref{sec:core_phase} for definition of core phase).
 For example, if the device reports one power measurement every 5 seconds (each being the average of at least 5 power samples) and the core phase takes 10 minutes, Level~1 reports one power-averaged value that averages over all the 120 measurements obtained during the core phase.
 (Usually the power reading intervals and the core phase are not synchronized, such that the first reding does not lie completely in the core phase.
@@ -138,11 +138,11 @@ In that case the average is only over the 119 readings completely in the core ph
 \wl
 
 \noindent
-Level~2 also requires that power measurements be taken at a constant frequency and the device must internally sample internally at least once per second.
-It requires the submission of the power-averaged measurement for the core phase, for the full run, and for a series of equally spaced power-averaged measurements of equal length during the full run.
-These power-averaged measurements in the series must be spaced close enough so that at least 10 measurements are reported during the core phase of the workload.
-There must not be any delay between the power measurement in this series and they must cover the entire core phase.
-Alternatively, instead of the 10 power-averaged measurements, it is allowed to submit the full set of power readings from the device that are used to calculate the average power during the core phase and during the full run.
+Level~2 also requires that power readings be taken at a constant frequency and the device must internally sample internally at least once per second.
+It requires the submission of the power-averaged measurement for the core phase (as Level~1 does), for the full run, and for a series of power-averaged measurements of equal length at regular intervals during the full run.
+The measurement interval must be short enough so that at least 10 measurements are reported during the core phase of the workload.
+There must be no gap between these regular measurements, i.e. this series of measurements in total must cover the full run.
+Alternatively, instead of this series of power-averaged measurements, it is allowed to submit the full set of power readings from the device that are used to calculate the average power during the core phase and during the full run.
 \wl
 
 \noindent
@@ -160,13 +160,13 @@ For Levels~1 and~2, the units of the reported power values are watts.
 \noindent
 Level~3 specifies a total energy measurement that, when divided by the measured time, also reports power.
 An integrated measurement is a continuing sum of energy measurements.
-The measuring device samples voltage and current many times per second and integrate those samples to determine the next total energy consumed reading.
+The measuring device samples voltage and current many times per second and integrates those samples to determine the next total energy consumed reading.
 Typically, there are hundreds of measurements per second.
 It is requested that the power meter samples at least at 120~Hz for a DC measurement and at least at~5kHz for an AC measurement.
 \wl
 
 \noindent
-Level~3 reports an average power value for the core phase, an average power value for the whole run, at least 10 equally spaced energy values within the core phase, and the elapsed times between the first and last energy readings in both the core phase and the full run.
+Level~3 reports an average power value for the core phase, an average power value for the whole run, at least 10 energy values at regular intervals within the core phase, and the elapsed times between the first and last energy readings in both the core phase and the full run.
 These last and first measurements in the core phase must be timed such that no more than a total of ten seconds (five each at begin and end) of the core phase are not covered by the total energy measurement.
 The final average power value for the core phase is the difference between the first and last energy readings divided by the elapsed time between first and last reading.
 The final value for the full run must be obtained analogously.
@@ -222,7 +222,7 @@ $\bullet$ idle power \\
 
 \textbf{2: Machine \newline fraction}  &
 The greater of $\frac{1}{10}$ of the compute subsystem or 2~kW or 15~compute nodes - alternatively at least 40~kW or the entire system &
-The greater of $\frac{1}{8}$ of the compute-node subsystem or 10~kW or 15~compute nodes &
+The greater of $\frac{1}{8}$ of the compute-node subsystem or 10~kW or 15~compute nodes - alternatively the entire system &
 The whole of all included subsystems \\
 \hline
 
@@ -386,37 +386,39 @@ L3 requires an integrating total-energy meter, which samples the input power mul
 
 \subsection{Level~1}
 \noindent
+Level~1 submissions include a measurement of the average power during the core phase.
 The device measurement granularity must be at least one instantaneous measurement of power per second.
 This requirement holds whether the measurement is DC or AC.
 \wl
 
 \noindent
 There must be at least one power-averaged measurement during the run.
-The total interval covered must be the core phase of the run which must be at
-least one minute long.
+The total interval covered must be the core phase of the run which must be at least one minute long.
+Exclude power readings for time intervals that do not lie completely in the core phase.
 \wl
 
 \subsection{Level~2}
 \noindent
-Level~2 submissions include a measurement of the average power during the core phase of the run and the average power during the full run.
-The workload run must have a series of power-averaged measurements at constant time intervals.
-These measurement intervals must be short enough so that at least 10 measurements are reported during the core phase of the workload.
-The reported average power for the core phase of the run will be the numerical average of the 10 (or more) power-averaged measurements collected during the core phase.
+Level~2 submissions include a measurement of the average power during the core phase of the run, the average power during the full run, and a series of regular power-averaged measurements.
+The device measurement granularity must be at least one instantaneous measurement of power per second.
+This requirement holds whether the measurement is DC or AC.
 \wl
 
 \noindent
-The complete set of power-averaged measurements used to calculate average power must also be provided.
-The device measurement sampling granularity must be at least one instantaneous measurement of power per second.
+The submitted value for the core phase must be the average of all power readings taken during the core phase of the run.
+In addition, the average of all power readings during the full run must be submitted.
+In both cases, exclude power readings for time intervals that do not lie completely in the respective time period of core phase and full run.
+The core phase is required to run for at least one minute.
 \wl
 
 \noindent
-There is some unspecified number of power-averaged measurements during the workload but outside of the core phase.
-The reported average power for the whole run will be the numerical average of the power measurements for the whole run.
+On top of these full measurements, a series of power-averaged measurements of equal length at regular intervals must be submitted for the full run.
+These intervals must be short enough so that at least 10 measurements are reported during the core phase of the workload.
+There must be no gap between these regular measurements, i.e. this series of measurements in total must cover the full run.
 \wl
 
-
 \noindent
-Figure~\ref{fig:a1l2pm} illustrates Aspect~1 of a Level~2 power measurement.
+Figure~\ref{fig:a1l2pm} illustrates the series of power measurements at regular intervals of Aspect~1 of a Level~2 power measurement.
 Each measurement is an average of instantaneous power measurements, and these instantaneous measurements are taken once per second.
 As an example, the figure shows 10 power-averaged measurements within the core phase and four power-averaged measurements outside the core phase, two before the core phase and two after the core phase.
 
@@ -453,6 +455,12 @@ The intervals at which total energy readings are reported must be short enough s
 Note that each reported energy reading is the integral over many internal power samples.
 \wl
 
+\noindent
+The measured energy for the core phase is the last measured total energy within the core phase minus the first measured total energy within the core phase.
+The final power is calculated by dividing this energy by the elapsed time between these first and last energy readings.
+These last and first measurements in the core phase must be timed such that no more than a total of ten seconds (five each at begin and end) of the core phase are not covered by the total energy measurement.
+The procedure for the full run is analogous.
+\wl
 
 \noindent
 Figure~\ref{fig:a1l3pm} illustrates Aspect~1 of  Level~3 power measurement.
@@ -520,8 +528,9 @@ L1: The largest of $\frac{1}{10}$ of the compute-node subsystem or at least 2~kW
 Alternatively, at least 40~kW or the entiry system.
 \item
 L2: The largest of $\frac{1}{8}$ of the compute-node subsystem or at least 10~kW or 15 compute nodes.
+Alternatively, the entire system if smaller than 15 nodes.
 \item
-L3: the power use of the whole machine must be measured.
+L3: The power use of the whole machine must be measured.
 \end{itemize}
 
 \noindent
@@ -535,18 +544,18 @@ Even if individual node power could be measured, that would not be valid as it w
 \wl
 
 \noindent
-The requirement for Level~1 and Level~2 include the measurement of at least 15 nodes.
+The requirements for Level~1 and Level~2 include the measurement of at least 15 nodes.
 For a cluster consisting of individual servers, a node is simply defined as one server.
 There are architectures with multiple individual servers in one chassis, e.g.
 2U twin or twin$^2$ servers with 2 and 4 servers per chassis and blade servers with many more nodes in one chassis.
 Usually, all the nodes in one chassis share redundant power supplies.
-In that case, you have to measure entire chassis, including all the power supplies of a chassis.
+Hence, in that case you have to measure entire chassis, including all the power supplies of a chassis.
 The measurement of a chassis is then considered a measurement of as many nodes as there are nodes in the chassis.
 \wl
 
 \noindent
 For a measurement of only a fraction of a subsystem, this fraction must be chosen randomly.
-In this context, random refers to the entity that are measured.
+In this context, random refers to the entity that is measured.
 For instance, if you measure nodes then choose random nodes, if you measure entire racks, choose random racks.
 It is not allowed to screen the system for components with lower power consumtion and then measure only that fraction nor is it allowed to replace components in the chosen fraction by ones with lower power consumption.
 \wl
@@ -567,23 +576,19 @@ Subsystems include computational nodes, any interconnect network the application
 \wl
 
 \noindent
-If some subsystems are part of the measured power, their power may not be subtracted out after the fact.
+If some subsystems are part of the measured power, their power may not be subtracted out after the measurement.
 The explicitly measured value must be used as is.
 \wl
-
 
 \noindent
 For Level~1, both the compute-node subsystem and the interconnect must be reported.
 The compute-node subsystem power must be measured.
 The interconnect subsystem participating in the workload must also be measured or, if not measured, the contribution must be estimated.
 Include everything that you need to operate the interconnect network that is not part of the compute subsystem.
-This may include infrastructure that is shared, but excludes parts that are not servicing the system under test.
-For some systems, it may be impossible not to include a power contribution from some subsystems.
-In this case, provide a list of the measured subsystems, but do not subtract an estimated value for the included subsystem.
 \wl
 
 \noindent
-For Level~2, include the compute node subsystem.
+For Level~2, measure the compute node subsystem.
 Other subsystems participating in the workload must be measured or estimated.
 \wl
 
@@ -593,20 +598,17 @@ The reported power measurement must include all computational nodes, any interco
 \wl
 
 \noindent
-For Levels~1 and~2, estimations of other subsystems besides the compute subsystem must be performed by substituting the measurement by an uppower bound derived from the maximum specified power consumption of all hardware components.
+For Levels~1 and~2, estimations of other subsystems besides the compute subsystem must be performed by substituting the measurement by an upper bound derived from the maximum specified power consumption of all hardware components.
 \wl
 
 \noindent
-For Levels~2 and~3, the reported power measurement may exclude storage subsystems that don't participate in the workload.
-It is not required to exclude such storage subsystems.
-However, if these storage subsystems are part of the cabinet or rack being measured, they may not be excluded even if they are not used.
+Measurements may include infrastructure that is shared.
+It is allowed but not required to exclude subsystems that don't participate in the workload (e.g. storage subsystems).
+However, if these subsystems are part of the cabinet or rack being measured, they may not be excluded even if they are not used.
 That is, the submitter cannot calculate their contribution and subtract that contribution.
-If the storage subsystem is not part of the rack or cabinet being measured and it does not participate in the workload, it need not be measured.
-\wl
-
-\noindent
-In some cases, the submitter may be measuring power that the application doesn't actually use.
-If the submitter can exclude the unused subsystems from the measurement or easily turn off the power to the unused subsystems, then the submitter can choose not to include those subsystems in the measurement.
+If the subsystem is not part of the rack or cabinet being measured and it does not participate in the workload, it need not be measured.
+For some systems, it may be impossible not to include a power contribution from certain subsystems that are not used by the application.
+In this case, provide a list of the measured subsystems, but do not subtract an estimated value for the subsystems that are not used.
 \wl
 
 \noindent
@@ -620,9 +622,18 @@ A site may include more subsystems than are strictly required if it chooses or i
 \wl
 
 \noindent
+In other words, for Level~2 and~3 you have to include everything that you cannot turn of during the benchmark run.
+It only allowed to exclude subsystems (or parts thereof) from the measurement in the first place, but their contribution must not be subtracted afterwards.
+For Level~1 this applies as well, but only for the network subsystem.
+\wl
+
+\subsection{Hererogeneous Systems}
+
+\noindent
 A particular system may have different types of compute nodes.
 The system may have compute nodes from different companies or even compute nodes with different architectures.
 These compute nodes are said to belong to different heterogeneous sets.
+Each heterogeneous set must consist of identical nodes.
 \wl
 
 \noindent
