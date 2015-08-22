@@ -77,7 +77,7 @@ This may include infrastructure that is shared, but excludes parts that are not 
 For some systems, it may be impossible not to include a power contribution from certain subsystems that are not used for the benchmark run.
 In this case, list what you are including, but do not subtract an estimated value for the subsystem that are not needed.
 
-If the compute-node-subsystem contains different types of compute nodes, measure at least one member from each of the heterogeneous sets. The contribution from compute nodes not measured must be extrapolated. Refer to 
+If the compute-node-subsystem contains different types of compute nodes, measure at least 10\% of each of the heterogeneous sets. The contribution from compute nodes not measured must be extrapolated. Refer to 
 Section~\numnameref{sec:A3SIiIP} for information about heterogeneous sets of compute nodes.
 
 \newpage
@@ -107,7 +107,7 @@ As for Level~1, estimation is performed by substituting the measurement by an up
 Level~2 requires that the largest of $\frac{1}{8}$ of the compute-node subsystem, or 10~kW of power, or 15 compute nodes be measured.
 It is acceptable to exceed this requirement or to measure the whole machine if smaller than 15 nodes.
 
-The compute-node subsystem is the set of compute nodes. As with Level~1, if the compute-node subsystem contains different types of compute nodes, you must measure at least one member from each of the heterogeneous sets. The contribution from compute nodes not measured must be extrapolated.
+The compute-node subsystem is the set of compute nodes. As with Level~1, if the compute-node subsystem contains different types of compute nodes, you must measure at least \frac{1}{8} from each of the heterogeneous sets. The contribution from compute nodes not measured must be extrapolated.
 Refer to Section~\numnameref{sec:A3SIiIP} for information about heterogeneous sets of compute nodes.
 
 \newpage

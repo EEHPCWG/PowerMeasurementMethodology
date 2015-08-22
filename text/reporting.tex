@@ -555,7 +555,9 @@ A site may include more subsystems than are strictly required if it chooses or i
 \wl
 
 \noindent
-A particular system may have different types of compute nodes. The system may have compute nodes from different companies or even compute nodes with different architectures. These compute nodes are said to belong to different heterogeneous sets.
+A particular system may have different types of compute nodes.
+The system may have compute nodes from different companies or even compute nodes with different architectures.
+These compute nodes are said to belong to different heterogeneous sets.
 \wl
 
 \noindent
@@ -563,7 +565,11 @@ With Level~3, the submitter need not be concerned about heterogeneous sets of co
 \wl
 
 \noindent
-Levels 1 and 2, however, measure a portion of the compute-node subsystem and estimate contributions from unmeasured portions. With Levels 1 and 2, the submitter must measure at least one member of each heterogeneous set. The submitter must include a power measurement from at least one compute node in each heterogeneous set and then estimate the contribution from the remaining members of the set. 
+Levels 1 and 2, however, measure a portion of the compute-node subsystem and estimate contributions from unmeasured portions.
+With Levels 1 and 2, the submitter must measure at least one member of each heterogeneous set.
+Measure at least 10\% of each heterogeneous set for Level~1, and at least \frac{1}{8} of each heterogeneous set for Level~2.
+Then, extrapolate the total power per each heterogeneous set as you would do for a non heterogeneous cluster.
+Finally, accumulate the contributions of all heterogeneous sets.
 \wl
 
 \noindent
@@ -575,8 +581,7 @@ consumed by $ \frac{1}{2} $ of the A compute nodes and $ \frac{1}{4} $ of the B 
 The total power measurement reported for compute nodes would then be 
 
 \noindent
-\[ Total~power=2*(power~from~compute~nodes~A) 
-                              + 4*(power~from~compute~nodes~B) \]
+\[ Total~power=2*(power~from~compute~nodes~A) + 4*(power~from~compute~nodes~B) \]
 
 \noindent
 The assumption of Levels 2 and 1 is that all the compute nodes in a set react identically to the workload.
