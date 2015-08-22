@@ -60,7 +60,7 @@ For meters accepted by the spec power, refer to the {\itshape Power and Temperat
 \section{Measuring Device Terminology}
 \label{sec:MDTerm}
 \noindent
-Levels 1 and 2 specify power measurements.
+Levels~1 and~2 specify power measurements.
 Level~3 specifies an energy measurement, but reports a power value.
 
 \subsection{Sampling and Power Readings}
@@ -106,7 +106,7 @@ This subsection describes the difference of power-averaged measurements as requi
 \subsubsection{Power-Averaged Measurements}
 
 \noindent
-The reported power values for Levels 1 and 2 are power-averaged measurements over a certain time period (e.g.~the core phase or the full run).
+The reported power values for Levels~1 and~2 are power-averaged measurements over a certain time period (e.g.~the core phase or the full run).
 A power-averaged measurement is one taken by a device that samples the instantaneous power used by a system at some fine time resolution for a specified interval.
 This interval is short compared to the full time of the power-averaged measurement.
 The power meter device numerically averages of all the instantaneous power measurements sampled during that interval.
@@ -147,7 +147,7 @@ In that case, the submission includes one power-averaged measurement over 120 po
 \wl
 
 \noindent
-For Levels 1 and 2, the units of the reported power values are watts.
+For Levels~1 and~2, the units of the reported power values are watts.
 \wl
 
 \subsubsection{Total Energy Measurements}
@@ -169,7 +169,7 @@ The final value for the full run must be obtained analogously.
 
 \noindent
 The difference between the initial and final energy readings are the total energy measurement in joule.
-The reported values after the energy has been divided by the elapsed time are watts as for levels 1 and 2.
+The reported values after the energy has been divided by the elapsed time are watts as for Levels~1 and~2.
 
 \section{Aspect and Quality Levels}
 \label{sec:AQLevels}
@@ -250,7 +250,7 @@ Conversion loss measured simultaneously \\
 \end{tabular}
 \end{table}
 
-\section{Aspect 1: Granularity, Timespan and Reported Measurements}
+\section{Aspect~1: Granularity, Timespan and Reported Measurements}
 \label{sec:A1GTRM}
 \noindent
 Aspect~1 has the following three parts.
@@ -274,7 +274,7 @@ For Level~2 and Level~3 submissions, the supporting data must include at least 1
 \wl
 
 \noindent
-Levels 2 and 3 require reported measurement values at regular intervals for the following reasons:
+Levels~2 and~3 require reported measurement values at regular intervals for the following reasons:
 
 \begin{itemize}
 \item
@@ -339,7 +339,7 @@ Since HPL only reports the time spent executing the core phase of the workload, 
 \wl
 
 \noindent
-Levels 2 and 3 require the entire run to be measured and reported because HPL (the default workload at the time this document was written) drops significantly in power consumption during the course of a computation, as the matrix size being computed gets smaller.
+Levels~2 and~3 require the entire run to be measured and reported because HPL (the default workload at the time this document was written) drops significantly in power consumption during the course of a computation, as the matrix size being computed gets smaller.
 Requiring the entire run eliminates systematic bias caused by using different parts of the run for the measurement.
 Figure~\ref{fig:powprof} shows an example of a power graph taken from an HPL run on the LLNL Muir system in the fall of 2011.
 \wl
@@ -465,7 +465,7 @@ To obtain a power reading, one must subtract two integrated readings and divide 
 \section{Format of Reported Measurements}
 \label{sec:FoRM}
 \noindent
-Levels 2 and 3 require the complete set of measurements.
+Levels~2 and~3 require the complete set of measurements.
 The submitter may choose to provide these values in a CSV file.
 Do not provide scans of paper documents.
 \wl
@@ -484,7 +484,7 @@ Keep this graph for reference, but do not provide it as part of the submission.
 \label{fig:powengwl}
 \end{figure}
 
-\section{Aspect 2: Machine Fraction Instrumented}
+\section{Aspect~2: Machine Fraction Instrumented}
 \label{sec:A2MFI}
 \noindent
 Aspect~2 specifies the fraction of the system whose power feeds are instrumented by the measuring equipment.
@@ -496,8 +496,8 @@ Level~2 requires a higher fraction than Level~1.
 \wl
 
 \noindent
-Levels 1 and 2 do not measure the power of the entire system, but require only a measurement of a fraction of the system and estimate the total power consumotion by extrapolation.
-When calculating the average power of the full machine for Levels 1 and 2, the measured power must be divided by this fraction to 
+Levels~1 and~2 do not measure the power of the entire system, but require only a measurement of a fraction of the system and estimate the total power consumotion by extrapolation.
+When calculating the average power of the full machine for Levels~1 and~2, the measured power must be divided by this fraction to 
 extrapolate to the average power drawn by the whole machine.
 For example, if the submitter measures the power delivered 
 to $ \frac{1}{4} $ of the machine, the submitter must then multiply the measured power by 4 to obtain the power for the whole machine.
@@ -545,10 +545,10 @@ For instance, if you measure nodes then choose random nodes, if you measure enti
 It is not allowed to screen the system for components with lower power consumtion and then measure only that fraction nor is it allowed to replace components in the chosen fraction by ones with lower power consumption.
 \wl
 
-\section{Aspect 3: Subsystems Included in Instrumented Power}
+\section{Aspect~3: Subsystems Included in Instrumented Power}
 \label{sec:A3SIiIP}
 \noindent
-Aspect 3 specifies the subsystems included in the instrumented power.
+Aspect~3 specifies the subsystems included in the instrumented power.
 \wl
 
 \noindent
@@ -587,11 +587,11 @@ The reported power measurement must include all computational nodes, any interco
 \wl
 
 \noindent
-For Levels 1 and 2, estimations of other subsystems besides the compute subsystem must be performed by substituting the measurement by an uppower bound derived from the maximum specified power consumption of all hardware components.
+For Levels~1 and~2, estimations of other subsystems besides the compute subsystem must be performed by substituting the measurement by an uppower bound derived from the maximum specified power consumption of all hardware components.
 \wl
 
 \noindent
-For Levels 2 and 3, the reported power measurement may exclude storage subsystems that don't participate in the workload.
+For Levels~2 and~3, the reported power measurement may exclude storage subsystems that don't participate in the workload.
 It is not required to exclude such storage subsystems.
 However, if these storage subsystems are part of the cabinet or rack being measured, they may not be excluded even if they are not used.
 That is, the submitter cannot calculate their contribution and subtract that contribution.
@@ -624,8 +624,8 @@ With Level~3, the submitter need not be concerned about heterogeneous sets of co
 \wl
 
 \noindent
-Levels 1 and 2, however, measure a portion of the compute-node subsystem and estimate contributions from unmeasured portions.
-With Levels 1 and 2, the submitter must measure at least one member of each heterogeneous set.
+Levels~1 and~2, however, measure a portion of the compute-node subsystem and estimate contributions from unmeasured portions.
+With Levels~1 and~2, the submitter must measure at least one member of each heterogeneous set.
 Measure at least 10\% of each heterogeneous set for Level~1, and at least $\frac{1}{8}$ of each heterogeneous set for Level~2.
 Then, extrapolate the total power per each heterogeneous set as you would do for a non heterogeneous cluster.
 Finally, accumulate the contributions of all heterogeneous sets.
@@ -644,12 +644,12 @@ The total power measurement reported for compute nodes would then be
 \[ Total~power=2*(power~from~compute~nodes~A) + 4*(power~from~compute~nodes~B) \]
 
 \noindent
-The assumption of Levels 2 and 1 is that all the compute nodes in a set react identically to the workload.
+The assumption of Levels~1 and~2 is that all the compute nodes in a set react identically to the workload.
 
 
-\section{Aspect 4: Instrumentation Location where the Electrical Measurements are Taken}
+\section{Aspect~4: Instrumentation Location where the Electrical Measurements are Taken}
 \label{sec:A4wEMaT}
-Aspect 4 specifies where in the power distribution system the power delivery is measured.
+Aspect~4 specifies where in the power distribution system the power delivery is measured.
 For all quality levels, the submission indicates where power is measured and the quantity of parallel measurements.
 \wl
 
@@ -696,7 +696,7 @@ At the input connector to the first power-modifying component (for example, the 
 \end{itemize}
 
 \noindent
-If the measuring device or devices used to satisfy Aspect 1 also meet the ABC location requirements specified above, then those devices are sufficient to obtain the measurements needed for submission.
+If the measuring device or devices used to satisfy Aspect~1 also meet the ABC location requirements specified above, then those devices are sufficient to obtain the measurements needed for submission.
 \wl
 
 \noindent
@@ -705,7 +705,7 @@ Refer to Section~\ref{sec:MDSpecs} for the specifications of the required accura
 \subsection{Adjusting for Power Loss}
 \label{sec:AfPL}
 \noindent
-If the measurement device(s) that satisfy Aspect 1 are downstream of the ABC locations specified above, then two sets of measurements must be taken in order to determine the power loss between the required and the actual measurement location.
+If the measurement device(s) that satisfy Aspect~1 are downstream of the ABC locations specified above, then two sets of measurements must be taken in order to determine the power loss between the required and the actual measurement location.
 
 \begin{itemize}
 \item
