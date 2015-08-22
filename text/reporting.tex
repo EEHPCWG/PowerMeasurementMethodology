@@ -33,6 +33,11 @@ It is acceptable if the error is documented either as a hard bound, as the 1$\si
 \wl
 
 \noindent
+All requirements and operating conditions that are required for the power meter to achieve its documented accuracy must be met.
+For Levels~1 and~2 it is allowed to assume that the AC net power is a sine wave function.
+\wl
+
+\noindent
 If the site uses multiple independent power meters for a Level~2 or a Level~3 measurement, and if all employed power meters measure an identical fraction of the system, the requirements are relaxed in the following way.
 \begin{packed_item}
 \item 
@@ -155,9 +160,9 @@ For Levels~1 and~2, the units of the reported power values are watts.
 \noindent
 Level~3 specifies a total energy measurement that, when divided by the measured time, also reports power.
 An integrated measurement is a continuing sum of energy measurements.
-Typically, there are hundreds of measurements per second.
-Depending on the local AC power line frequency, there must be at least 120 or 100 measurements per second.
 The measuring device samples voltage and current many times per second and integrate those samples to determine the next total energy consumed reading.
+Typically, there are hundreds of measurements per second.
+It is requested that the power meter samples at least at 120~Hz for a DC measurement and at least at~5kHz for an AC measurement.
 \wl
 
 \noindent
@@ -438,7 +443,8 @@ The readings must begin before the start of the run and extend to when it is fin
 \wl
 
 \noindent
-The measuring device must sample voltage and current, whether AC or DC, at least 120 times or 100 times per second (depending on the local AC power line frequency) and integrate those samples to determine the next total energy consumed reading.
+The measuring device must sample voltage and current at high rate and integrate those samples to determine the next total energy consumed reading.
+The sampling rate must be at least 120~Hz for DC, and at least 5~kHz for AC.
 Sampling at a greater rate is permitted.
 \wl
 
