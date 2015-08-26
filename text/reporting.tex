@@ -71,15 +71,21 @@ Level~3 specifies an energy measurement, but reports a power value.
 \subsection{Sampling and Power Readings}
 \noindent
 For Levels 1 and 2, the power meter must internally sample the instantaneous power at a constant frequency of at least once per second.
-(Internally, one such power sample will usually require many more measurements of voltage and current taken much more frequently than once per second.
-The power meter will either integrate the measurements at a high frequency, or fit a sine wave curve to it and determine the power factor and in this way produce a power consumption reading.)
 Usually the net frequency varies by a small percentage around 50~Hz or 60~Hz.
 It is allowed that the measurement sample rate is not strictly constant, but it can be adjusted such that each sample interval covers a certain constant number of full sine waves.
 In that case, the intervals must not exceed one second by more than one sine wave and when building the final power average the power readings must be weighted by the duration of the sample interval.
 \wl
 
 \noindent
-Sampling in an AC context requires a measurement stage that determines the true power delivered at that point and enters that value into a buffer where it is then used to calculate average power over a longer time.
+\textit{(We do not specify exactly, how such a power sample must be measured in order to give the users greater flexibility in the choice of the power meter equipment.
+Usually, such a power sample, which is taken internally at least every second, will again consist of multiple measurements also internally.
+E.g.~the power meter will measure voltage and current much more frequently than once per second.
+It will either integrate their product, or fit sine waves to them, determine the power factor, and multiply the wave amplitutes with the factor.
+In this way, it generates one power sample.)}
+\wl
+
+\noindent
+Sampling in an AC context requires a measurement stage that determines the true power delivered at that point (denoted a power sample) and enters that value into a buffer where it is then used to calculate average power over a longer time.
 So ``sampled once per second'' in this context means that once per second a sample is added to the buffer used to calculate the average.
 Sampling delivered electrical power in a DC context refers to a single simultaneous measurement of the voltage and the current to determine the delivered power at that point.
 The sampling rate in this case is how often such a sample is taken and recorded internally within the device.
@@ -162,7 +168,7 @@ Level~3 specifies a total energy measurement that, when divided by the measured 
 An integrated measurement is a continuing sum of energy measurements.
 The measuring device samples voltage and current many times per second and integrates those samples to determine the next total energy consumed reading.
 Typically, there are hundreds of measurements per second.
-It is requested that the power meter samples at least at 120~Hz for a DC measurement and at least at~5kHz for an AC measurement.
+It is requested that the power meter samples voltage and current at least at 120~Hz for a DC measurement and at least at~5kHz for an AC measurement.
 \wl
 
 \noindent
