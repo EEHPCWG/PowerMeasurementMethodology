@@ -20,9 +20,9 @@ This section defines meter accuracy requirements.
 \wl
 
 \noindent
-For Level~3, it is required to use any revenue grade meter, any meter accepted by SPEC power, or any meter documented to have an accuracy of 1\% or better.
-Level~2 requires a meter with a minimum documented accuracy of 2\%.
-Level~1 requires a meter with a minimum documented accuracy of 5\%.
+For Level~3, it is required to use any revenue grade meter, any meter accepted by SPEC power, or any meter documented to have an accuracy of \SpecAccuracyLThree{} or better.
+Level~2 requires a meter with a minimum documented accuracy of \SpecAccuracyLTwo{}.
+Level~1 requires a meter with a minimum documented accuracy of \SpecAccuracyLOne{}.
 \wl
 
 \noindent
@@ -41,14 +41,14 @@ For Levels~1 and~2 it is allowed to assume that the AC net power is a sine wave 
 If the site uses multiple independent power meters for a Level~2 or a Level~3 measurement, and if all employed power meters measure an identical fraction of the system, the requirements are relaxed in the following way.
 \begin{packed_item}
 \item 
-Each individual power meter must have at least a documented accuracy of 3\%.
+Each individual power meter must have at least a documented accuracy of \SpecAccuracyMeter{}.
 \item
-The documented error of the individual meters divided by the square root of the number of employed meters must meet the above requirements of 2\% for Level~2 and 1\% for Level~1.
+The documented error of the individual meters divided by the square root of the number of employed meters must meet the above requirements of \SpecAccuracyLTwo{} for Level~2 and \SpecAccuracyLThree{} for Level~3.
 \end{packed_item}
 In this case, the second requirement ensures that the standard deviation of the measurement of the entire run, using error propagation, and assuming a gaussian distribution, and assuming that the errors of the power meters are uncorelated, meets the requirements.
 For example, assume 4 power meters for a Level~3 measurement, each measuring 25\% of the total system.
-In that case, each meter must have a documented accuracy of~$1\% \cdot \sqrt{4} = 2\%$.
-In other words, you can use a single meter with 1\% accuracy, 4 meters with 2\% accuracy, or 9 meters with 3\% accuracy for Level~3.
+In that case, each meter must have a documented accuracy of~$1\% \cdot \sqrt{4} = 2\%$ to get a final accuracy of~1\%.
+In other words, you can use a single meter with 1\% accuracy, 4 meters with 2\% accuracy, or 9 meters with 3\% accuracy to reach~1\% for Level~3.
 \wl
 
 \noindent
@@ -100,7 +100,7 @@ Refer to Section~\numnameref{sec:A3SIiIP} for details.
 It is allowed that the power meter does not report every power sample it takes.
 Instead, the power meter may use an internal buffer and aggregate several samples over time and then only report one average power reading at a certain constant frequency.
 In the following, we refer to such a reported power measurement of the power meter as ``power reading''.
-The intervals between the power readings must be no longer than 10\% of the duration of the core phase.
+The intervals between the power readings must be no longer than \MaxReadingIntervalCorePhaseLTwoThree{} of the duration of the core phase.
 If the power meter reports every sample, then a power sample and a power reading are the same.
 \wl
 
@@ -127,7 +127,7 @@ All power readings reported by the device for that period must be used except fo
 Exclude those readings for intervals that do not lie completely in the requested time period.
 (Usually the reading intervals and the measured time period (e.g.~the core phase) are not synchronized.)
 We require that the internal device sampling rate must be at least 1 Hz and constant.
-The intervals between the power readings must be constant and no longer than 10\% of the duration of the core phase.
+The intervals between the power readings must be constant and no longer than \MaxReadingIntervalCorePhaseLTwoThree{} of the duration of the core phase.
 (This ensures that the parts of the core phase that are not measured at beginning and end are not significant.)
 As noted in the previous subsection, the sampling rate may vary slightly to accomodate for variations in the net frequency.
 In that case, the averaging process must weight the power readings from the power meter according to the respective interval lengths.
@@ -135,7 +135,7 @@ In that case, the averaging process must weight the power readings from the powe
 
 \noindent
 Consider Level~1, which requires only one reported power value.
-This reported power value may consist of several power readings taken at a constant frequency with interval length shorter than 10\% of the core phase.
+This reported power value may consist of several power readings taken at a constant frequency with interval length shorter than \MaxReadingIntervalCorePhaseLTwoThree{} of the core phase.
 Each such reading itself must be the average of instantaneous power samples measured at least once per second and averaged over the reading interval.
 For Level~1, the time period that is measured must be the core phase of the run, which must be at least one minute long (see \ref{sec:core_phase} for definition of core phase).
 For example, if the device reports one power measurement every 5 seconds (each being the average of at least 5 power samples) and the core phase takes 10 minutes, Level~1 reports one power-averaged value that averages over all the 120 measurements obtained during the core phase.
@@ -146,7 +146,7 @@ In that case the average is only over the 119 readings completely in the core ph
 \noindent
 Level~2 also requires that power readings be taken at a constant frequency and the device must internally sample internally at least once per second.
 It requires the submission of the power-averaged measurement for the core phase (as Level~1 does), for the full run, and for a series of power-averaged measurements of equal length at regular intervals during the full run.
-The measurement interval must be short enough so that at least 10 measurements are reported during the core phase of the workload.
+The measurement interval must be short enough so that at least \MinMeasurementsCorePhaseLTwoThree{} measurements are reported during the core phase of the workload.
 There must be no gap between these regular measurements, i.e. this series of measurements in total must cover the full run.
 Alternatively, instead of this series of power-averaged measurements, it is allowed to submit the full set of power readings from the device that are used to calculate the average power during the core phase and during the full run.
 \wl
@@ -168,12 +168,12 @@ Level~3 specifies a total energy measurement that, when divided by the measured 
 An integrated measurement is a continuing sum of energy measurements.
 The measuring device samples voltage and current many times per second and integrates those samples to determine the next total energy consumed reading.
 Typically, there are hundreds of measurements per second.
-It is requested that the power meter samples voltage and current at least at 120~Hz for a DC measurement and at least at~5kHz for an AC measurement.
+It is requested that the power meter samples voltage and current at least at~\SpecRateLThreeDC{} for a DC measurement and at least at~\SpecRateLThreeAC{} for an AC measurement.
 \wl
 
 \noindent
-Level~3 reports an average power value for the core phase, an average power value for the whole run, at least 10 energy values at regular intervals within the core phase, and the elapsed times between the first and last energy readings in both the core phase and the full run.
-These last and first measurements in the core phase must be timed such that no more than a total of ten seconds (five each at begin and end) of the core phase are not covered by the total energy measurement.
+Level~3 reports an average power value for the core phase, an average power value for the whole run, at least \MinMeasurementsCorePhaseLTwoThree{} energy values at regular intervals within the core phase, and the elapsed times between the first and last energy readings in both the core phase and the full run.
+These last and first measurements in the core phase must be timed such that no more than a total of \MaxSecMissingLThree{}~seconds (\MaxSecMissingLThreeHalf{}~seconds each at begin and end) of the core phase are not covered by the total energy measurement.
 The final average power value for the core phase is the difference between the first and last energy readings divided by the elapsed time between first and last reading.
 The final value for the full run must be obtained analogously.
 \wl
@@ -218,8 +218,8 @@ $\bullet$ Full run average power &
 $\bullet$ Full run total energy \\
 
  & &
-$\bullet$ 10 average power measurements in the core phase &
-$\bullet$ 10 total energy measureMDSpecsments in the core phase \\
+$\bullet$ \MinMeasurementsCorePhaseLTwoThree{} average power measurements in the core phase &
+$\bullet$ \MinMeasurementsCorePhaseLTwoThree{} total energy measureMDSpecsments in the core phase \\
 
  & &
 $\bullet$ idle power &
@@ -227,8 +227,8 @@ $\bullet$ idle power \\
 \hline
 
 \textbf{2: Machine \newline fraction}  &
-The greater of $\frac{1}{10}$ of the compute subsystem or 2~kW or 15~compute nodes - alternatively at least 40~kW or the entire system &
-The greater of $\frac{1}{8}$ of the compute-node subsystem or 10~kW or 15~compute nodes - alternatively the entire system &
+The greater of \SpecFracMinLOne{} of the compute subsystem or \SpecPowerMinLOne{} or \SpecMinNodes{}~compute nodes - alternatively at least \SpecPowerMaxLOne{} or the entire system &
+The greater of \SpecFracMinLTwo{} of the compute-node subsystem or \SpecPowerMinLTwo{} or \SpecMinNodes{}~compute nodes - alternatively the entire system &
 The whole of all included subsystems \\
 \hline
 
@@ -254,9 +254,9 @@ Conversion loss modeled with off-line measurements of a single power supply &
 Conversion loss measured simultaneously \\
 \hline
 \textbf{4b: Meter accuracy} &
-5\% &
-2\% (see Section~\ref{sec:MDSpecs})&
-1\% (see Section~\ref{sec:MDSpecs})\\
+\SpecAccuracyLOne{} &
+\SpecAccuracyLTwo{} (see Section~\ref{sec:MDSpecs})&
+\SpecAccuracyLThree{} (see Section~\ref{sec:MDSpecs})\\
 \hline
 \end{tabular}
 \end{table}
@@ -281,7 +281,7 @@ This aspect describes how the power measurements are reported.
 
 \noindent
 For all required measurements, the submission must also include the data used to calculate them.
-For Level~2 and Level~3 submissions, the supporting data must include at least 10 measurement values at a regular sampling rate in the core phase of the run.
+For Level~2 and Level~3 submissions, the supporting data must include at least \MinMeasurementsCorePhaseLTwoThree{} measurement values at a regular sampling rate in the core phase of the run.
 \wl
 
 \noindent
@@ -297,7 +297,7 @@ This ensures that a uniform standard of \textit{beginning} and \textit{end} of t
 
 \noindent
 There is no maximum number of reported measurement values, although one reported measurement per second is a reasonable upper limit.
-The submitter may choose to include more than 10 such measurement values.
+The submitter may choose to include more than \MinMeasurementsCorePhaseLTwoThree{} such measurement values.
 \wl
 
 \noindent
@@ -419,7 +419,7 @@ The core phase is required to run for at least one minute.
 
 \noindent
 On top of these full measurements, a series of power-averaged measurements of equal length at regular intervals must be submitted for the full run.
-These intervals must be short enough so that at least 10 measurements are reported during the core phase of the workload.
+These intervals must be short enough so that at least \MinMeasurementsCorePhaseLTwoThree{} measurements are reported during the core phase of the workload.
 There must be no gap between these regular measurements, i.e. this series of measurements in total must cover the full run.
 \wl
 
@@ -442,7 +442,7 @@ Level~3 submissions include a measurement of the average power during the core p
 \wl
 
 \noindent
-The complete set of total energy readings (at least 10 during the core computation phase) must be included, along with the execution time for the core phase and full run.
+The complete set of total energy readings (at least \MinMeasurementsCorePhaseLTwoThree{} during the core computation phase) must be included, along with the execution time for the core phase and full run.
 \wl
 
 \noindent
@@ -452,12 +452,12 @@ The readings must begin before the start of the run and extend to when it is fin
 
 \noindent
 The measuring device must sample voltage and current at high rate and integrate those samples to determine the next total energy consumed reading.
-The sampling rate must be at least 120~Hz for DC, and at least 5~kHz for AC.
+The sampling rate must be at least~\SpecRateLThreeDC{} for DC, and at least \SpecRateLThreeAC{} for AC.
 Sampling at a greater rate is permitted.
 \wl
 
 \noindent
-The intervals at which total energy readings are reported must be short enough so that at least 10 reported readings fall within the core phase of the workload.
+The intervals at which total energy readings are reported must be short enough so that at least \MinMeasurementsCorePhaseLTwoThree{} reported readings fall within the core phase of the workload.
 Note that each reported energy reading is the integral over many internal power samples.
 \wl
 
@@ -530,17 +530,17 @@ The requirements with respect to the compute-node subsystem for each quality lev
 
 \begin{itemize}
 \item
-L1: The largest of $\frac{1}{10}$ of the compute-node subsystem or at least 2~kW or 15 compute nodes.
-Alternatively, at least 40~kW or the entiry system.
+L1: The largest of \SpecFracMinLOne{} of the compute-node subsystem or at least \SpecPowerMinLOne{} or \SpecMinNodes{} compute nodes.
+Alternatively, at least \SpecPowerMaxLOne{} or the entiry system.
 \item
-L2: The largest of $\frac{1}{8}$ of the compute-node subsystem or at least 10~kW or 15 compute nodes.
+L2: The largest of \SpecFracMinLTwo{} of the compute-node subsystem or at least \SpecPowerMinLTwo{} or \SpecMinNodes{} compute nodes.
 Alternatively, the entire system if smaller than 15 nodes.
 \item
 L3: The power use of the whole machine must be measured.
 \end{itemize}
 
 \noindent
-For measurements of other subsystems (network, storage, etc.), measure at least $\frac{1}{10}$ for Level~1, $\frac{1}{8}$ for Level~2, and everything for Level~3.
+For measurements of other subsystems (network, storage, etc.), measure at least \SpecFracMinLOne{} for Level~1, \SpecFracMinLTwo{} for Level~2, and everything for Level~3.
 \wl
 
 \noindent
@@ -550,7 +550,7 @@ Even if individual node power could be measured, that would not be valid as it w
 \wl
 
 \noindent
-The requirements for Level~1 and Level~2 include the measurement of at least 15 nodes.
+The requirements for Level~1 and Level~2 include the measurement of at least \SpecMinNodes{} nodes.
 For a cluster consisting of individual servers, a node is simply defined as one server.
 There are architectures with multiple individual servers in one chassis, e.g.
 2U twin or twin$^2$ servers with 2 and 4 servers per chassis and blade servers with many more nodes in one chassis.
@@ -649,7 +649,7 @@ With Level~3, the submitter need not be concerned about heterogeneous sets of co
 \noindent
 Levels~1 and~2, however, measure a portion of the compute-node subsystem and estimate contributions from unmeasured portions.
 With Levels~1 and~2, the submitter must measure at least one member of each heterogeneous set.
-Measure at least 10\% of each heterogeneous set for Level~1, and at least $\frac{1}{8}$ of each heterogeneous set for Level~2.
+Measure at least \SpecFracMinLOne{} of each heterogeneous set for Level~1, and at least \SpecFracMinLTwo{} of each heterogeneous set for Level~2.
 Then, extrapolate the total power per each heterogeneous set as you would do for a non heterogeneous cluster.
 Finally, accumulate the contributions of all heterogeneous sets.
 \wl

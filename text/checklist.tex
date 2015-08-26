@@ -73,8 +73,8 @@ Refer to Section~\numnameref{sec:A1GTRM} for more information about the Level~1 
 
 For Level~1, both the compute-node subsystem and the interconnect must be reported.
 The compute-node subsystem power must be measured.
-For the compute subsystem measure a minimum of 2~kW of power, 10\% of the system, or 15 nodes whichever is largest.
-Alternatively, it is allowed to measure either at least 40~kW or the whole machine.
+For the compute subsystem measure a minimum of \SpecPowerMinLOne{} of power, \SpecFracMinLOne{} of the system, or \SpecMinNodes{} nodes whichever is largest.
+Alternatively, it is allowed to measure either at least \SpecPowerMaxLOne{} or the whole machine.
 
 The interconnect subsystem participating in the workload must also be measured or, if not measured, the contribution must be estimated.
 Estimation is performed by substituting the measurement by an upper bound derived from the maximum specified power consumption of all hardware components.
@@ -84,7 +84,7 @@ This may include infrastructure that is shared, but excludes parts that are not 
 For some systems, it may be impossible not to include a power contribution from certain subsystems that are not used for the benchmark run.
 In this case, list what you are including, but do not subtract an estimated value for the subsystem that are not needed.
 
-If the compute-node-subsystem contains different types of compute nodes, measure at least 10\% of each of the heterogeneous sets.
+If the compute-node-subsystem contains different types of compute nodes, measure at least \SpecFracMinLOne{} of each of the heterogeneous sets.
 These measurements are then extrapolated to the full system.
 Refer to Section~\numnameref{sec:A3SIiIP} for information about heterogeneous sets of compute nodes.
 
@@ -103,7 +103,7 @@ The core phase is required to run for at least one minute.
 
 On top of these full measurements, Level~2 also requires a set of intermediate measurements in order to see how the power consumption varies over time.
 For this purpose, a series of power-averaged measurements of equal length at regular intervals must be submitted for the full run.
-These intervals must be short enough so that at least 10 measurements are reported during the core phase of the workload.
+These intervals must be short enough so that at least \MinMeasurementsCorePhaseLTwoThree{} measurements are reported during the core phase of the workload.
 There must be no gap between these regular measurements, i.e. this series of measurements in total must cover the full run.
 
 Refer to Section~\numnameref{sec:A1GTRM} for more information about the Level~2 Power Submission.
@@ -112,12 +112,12 @@ Refer to Section~\ref{sec:FoRM} for more information about the format of reporte
 
 For Level~2, the compute node subsystem must be measured and all other subsystems participating in the workload must be measured or estimated.
 As for Level~1, estimation is performed by substituting the measurement by an upper bound derived from the maximum specified power consumption of all hardware components.
-Level~2 requires that the largest of $\frac{1}{8}$ of the compute-node subsystem, or 10~kW of power, or 15 compute nodes be measured.
-It is acceptable to exceed this requirement or to measure the whole machine if smaller than 15 nodes.
+Level~2 requires that the largest of \SpecFracMinLTwo{} of the compute-node subsystem, or \SpecPowerMinLTwo{} of power, or \SpecMinNodes{} compute nodes be measured.
+It is acceptable to exceed this requirement or to measure the whole machine if smaller than \SpecMinNodes{} nodes.
 
 The compute-node subsystem is the set of compute nodes.
 As with Level~1, if the compute-node subsystem contains different types of compute nodes, you must measure a fraction of each heterogeneous set.
-For Level~2, this fraction must be at least $\frac{1}{8}$ of each set.
+For Level~2, this fraction must be at least \SpecFracMinLTwo{} of each set.
 These measurements are then extrapolated to the full system.
 Refer to Section~\numnameref{sec:A3SIiIP} for information about heterogeneous sets of compute nodes.
 
@@ -135,7 +135,7 @@ These last and first measurements in the core phase must be timed such that no m
 
 Refer to Section~\numnameref{sec:PAaTEM} for information about the distinction between energy and power.
 
-The complete set of total energy readings used to calculate average power (at least 10 during the core computation phase) must be included in the submission, along with the execution time for the core phase and the execution time for the full run.
+The complete set of total energy readings used to calculate average power (at least \MinMeasurementsCorePhaseLTwoThree{} during the core computation phase) must be included in the submission, along with the execution time for the core phase and the execution time for the full run.
 
 Refer to Section~\numnameref{sec:A1GTRM} for more information about the Level~3 Power Submission.
 
@@ -175,12 +175,12 @@ For Level~1, both the compute-node subsystem and the interconnect must be report
 The compute-node subsystem power must be measured.
 The interconnect subsystem participating in the workload must also be measured or, if not measured, the contribution must be estimated.
 
-Measure the greater of at least 2~kW of power or $\frac{1}{10}$ of the compute-node subsystem or 15 compute nodes.
+Measure the greater of at least \SpecPowerMinLOne{} of power or \SpecFracMinLOne{} of the compute-node subsystem or \SpecMinNodes{} compute nodes.
 
 \item
 For Level~2, the compute node subsystem must be measured and all other subsystems participating in the workload must be measured and, if not measured, their contribution must be estimated.
 
-Measure the largest of at least 10~kW of power, or $\frac{1}{8}$ of the compute-node subsystem, or 15 compute nodes.
+Measure the largest of at least \SpecPowerMinLTwo{} of power, or \SpecFracMinLTwo{} of the compute-node subsystem, or \SpecMinNodes{} compute nodes.
 
 \item
 For Level~3, all subsystems participating in the workload must be measured completely.
