@@ -2,26 +2,21 @@
 \label{sec:intro}
 
 \noindent
-This document recommends a methodological approach for measuring, recording, and reporting the power used by a high performance 
-computer (HPC) system while
-running a workload. 
+This document recommends a methodological approach for measuring, recording, and reporting the power used by a high performance computer (HPC) system while running a workload.
 \wl
 
 \noindent
-This document is part of a collaborative effort between the Green500, the Top500, 
-the Green Grid, and the Energy Efficient High Performance Computing Working Group.  While 
-it is intended for this methodology to be generally applicable to benchmarking a variety of 
-workloads, the initial focus is on High Performance LINPACK (HPL). 
+This document is part of a collaborative effort between the Green500, the Top500, the Green Grid, and the Energy Efficient High Performance Computing Working Group (EEHPC WG).
+While it is intended for this methodology to be generally applicable to benchmarking a variety of workloads, the initial focus is on High Performance LINPACK (HPL).
 \wl
 
 \noindent
-This document defines four aspects of a power measurement and three quality ratings. All 
-four aspects have increasingly stringent requirements for higher quality levels.  
+This document defines four aspects of a power measurement and three quality ratings.
+All four aspects have increasingly stringent requirements for higher quality levels. 
 \wl
 
 \noindent
 The four aspects are as follows:
-
 
 \begin{packed_enum}
 \item 
@@ -31,23 +26,25 @@ Machine fraction instrumented
 \item 
 Subsystems included in instrumented power
 \item 
-Where in the power distribution network the measurements are taken
+The location of measurement in the power distribution network and accuracy of power meters.
 \end{packed_enum}
 
+\noindent
 The quality ratings are as follows:
 
 \begin{packed_item}
 \item 
-Adequate, called Level 1 (L1)
+Adequate, called Level~1 (L1)
 \item
-Moderate, called Level 2 (L2)
+Moderate, called Level~2 (L2)
 \item
-Best, called Level 3 (L3)
+Best, called Level~3 (L3)
 \end{packed_item}
 
-\fbox{
-\begin{minipage}{0.75\linewidth}
-The requirements for all four aspects for a given quality
-level must be satisfied to grant that quality rating for a submission.
-\end{minipage}
-}
+\noindent
+\textbf{The requirements for all four aspects for a given quality level must be satisfied to grant that quality rating for a submission.}
+\wl
+
+\noindent
+The user is allowed to substitute the requirements of individual aspects at the targeted quality rating by the requirements of the same aspects at higher quality ratings.
+\wl

@@ -5,6 +5,7 @@
 \usepackage{graphicx}
 \usepackage{url}
 \usepackage{amsmath}
+\usepackage{nameref}
 
 %
 
@@ -23,6 +24,12 @@
 }{\end{itemize}}
 
 
+\newcommand*{\numnameref}[1]{\ref{#1} \nameref{#1}}
+% prevent bad page breaks
+\clubpenalty10000
+\widowpenalty10000
+\displaywidowpenalty=10000
+
 \def\wl{\par \vspace{\baselineskip}}
 
 \begin{document}
@@ -33,7 +40,7 @@
 \title{
 Energy Efficient High Performance Computing Power Measurement Methodology \\
 \bigskip
-\normalsize{(version 2.0 comment draft 2)}
+\normalsize{(version 2.0 comment draft 3)}
 }
 
 
@@ -43,6 +50,23 @@ Energy Efficient High Performance Computing Power Measurement Methodology \\
 \tableofcontents
 \listoftables
 \listoffigures
+
+\newcommand{\SpecRateLThreeAC}{5~kHz}
+\newcommand{\SpecRateLThreeDC}{120~Hz}
+\newcommand{\SpecAccuracyLThree}{1\%}
+\newcommand{\SpecAccuracyLTwo}{2\%}
+\newcommand{\SpecAccuracyLOne}{5\%}
+\newcommand{\SpecAccuracyMeter}{3\%}
+\newcommand{\SpecPowerMinLOne}{2~kW}
+\newcommand{\SpecPowerMinLTwo}{10~kW}
+\newcommand{\SpecPowerMaxLOne}{40~kW}
+\newcommand{\SpecFracMinLOne}{$\frac{1}{10}$}
+\newcommand{\SpecFracMinLTwo}{$\frac{1}{8}$}
+\newcommand{\SpecMinNodes}{15}
+\newcommand{\MinMeasurementsCorePhaseLTwoThree}{10}
+\newcommand{\MaxReadingIntervalCorePhaseLTwoThree}{10\%}
+\newcommand{\MaxSecMissingLThree}{10}
+\newcommand{\MaxSecMissingLThreeHalf}{5} %must be half of the above value!
 
 %
 \input{text/intro}
