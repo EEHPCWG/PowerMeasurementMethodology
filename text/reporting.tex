@@ -521,10 +521,8 @@ Level~2 requires a higher fraction than Level~1.
 
 \noindent
 Levels~1 and~2 do not measure the power of the entire system, but require only a measurement of a fraction of the system and estimate the total power consumption by extrapolation.
-When calculating the average power of the full machine for Levels~1 and~2, the measured power must be divided by this fraction to 
-extrapolate to the average power drawn by the whole machine.
-For example, if the submitter measures the power delivered 
-to $ \frac{1}{4} $ of the machine, the submitter must then multiply the measured power by 4 to obtain the power for the whole machine.
+When calculating the average power of the full machine for Levels~1 and~2, the measured power must be divided by this fraction to extrapolate to the average power drawn by the whole machine.
+For example, if the submitter measures the power delivered to $ \frac{1}{4} $ of the machine, the submitter must then multiply the measured power by 4 to obtain the power for the whole machine.
 The higher machine fractions are required at the higher quality levels to reduce the effects of random fluctuations and minor differences in hardware influencing the power measurements.
 The larger the sample, the more transients will tend to cancel out.
 \wl
@@ -536,7 +534,8 @@ The requirements with respect to the compute-node subsystem for each quality lev
 \item
 L1: Any of
 \begin{itemize}
-\item The entire machine\item At least \SpecPowerMaxLOne{}
+\item The entire machine
+\item At least \SpecPowerMaxLOne{}
 \item Whichever is largest of: a minimum of \SpecPowerMinLOne{} of power, \SpecFracMinLOne{} of the system, or \SpecMinNodes{} nodes
 \end{itemize}
 
