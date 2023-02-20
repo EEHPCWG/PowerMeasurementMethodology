@@ -6,6 +6,8 @@
 \usepackage{url}
 \usepackage{amsmath}
 \usepackage{nameref}
+\usepackage{xstring}
+\usepackage{catchfile}
 
 %
 
@@ -32,6 +34,15 @@
 
 \def\wl{\par \vspace{\baselineskip}}
 
+% get the git branch and revision, https://tex.stackexchange.com/a/455397/97387
+\CatchFileDef{\headfull}{.git/HEAD}{}
+\StrGobbleRight{\headfull}{1}[\head]
+\StrBehind[2]{\head}{/}[\branch]
+\IfFileExists{.git/refs/heads/\branch}{%
+	\CatchFileDef{\commit}{.git/refs/heads/\branch}{}}{%
+	\newcommand{\commit}{\dots~(in \emph{packed-refs})}}
+% end of git branch and revision
+
 \begin{document}
 \graphicspath{{figures/}}
 
@@ -40,7 +51,9 @@
 \title{
 Energy Efficient High Performance Computing Power Measurement Methodology \\
 \bigskip
-\normalsize{(version 2.0 comment draft 3)}
+\normalsize{Version 3.0 -- internal working copy}\\
+\bigskip
+\scriptsize{revision \texttt{\commit} on branch \texttt{\branch}}
 }
 
 
