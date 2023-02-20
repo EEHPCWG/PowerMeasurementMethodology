@@ -14,9 +14,9 @@ bib_files = $(wildcard */*.bib)
 pdf_files = $(wildcard *.pdf)
 
 methodology.pdf: $(tex_files) $(bib_files) $(pdf_files)
-	pdflatex -shell-escape methodology | tee latex.out ; \
-	pdflatex -shell-escape methodology | tee latex.out; \
-	pdflatex -shell-escape methodology | tee latex.out
+	pdflatex methodology | tee latex.out ; \
+	pdflatex methodology | tee latex.out; \
+	pdflatex methodology | tee latex.out
 
 clean:
 	find . -name '*.blg' -print0 | xargs -0 rm -f; \
