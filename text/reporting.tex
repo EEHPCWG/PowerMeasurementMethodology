@@ -168,11 +168,12 @@ For Levels~1 and~2, the units of the reported power values are watts.
 \subsubsection{Total Energy Measurements (Level~3)}
 
 \noindent
-Level~3 specifies a total energy measurement that, when divided by the measured time, also reports power.
-An integrated measurement is a continuous sum of energy measurements.
-The measuring device samples voltage and current many times per second and integrates those samples to determine the next total energy reading.
-Typically, there are hundreds of measurements per second.
-The power meter should sample voltage and current at a minimum of~\SpecRateLThreeDC{} for a DC measurement and at a minimum of~\SpecRateLThreeAC{} for an AC measurement.
+Level~3 specifies a total energy measurement that, when divided by the measured time, also reports average power.
+The measuring device samples voltage and current at a high rate and integrates those samples to determine the total energy reading.
+This total energy reading is monotonously increasing.
+The internal read rate of the device should be sufficient to avoid errors from aliasing.
+This should be part of the accuracy specification of the measuring device and depends also on the instrumentation location.
+It should be ensured that any assumptions made by a measuring device regarding the accuracy, e.g. sinusoidal input voltage for AC or frequency ranges, are met.
 \wl
 
 \noindent
@@ -202,7 +203,7 @@ Table~\ref{tab:levels} summarizes the aspect and quality levels introduced in Se
 \textbf{1a:~Granularity} &
 One power sample per second &
 One power sample per second &
-Continuously integrated energy, voltage and current sampled at \SpecRateLThreeAC{} for AC / \SpecRateLThreeDC{} for DC \\
+Continuously integrated energy\\
 \hline
 
 
@@ -452,12 +453,6 @@ The complete set of total energy readings (at least \MinMeasurementsCorePhaseLTw
 \noindent
 Level~3 requires continuously integrated total energy measurements rather than power-averaged measurements.
 The readings must begin before the start of the run and extend to when it is finished.
-\wl
-
-\noindent
-The measuring device must sample voltage and current at high rate and integrate those samples to determine the next total energy consumed reading.
-The sampling rate must be at least~\SpecRateLThreeDC{} for DC, and at least \SpecRateLThreeAC{} for AC.
-Sampling at a greater rate is permitted.
 \wl
 
 \noindent
