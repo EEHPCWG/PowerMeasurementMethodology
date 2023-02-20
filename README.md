@@ -12,3 +12,11 @@ $ make
 ```
 
 A TeX environment with `pdflatex` is required.
+
+# Contributing
+
+To contribute to the document, please follow these guidelines
+
+- Use exactly one line per sentence in the TeX files. This makes showing differences much easier with git.
+
+- Prepare changes in branches and then create a pull request for the branch
