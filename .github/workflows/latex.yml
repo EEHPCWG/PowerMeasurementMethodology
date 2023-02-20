@@ -1,0 +1,40 @@
+name: pdflatex-build
+on: [push, pull_request]
+jobs:
+  pdflatex-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout new version
+        uses: actions/checkout@v3
+        with:
+          path: new
+      - name: Checkout base version
+        uses: actions/checkout@v3
+        with:
+          path: old
+          ref: master
+      - name: Run latexdiff
+        uses: xu-cheng/texlive-action/full@v1
+        if: github.ref != 'refs/heads/master'
+        with:
+          run: |
+            latexdiff --flatten old/methodology.tex new/methodology.tex > new/methodology-diff.tex
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: "methodology.tex"
+          glob_root_file: true
+          working_directory: new/
+      - name: Compile LaTeX diff document
+        uses: xu-cheng/latex-action@v2
+        if: github.ref != 'refs/heads/master'
+        with:
+          root_file: "methodology-diff.tex"
+          glob_root_file: true
+          working_directory: new/
+      - name: Upload
+        uses: actions/upload-artifact@v3
+        with:
+          name: methodology-document
+          path: new/methodology*.pdf
+        if: always()
