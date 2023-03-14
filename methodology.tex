@@ -14,8 +14,10 @@
 \usepackage{subcaption}
 \usepackage{booktabs}
 \usepackage{makecell}
-\renewcommand*\theadfont{\bfseries}
+\usepackage{enumitem}
 %
+
+\renewcommand*\theadfont{\bfseries}
 
 \newenvironment{packed_enum}{
 \begin{enumerate}
@@ -46,6 +48,9 @@
 	\CatchFileDef{\commit}{.git/refs/heads/\branch}{}}{%
 	\newcommand{\commit}{\dots~(in \emph{packed-refs})}}
 % end of git branch and revision
+
+\newlist{compactitemize}{itemize}{3}
+\setlist[compactitemize]{label=\textbullet, nosep, leftmargin=*, itemsep=0em, after=\vspace{.5em}}
 
 \author{Energy Efficient High Performance Computing Working Group:\\Power Measurement Team}
 

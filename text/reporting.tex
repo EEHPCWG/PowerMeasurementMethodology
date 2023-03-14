@@ -55,7 +55,8 @@ For meters accepted by the SPEC power, refer to the {\itshape Power and Temperat
 \end{packed_item}
 
 \subsection{Sampling and Power Readings}
-For Levels~1 and 2, the power meter must internally sample the instantaneous power at a constant frequency of at least once per second.
+
+For Levels~1 and~2, the power meter must internally sample the instantaneous power at a constant frequency of at least once per second.
 Usually the net frequency varies by a small percentage around \SI{50}{\hertz} or \SI{60}{\hertz}.
 It is allowed that the measurement sample rate is not strictly constant, but it can be adjusted such that each sample interval covers a certain constant number of full sine waves.
 In that case, the intervals must not exceed one second by more than one sine wave, and the power readings must be weighted by the duration of the sample interval when building the final power average.
@@ -150,42 +151,88 @@ The reported values after the energy has been divided by the elapsed time are wa
 
 Table~\ref{tab:levels} summarizes the aspect and quality levels introduced in Section~\ref{sec:intro}. 
 
+
+\newlength{\tablecolumnwidth}
+\setlength{\tablecolumnwidth}{3.5cm}
+\noindent
 \begin{table}
 \caption{Summary of aspects and quality levels}
 \label{tab:levels}
 \begin{tabular}{|p{2.5cm}|p{3.5cm}|p{3.5cm}|p{3.5cm}|} \hline
 \textbf{Aspect}&\textbf{Level~1}&\textbf{Level~2}&\textbf{Level~3}\\ \hline
 
-\textbf{1a:~Granularity} &
-One power sample per second &
-One power sample per second &
-Continuously integrated energy\\
+\textbf{1a: Measurement timing} &
+\begin{minipage}[t]{\tablecolumnwidth}
+      \begin{compactitemize}
+            \item every 60~s
+            \item[] \textbf{and}
+            \item $>5$~measurements during core phase
+            \item may be instantaneous power
+      \end{compactitemize}
+\end{minipage} &
+\multicolumn{2}{p{2\tablecolumnwidth}|}{
+      \begin{minipage}[t]{2\tablecolumnwidth}
+            \begin{compactitemize}
+                  \item every 1~s
+                  \item average power
+                  \item[] \textbf{or}
+                  \item continously integrated energy
+            \end{compactitemize}
+      \end{minipage}
+} \\
 \hline
 
 
-\textbf{1b:~Timing} &
-At equal intervals across the entire core phase of the run, which must be at least one minute &
-At equal intervals across the full run &
-At equal intervals across the full run   \\
+\textbf{1b: Reporting} &
+\begin{minipage}[t]{\tablecolumnwidth}
+      Average power
+      \begin{compactitemize}
+            \item core phase
+      \end{compactitemize}
+\end{minipage} &
+\multicolumn{2}{p{2\tablecolumnwidth}|}{
+      \begin{minipage}[t]{2\tablecolumnwidth}
+            Average power
+            \begin{compactitemize}
+                  \item core phase
+                  \item ful run
+                  \item idle
+            \end{compactitemize}
+      \end{minipage}
+} \\
 \hline
 
-\textbf{1c:~Measurements} &
-Core phase average power &
-$\bullet$ Core phase average power & 
-$\bullet$ Core phase total energy \\ %MDSpecs
 
- & &
-$\bullet$ Full run average power &
-$\bullet$ Full run total energy \\
+% \textbf{1a:~Granularity} &
+% One power sample per second &
+% One power sample per second &
+% Continuously integrated energy\\
+% \hline
 
- & &
-$\bullet$ \MinMeasurementsCorePhaseLTwoThree{} average power measurements in the core phase &
-$\bullet$ \MinMeasurementsCorePhaseLTwoThree{} total energy measurements in the core phase \\
 
- & &
-$\bullet$ Idle power &
-$\bullet$ Idle power \\
-\hline
+% \textbf{1b:~Timing} &
+% At equal intervals across the entire core phase of the run, which must be at least one minute &
+% At equal intervals across the full run &
+% At equal intervals across the full run   \\
+% \hline
+
+% \textbf{1c:~Measurements} &
+% Core phase average power &
+% $\bullet$ Core phase average power & 
+% $\bullet$ Core phase total energy \\ %MDSpecs
+
+%  & &
+% $\bullet$ Full run average power &
+% $\bullet$ Full run total energy \\
+
+%  & &
+% $\bullet$ \MinMeasurementsCorePhaseLTwoThree{} average power measurements in the core phase &
+% $\bullet$ \MinMeasurementsCorePhaseLTwoThree{} total energy measurements in the core phase \\
+
+%  & &
+% $\bullet$ Idle power &
+% $\bullet$ Idle power \\
+% \hline
 
 \textbf{2: Machine \newline fraction}  &
 The entire system; at least \SpecPowerMaxLOne{}; or the largest of \SpecFracMinLOne{} of the compute subsystem, \SpecPowerMinLOne{}, or \SpecMinNodes{}~compute nodes &
