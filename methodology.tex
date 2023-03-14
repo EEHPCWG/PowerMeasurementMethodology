@@ -8,6 +8,7 @@
 \usepackage{nameref}
 \usepackage{xstring}
 \usepackage{catchfile}
+\usepackage{enumitem}
 
 %
 
@@ -42,6 +43,9 @@
 	\CatchFileDef{\commit}{.git/refs/heads/\branch}{}}{%
 	\newcommand{\commit}{\dots~(in \emph{packed-refs})}}
 % end of git branch and revision
+
+\newlist{compactitemize}{itemize}{3}
+\setlist[compactitemize]{label=\textbullet, nosep, leftmargin=*, itemsep=0em, after=\vspace{.5em}}
 
 \begin{document}
 \graphicspath{{figures/}}
