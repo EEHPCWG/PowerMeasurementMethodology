@@ -8,7 +8,7 @@
 \usepackage{nameref}
 \usepackage{xstring}
 \usepackage{catchfile}
-
+\usepackage{siunitx}
 %
 
 \newenvironment{packed_enum}{
@@ -64,20 +64,22 @@ Energy Efficient High Performance Computing Power Measurement Methodology \\
 \listoftables
 \listoffigures
 
-\newcommand{\SpecAccuracyLThree}{1\%}
-\newcommand{\SpecAccuracyLTwo}{2\%}
-\newcommand{\SpecAccuracyLOne}{5\%}
-\newcommand{\SpecAccuracyMeter}{3\%}
-\newcommand{\SpecPowerMinLOne}{2~kW}
-\newcommand{\SpecPowerMinLTwo}{10~kW}
-\newcommand{\SpecPowerMaxLOne}{40~kW}
-\newcommand{\SpecFracMinLOne}{$\frac{1}{10}$}
-\newcommand{\SpecFracMinLTwo}{$\frac{1}{8}$}
-\newcommand{\SpecMinNodes}{15}
-\newcommand{\MinMeasurementsCorePhaseLTwoThree}{10}
-\newcommand{\MaxReadingIntervalCorePhaseLTwoThree}{10\%}
-\newcommand{\MaxSecMissingLThree}{10}
-\newcommand{\MaxSecMissingLThreeHalf}{5} %must be half of the above value!
+\newcommand{\SpecAccuracyLThree}{\SI{1}{\percent}}
+\newcommand{\SpecAccuracyLTwo}{\SI{2}{\percent}}
+\newcommand{\SpecAccuracyLOne}{\SI{5}{\percent}}
+\newcommand{\SpecAccuracyMeter}{\SI{3}{\percent}}
+\newcommand{\SpecPowerMinLOne}{\SI{2}{\kilo\watt}}
+\newcommand{\SpecPowerMinLTwo}{\SI{10}{\kilo\watt}}
+\newcommand{\SpecPowerMaxLOne}{\SI{40}{\kilo\watt}}
+% Those fraction look weird, not sure if it is beneficial at that point to use num
+% See https://tex.stackexchange.com/a/598258
+\newcommand{\SpecFracMinLOne}{\num[parse-numbers=false]{\frac{1}{10}}}
+\newcommand{\SpecFracMinLTwo}{\num[parse-numbers=false]{\frac{1}{8}}}
+\newcommand{\SpecMinNodes}{\num{15}}
+\newcommand{\MinMeasurementsCorePhaseLTwoThree}{\num{10}}
+\newcommand{\MaxReadingIntervalCorePhaseLTwoThree}{\SI{10}{\percent}}
+\newcommand{\MaxSecMissingLThree}{\num{10}}
+\newcommand{\MaxSecMissingLThreeHalf}{\num{5}} %must be half of the above value!
 
 %
 \input{text/intro}
