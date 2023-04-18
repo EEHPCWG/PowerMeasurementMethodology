@@ -32,6 +32,7 @@ jobs:
           root_file: "methodology-diff.tex"
           glob_root_file: true
           working_directory: new/
+        continue-on-error: true
       - name: Upload
         uses: actions/upload-artifact@v3
         with:
