@@ -11,9 +11,26 @@ While it is intended for this methodology to be generally applicable to benchmar
 \wl
 
 \noindent
+Benchmarking computer systems is a way of comparing performance between architectures. There are benchmarks that are used for comparing the energy efficiency of architectures
+and include both a measure of the benchmark performance and either energy or power. Benchmarking effforst, like the Top500 and the Green500, provide a ranked list of general purpose
+systems that are in common use for high end applications. They also provide a reliable basis for tracking and detecting trends in high-performance computing.
+\wl
+
+\noindent
+Besides providing more accurate and precise information for the Green500 List, there are othre reasons to make a system level power measurement. There are a lot of capabilities today 
+for measuring component level power. This is especially true for processors and accelerators, but it also includes node and rack level measurements. System level power is still a 
+challenge for many sites and systems. Sites and vendors may want to do architectural trending and system modeling for design, selection, upgrades, tuning and analysis.
+Another example would be for understanding the actual - versus peak - power draw of an HPC system based on a normal site workload vs wall-plate power. This might be useful for 
+provisioning the datacenter as there can be a substantial difference between peak and normal power draw. Operation improvements, such as for cooling systems, can leverage the 
+ability to measure HPC systel-level power and energy. Finally, system-level measurements can be used to validate component level measurements by summing them up.
+\wl
+
+\pagebreak
+\noindent
 This document defines four aspects of a power measurement and three quality levels.
 All four aspects have requirements that become increasingly stringent at higher quality levels. 
 \wl
+
 
 \noindent
 The four aspects are as follows:
