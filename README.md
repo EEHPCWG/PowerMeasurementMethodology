@@ -20,3 +20,5 @@ To contribute to the document, please follow these guidelines
 - Use exactly one line per sentence in the TeX files. This makes showing differences much easier with git.
 
 - Prepare changes in branches and then create a pull request for the branch
+
+- Use `siunitx` facilities to denote quantities with `\SI` and `\num` to ensure that nubmers and units are always consistently formatted.
