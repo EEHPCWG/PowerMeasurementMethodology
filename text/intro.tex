@@ -1,46 +1,31 @@
 \chapter{Introduction}
 \label{sec:intro}
 
-This document recommends a methodological approach for measuring, recording, 
-and reporting the power used by a high performance computer (HPC) system while 
-running a workload.
+This document recommends a methodological approach for measuring, recording, and reporting the power used by a high performance computer (HPC) system while running a workload.
 
-This document is part of a collaborative effort between the Green500, the 
-Top500, the Green Grid, and the Energy Efficient High Performance Computing 
-Working Group (EEHPC WG). While it is intended for this methodology to be 
-generally applicable to benchmarking a variety of workloads, the initial focus 
-is on High Performance LINPACK (HPL).
+This document is part of a collaborative effort between the Green500, the Top500, the Green Grid, and the Energy Efficient High Performance Computing Working Group (EEHPC WG).
+While it is intended for this methodology to be generally applicable to benchmarking a variety of workloads, the initial focus is on High Performance LINPACK (HPL).
 
-Benchmarking computer systems is a way of comparing performance between 
-architectures. There are benchmarks that are used for comparing the energy 
-efficiency of architectures and include both a measure of the benchmark 
-performance and either energy or power. Benchmarking efforts, like the Top500 
-and the Green500, provide a ranked list of general purpose systems that are in 
-common use for high end applications. They also provide a reliable basis for
-tracking and detecting trends in high performance computing.
+Benchmarking computer systems is a way of comparing performance between architectures.
+There are benchmarks that are used for comparing the energy efficiency of architectures and include both a measure of the benchmark performance and either energy or power.
+Benchmarking efforts, like the Top500 and the Green500, provide a ranked list of general purpose systems that are in common use for high end applications.
+They also provide a reliable basis for tracking and detecting trends in high performance computing.
 
-Besides providing more accurate and precise information for the Green500 List, 
-there are other reasons to make a system-level power measurement. There are a 
-lot of capabilities today for measuring component-level power. This is 
-especially true for processors and accelerators, but it also includes node and 
-rack-level measurements. System-level power is still a challenge for many sites 
-and systems. Sites and vendors may want to do architectural trending and system 
-modeling for design, selection, upgrades, tuning and analysis. Another example 
-is the use for understanding the actual --- versus peak --- power draw of an 
-HPC system based on a normal site workload vs. wall-plate power. This might be 
-useful for provisioning the datacenter as there can be a substantial difference 
-between peak and normal power draw. Operation improvements, such as for cooling 
-systems, can leverage the ability to measure HPC system-level power and energy. 
-Finally, system-level measurements can be used to validate component-level 
-measurements by summing them up.
+Besides providing more accurate and precise information for the Green500 List, there are other reasons to make a system-level power measurement.
+There are a lot of capabilities today for measuring component-level power.
+This is especially true for processors and accelerators, but it also includes node and rack-level measurements.
+System-level power is still a challenge for many sites and systems.
+Sites and vendors may want to do architectural trending and system modeling for design, selection, upgrades, tuning and analysis.
+Another example is the use for understanding the actual --- versus peak --- power draw of an HPC system based on a normal site workload vs. wall-plate power.
+This might be useful for provisioning the datacenter as there can be a substantial difference between peak and normal power draw. Operation improvements, such as for cooling systems, can leverage the ability to measure HPC system-level power and energy.
+Finally, system-level measurements can be used to validate component-level measurements by summing them up.
 
 
 \section{Content of this document}
 
 
-This document defines four aspects of a power measurement and three quality 
-levels. All four aspects have requirements that become increasingly stringent 
-at higher quality levels. 
+This document defines four aspects of a power measurement and three quality levels.
+All four aspects have requirements that become increasingly stringent at higher quality levels. 
 
 The four aspects are as follows:
 
@@ -67,6 +52,4 @@ Moderate, called Level~2 (L2)
 Best, called Level~3 (L3)
 \end{packed_item}
 
-\textbf{To grant a given quality level for a submission, the submission must
-satisfy the requirements of all four aspects at that quality level
-or higher.}
+\textbf{To grant a given quality level for a submission, the submission must satisfy the requirements of all four aspects at that quality level or higher.}
