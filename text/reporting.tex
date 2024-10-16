@@ -321,11 +321,11 @@ Figure~\ref{fig:sopm} shows a smaller time slice that clearly illustrates this.
 
 The boxes are individual one-second power samples.
 This fast up-down fluctuation is not caused by the behavior of an individual power supply; the power being sampled is over the entire computer system doing the HPL run.
-The reason that L3 requires integrating total energy meters is because they measure at high enough sampling rates to not be subject to these sampling artifacts.
+The reason that Level~3 requires integrating total energy meters is because they measure at high enough sampling rates to not be subject to these sampling artifacts.
 
-L3 requires a power-meter device with a higher inherent measurement granularity as compared to L1 and L2.
-L1 and L2 allow 1-second intervals of the input power.
-L3 requires an integrating total-energy meter, which samples the input power multiple times per AC cycle and so is much less susceptible to sampling artifacts caused by the AC waveform.
+Level~3 requires a power-meter device with a higher inherent measurement granularity as compared to Levels~1 and~2.
+Levels~1 and~2 allow 1-second intervals of the input power.
+Level~3 requires an integrating total-energy meter, which samples the input power multiple times per AC cycle and so is much less susceptible to sampling artifacts caused by the AC waveform.
 
 \subsection{Level~1}
 
@@ -432,7 +432,7 @@ The requirements with respect to the compute-node subsystem for each quality lev
 
 \begin{itemize}
 \item
-L1: Any of
+Level~1: Any of
 \begin{itemize}
 \item The entire machine
 \item At least \SpecPowerMaxLOne{}
@@ -440,10 +440,10 @@ L1: Any of
 \end{itemize}
 
 \item
-L2: The largest of \SpecFracMinLTwo{} of the compute-node subsystem or at least \SpecPowerMinLTwo{} or \SpecMinNodes{} compute nodes.
+Level~2: The largest of \SpecFracMinLTwo{} of the compute-node subsystem or at least \SpecPowerMinLTwo{} or \SpecMinNodes{} compute nodes.
 Alternatively, the entire system if smaller than \num{15} nodes.
 \item
-L3: The power use of the whole machine must be measured.
+Level~3: The power use of the whole machine must be measured.
 \end{itemize}
 
 For measurements of other subsystems (network, storage, etc.), measure at least \SpecFracMinLOne{} for Level~1, \SpecFracMinLTwo{} for Level~2, and everything for Level~3.
