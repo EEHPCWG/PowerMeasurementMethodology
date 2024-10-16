@@ -8,7 +8,10 @@
 \usepackage{nameref}
 \usepackage{xstring}
 \usepackage{catchfile}
-\usepackage{siunitx}
+\usepackage[capitalize]{cleveref}
+\usepackage[binary-units]{siunitx}
+\usepackage{acronym}
+\usepackage{subcaption}
 %
 
 \newenvironment{packed_enum}{
@@ -90,5 +93,7 @@ Energy Efficient High Performance Computing Power Measurement Methodology \\
 \input{text/changenotices}
 \input{text/conclusion}
 \input{text/definitions}
+\input{text/acronyms.tex}
+\input{text/examples}
 
 \end{document}
