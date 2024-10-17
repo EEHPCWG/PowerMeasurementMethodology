@@ -13,17 +13,17 @@ For power delivery, each CLAIX-2023 rack has two Riedo RN3000 \acp{PDU}, which h
 The networking and cooling components of each rack row are connected to three separate \acp{PDU} of the same type.
 Each NFS rack has two Bachmann BN3000 \acp{PDU}, which have a vendor-specified accuracy of \SI{1}{\percent}\footnote{https://www.en.bachmann24.com/pdf/de/bachmann/bachmann-bluenet-bn3000-steckdosenleiste-24xc13-6xc19-802-3012.pdf}.
 Each Lustre rack has two Raritan PX3-1730-M18V2 \acp{PDU}, which have an accuracy of \SI{1}{\percent} as defined by ISO/IEC 62053-21\footnote{https://www.raritan.com/product-selector/pdu-detail/PX3-1730-M18V2}.
-These devices are monitored in \SI{5}{\second} intervals using the SNMP plugin of Telegraf\footnote{https://github.com/influxdata/telegraf/tree/62b44b7/plugins/inputs/snmp}.
+These devices are monitored in \SI{5}{\second} intervals using the \ac{SNMP} plugin of Telegraf\footnote{https://github.com/influxdata/telegraf/tree/62b44b7/plugins/inputs/snmp}.
 The Telegraf configuration specifies one \texttt{inputs.snmp} instance per device to limit the effect of slow or missing responses.
 Additionally, a ZIMMER LMG450 power meter is employed as detailed below, which has a vendor-sepcified accuracy of \SI{0.11}{\percent}\footnote{https://www.zes.com/en/Products/Precision-Power-Analyzers/LMG450}.
 
 Two separate Green500 submissions were made: (1) A level 3 submission for the CPU segment and (2) a level 2 submission for the GPU segment.
 Both submissions include the \ac{PDU} inlet active energy measurement of all involved compute racks, the networking and cooling components as well the NFS file system and frontend, work load manager, and administrative nodes.
 The measurements of the Lustre file system are excluded as it does not participate in the HPL work load.
-During the measurement of the level 3 CPU submission, one \ac{PDU} could not be monitored via SNMP and was instead metered with a ZIMMER LMG450 power meter in \SI{1}{\second} intervals.
+During the measurement of the level 3 CPU submission, one \ac{PDU} could not be monitored via \ac{SNMP} and was instead metered with a ZIMMER LMG450 power meter in \SI{1}{\second} intervals.
 The GPU submission only fulfilled the level 2 requirements as two \acp{PDU} of different NFS racks could not be monitored and were estimated by doubling the measured load of the remaining \acp{PDU}.
 Idle measurements for both submissions were collected shortly before and after the HPL execution during the same SLURM reservation to prevent the execution of user jobs.
-While \SI{0.047}{\percent} of \ac{PDU} data is missing due to SNMP timeouts, \cref{fig:summary-rwth-claix-2023} shows the data after applying a time-based linear fill.
+While \SI{0.047}{\percent} of \ac{PDU} data is missing due to \ac{SNMP} timeouts, \cref{fig:summary-rwth-claix-2023} shows the data after applying a time-based linear fill.
 The raw unmodified inlet active energy values of each measurement device were attached to the Green500 online submission.
 
 \begin{figure}[htbp]
