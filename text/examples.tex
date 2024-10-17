@@ -3,5 +3,24 @@
 
 The following sections describe how the Green500 measurement methodology was applied by different HPC sites to their respective submissions.
 These real-world examples highlight site-specific adaptions to the general methodology, serving as a reference when applying the methodology at your own computing facility.
+An overview of the different submission scopes is presented in \cref{tab:examples-overview}.
+
+\begin{table}[h!]
+    \centering
+	\caption{Overview of Green500 submission examples from different sites and clusters.}
+	\label{tab:examples-overview}
+    % automatically scale the table to fit the available textwidth
+    \resizebox{\textwidth}{!}{
+        \begin{tabular}{lllllc}
+            \toprule
+            \thead{Site \& \\ Cluster} & \thead{Submission \\ Level} & \thead{Machine Fraction \& \\ Included Subsystems} & \thead{Timing of \\ Measurement} & \thead{Location of \\ Measurement} & \thead{Meter \\ Accuracy} \\
+            \midrule
+            \hyperref[sec:example-rwth-claix-2023]{\makecell[tl]{CLAIX-2023 at \\ RWTH Aachen}} & \makecell[tl]{Level 2 (GPU) \\ Level 3 (CPU)} & \makecell[tl]{whole system with compute, \\ network, storage, frontends, \\ management nodes, cooling} & \makecell[tl]{energy counters \\ recorded every \SI{5}{\second}} & \makecell[tl]{rack-level \acsp{PDU}} & \SI{1}{\percent} \\
+            % template row: & & & & & \\
+            % template cell: \makecell[tl]{}
+            \bottomrule
+        \end{tabular}
+    }
+\end{table}
 
 \input{text/example-rwth-claix-2023.tex}
