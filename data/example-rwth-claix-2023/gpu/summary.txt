@@ -1,0 +1,23 @@
+using data from 36 nodes in the following 8 racks: [100, 145, 200, 245, 246, 247, 443, 444]
+(pdus) number of missing data points before reparation: 0 / 36016 = 0.000%
+(pdus) number of missing data points after reparation: 0 / 36016 = 0.000%
+Job with SLURM ID 49525701:
+- Start: 1727428575 = 2024-09-27 11:16:15+02:00
+- End: 1727428949 = 2024-09-27 11:22:29+02:00
+- Runtime: 374 s ≈ 0.104 h
+  - Runtime pdus: 370.000 s
+- Average Power: 131398.054 W
+Core:
+- Start: 1727428691 = 2024-09-27 11:18:11+02:00
+- End: 1727428947 = 2024-09-27 11:22:27+02:00
+- Runtime: 256 s ≈ 0.071 h
+  - Runtime pdus: 250.000 s
+- Average Power: 154952.640 W
+Top500: Rmax / Rpeak = 5238.000 TFLOPS / 9634.775 TFLOPS = 54.366%
+Green500: Rmax / Core Average Power = 5238.000 TFLOPS / 154.953 kW = 33.804 GFLOPS/Watt
+Idle:
+- Start: 1727417700 = 2024-09-27 08:15:00+02:00
+- End: 1727418600 = 2024-09-27 08:30:00+02:00
+- Runtime: 900 s ≈ 0.250 h
+  - Runtime pdus: 900.000 s
+- Average Power: 72380.800 W
