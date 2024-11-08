@@ -27,4 +27,6 @@ clean:
 	find . -name '*.toc' -print0 | xargs -0 rm -f; \
 	find . -name '*.lof' -print0 | xargs -0 rm -f; \
 	find . -name '*.lot' -print0 | xargs -0 rm -f; \
+	find . -name '*.fdb_latexmk' -print0 | xargs -0 rm -f; \
+	find . -name '*.fls' -print0 | xargs -0 rm -f; \
 	rm -f methodology.pdf

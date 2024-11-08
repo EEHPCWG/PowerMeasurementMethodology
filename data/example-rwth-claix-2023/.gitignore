@@ -1,0 +1,6 @@
+venv
+env.sh
+*-core.csv
+*-idle.csv
+*-job.csv
+!hpl.log
