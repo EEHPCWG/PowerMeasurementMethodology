@@ -29,25 +29,6 @@ The system of methods followed in a particular discipline; a way of doing someth
 Network Time Protocol (NTP) is a networking protocol for clock synchronization between computers.
 \end{quote}
 
-\paragraph*{Power-Averaged Measurement}
-\begin{quote}
-A power-averaged measurement over a certain time is the numerical average of all power readings of a power meter reported during that time.
-The power meter internally samples the instantaneous power used by a system at some fine time resolution (say, once per second).
-The power meter either reports every such power sample as a power reading or averages all power samples taken during a certain interval and then reports only one single power reading as measurement for that interval.
-\end{quote}
-
-\paragraph*{Sampling and Power Readings}
-\begin{quote}
-Sampling delivered electrical power in a DC context refers to a single simultaneous measurement of the voltage and the current to determine the delivered power at that point.
-The sampling rate in this case is how often such a sample is taken and recorded internally within the device.
-Sampling in an AC context requires a measurement stage, whether analog or digital, that determines the true power delivered at that point and enters that value into a buffer where it is then used to calculate average power over a longer time.
-So ``sampled once per second'' in this context means that the times in the buffer are averaged and recorded once per second.
-
-The power meter may either report every power sample that is measured.
-In that case, power sample and power reading are the same.
-Or the power meter may internally average all power samples over a certain interval and then report only one power reading covering that entire interval.
-\end{quote}
-
 \paragraph*{Workload}
 \begin{quote}
 The application or benchmark software designed to exercise the HPC system or subsystem to
