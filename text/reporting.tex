@@ -285,10 +285,10 @@ Therefore, the core phase is defined as the time period that is used for the per
 Sometimes, the exact same time is impossible to measure due to power meter restrictions.
 Therefore, Level~1 and Level~2 allow a small part at the beginning and at the end which is not measured (see Section~\ref{sec:PAaTEM}).
 
-For example, the core phase of the Linpack workload is the portion of the code that actually solves the matrix.
+For example, the core phase of the LINPACK workload is the portion of the code that actually solves the matrix.
 It is the numerically intensive solver phase of the calculation.
-In case of the standard HPL implementation of the Linpack benchmark as provided by netlib.org (\url{http://www.netlib.org/benchmark/hpl/}) this is the time spent in the routing {\ttfamily HPL\_pdgesv}.
-Note that HPL as of version 2.1 contains a timer routine that prints start and end time of the core phase to facilitate power measurements, which looks like:\newline
+In case of the standard \acs{HPL} implementation of the LINPACK benchmark as provided by netlib.org (\url{http://www.netlib.org/benchmark/hpl/}) this is the time spent in the routing {\ttfamily HPL\_pdgesv}.
+Note that \acs{HPL} as of version 2.1 contains a timer routine that prints start and end time of the core phase to facilitate power measurements, which looks like:\newline
 {\ttfamily
 HPL\_pdgesv() start time Wed Jun 30 21:49:08 2015\newline
 HPL\_pdgesv() end time Wed Jun 30 22:23:15 2015
@@ -298,11 +298,11 @@ HPL\_pdgesv() end time Wed Jun 30 22:23:15 2015
 
 Level~2 and Level~3 submissions must also include the average power for the whole run, from the initiation of the job to its completion.
 
-Since HPL only reports the time spent executing the core phase of the workload, the time for the total run must be measured and reported separately by the submitter, for example by prepending the UNIX time command to the job invocation or the parallel application launch, whichever is earlier.
+Since \acs{HPL} only reports the time spent executing the core phase of the workload, the time for the total run must be measured and reported separately by the submitter, for example by prepending the UNIX time command to the job invocation or the parallel application launch, whichever is earlier.
 
-Levels~2 and~3 require the entire run to be measured and reported because HPL (the default workload at the time this document was written) drops significantly in power consumption during the course of a computation, as the matrix size being computed gets smaller.
+Levels~2 and~3 require the entire run to be measured and reported because \acs{HPL} (the default workload at the time this document was written) drops significantly in power consumption during the course of a computation, as the matrix size being computed gets smaller.
 Requiring the entire run eliminates systematic bias caused by using different parts of the run for the measurement.
-Figure~\ref{fig:powprof} shows an example of a power graph taken from an HPL run on the LLNL Muir system in the fall of 2011.
+Figure~\ref{fig:powprof} shows an example of a power graph taken from an \acs{HPL} run on the LLNL Muir system in the fall of 2011.
 
 Note that the power drops by \SI{8}{\percent} or so during the computational phase of the run.
 This graph also illustrates the need for the device measurement to have as high a time resolution as possible.
@@ -314,7 +314,7 @@ Figure~\ref{fig:sopm} shows a smaller time slice that clearly illustrates this.
 \begin{figure}
 \centering
 \includegraphics[width=4in]{fig3-1}
-\caption{Power Profile HPL Run}
+\caption{Power Profile \acs{HPL} Run}
 \label{fig:powprof}
 \end{figure}
 
@@ -327,7 +327,7 @@ Figure~\ref{fig:sopm} shows a smaller time slice that clearly illustrates this.
 \end{figure}
 
 The boxes are individual one-second power samples.
-This fast up-down fluctuation is not caused by the behavior of an individual power supply; the power being sampled is over the entire computer system doing the HPL run.
+This fast up-down fluctuation is not caused by the behavior of an individual power supply; the power being sampled is over the entire computer system doing the \acs{HPL} run.
 The reason that Level~3 requires integrating total energy meters is because they measure at high enough sampling rates to not be subject to these sampling artifacts.
 
 Level~3 requires a power-meter device with a higher inherent measurement granularity as compared to Levels~1 and~2.
