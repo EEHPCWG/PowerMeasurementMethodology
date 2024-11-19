@@ -96,15 +96,6 @@ In addition, the average of all power readings during the full run must be submi
 Refer to Section~\ref{sec:PAaTEM} for information on power-averaged measurements.
 The core phase is required to run for at least one minute.
 
-On top of these full measurements, Level~2 also requires a set of intermediate measurements in order to see how the power consumption varies over time.
-For this purpose, a series of power-averaged measurements of equal length at regular intervals must be submitted for the full run.
-These intervals must be short enough that at least \MinMeasurementsCorePhaseLTwoThree{} measurements are reported during the core phase of the workload.
-This series of measurements in total must cover the full run.
-
-Refer to Section~\numnameref{sec:A1GTRM} for more information about the Level~2 Power Submission.
-
-Refer to Section~\ref{sec:FoRM} for more information about the format of reported measurements.
-
 For Level~2, the compute node subsystem must be measured and all other subsystems participating in the workload must be measured or estimated.
 As for Level~1, estimation is performed by substituting the measurement by an upper bound derived from the maximum specified power consumption of all hardware components.
 Level~2 requires that the largest of \SpecFracMinLTwo{} of the compute-node subsystem, or \SpecPowerMinLTwo{} of power, or \SpecMinNodes{} compute nodes be measured.
