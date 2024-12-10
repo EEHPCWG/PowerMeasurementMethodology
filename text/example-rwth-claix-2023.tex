@@ -15,11 +15,11 @@ Each NFS rack has two Bachmann BN3000 \acp{PDU}, which have a vendor-specified a
 Each Lustre rack has two Raritan PX3-1730-M18V2 \acp{PDU}, which have an accuracy of \SI{1}{\percent} as defined by ISO/IEC 62053-21\footnote{https://www.raritan.com/product-selector/pdu-detail/PX3-1730-M18V2}.
 These devices are monitored in \SI{5}{\second} intervals using the \ac{SNMP} plugin of Telegraf\footnote{https://github.com/influxdata/telegraf/tree/62b44b7/plugins/inputs/snmp}.
 The Telegraf configuration specifies one \texttt{inputs.snmp} instance per device to limit the effect of slow or missing responses.
-Additionally, a ZIMMER LMG450 power meter is employed as detailed below, which has a vendor-sepcified accuracy of \SI{0.07}{\percent} + \SI{0.04}{\percent} of the measuring range\footnote{https://www.zes.com/en/Products/Precision-Power-Analyzers/LMG450}.
+Additionally, a ZIMMER LMG450 power meter is employed as detailed below, which has a vendor-specified accuracy of \SI{0.07}{\percent} + \SI{0.04}{\percent} of the measuring range\footnote{https://www.zes.com/en/Products/Precision-Power-Analyzers/LMG450}.
 
 Two separate Green500 submissions were made: (1) A level 3 submission for the CPU segment and (2) a level 2 submission for the GPU segment.
 Both submissions include the \ac{PDU} inlet active energy measurement of all involved compute racks, the networking and cooling components as well the NFS file system and frontend, work load manager, and administrative nodes.
-The measurements of the Lustre file system are excluded as it does not participate in the HPL work load.
+The measurements of the Lustre file system are excluded as it does not participate in the \acs{HPL} work load.
 During the measurement of the level 3 CPU submission, one \ac{PDU} could not be monitored via \ac{SNMP} and was instead metered with a ZIMMER LMG450 power meter in \SI{1}{\second} intervals.
 The GPU submission only fulfilled the level 2 requirements as two \acp{PDU} of different NFS racks could not be monitored and were estimated by doubling the measured load of the remaining \acp{PDU}.
 Idle measurements for both submissions were collected shortly before and after the HPL execution during the same SLURM reservation to prevent the execution of user jobs.
@@ -43,6 +43,6 @@ The raw unmodified inlet active energy values of each measurement device were at
         \label{fig:example-rwth-claix-2023-gpu-summary}
     \end{subfigure}
     \hfill
-    \caption{Summary of the CLAIX-2023 Green500 submissions. Data from all measurement devices was resampled to a common \SI{5}{\second} interval. The hatched area indicates job execution outside the HPL core phase.}
+    \caption{Summary of the CLAIX-2023 Green500 submissions. Data from all measurement devices was resampled to a common \SI{5}{\second} interval. The hatched area indicates job execution outside the \acs{HPL} core phase.}
     \label{fig:example-rwth-claix-2023-summary}
 \end{figure}

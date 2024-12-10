@@ -48,9 +48,8 @@ One possibility is to have the nodes NTP-synchronized; the power meter's control
 \textbf{Workload Requirement}
 \addcontentsline{toc}{subsection}{Workload Requirement}
 
-The workload must run on all compute nodes of the system.
-Level~3 measures the power for the entire system.
-Levels~1 and~2 measure the power for a portion of the system and extrapolate a value for the entire system.
+Level~3 measures the power for the entire system that runs the benchmark.
+Levels~1 and~2 allow to measure the power for a portion of the system and extrapolate a value for the entire system.
 
 \item[{[ ]}]
 \textbf{Level~1 Power Measurement Summary}
@@ -97,15 +96,6 @@ In addition, the average of all power readings during the full run must be submi
 Refer to Section~\ref{sec:PAaTEM} for information on power-averaged measurements.
 The core phase is required to run for at least one minute.
 
-On top of these full measurements, Level~2 also requires a set of intermediate measurements in order to see how the power consumption varies over time.
-For this purpose, a series of power-averaged measurements of equal length at regular intervals must be submitted for the full run.
-These intervals must be short enough that at least \MinMeasurementsCorePhaseLTwoThree{} measurements are reported during the core phase of the workload.
-This series of measurements in total must cover the full run.
-
-Refer to Section~\numnameref{sec:A1GTRM} for more information about the Level~2 Power Submission.
-
-Refer to Section~\ref{sec:FoRM} for more information about the format of reported measurements.
-
 For Level~2, the compute node subsystem must be measured and all other subsystems participating in the workload must be measured or estimated.
 As for Level~1, estimation is performed by substituting the measurement by an upper bound derived from the maximum specified power consumption of all hardware components.
 Level~2 requires that the largest of \SpecFracMinLTwo{} of the compute-node subsystem, or \SpecPowerMinLTwo{} of power, or \SpecMinNodes{} compute nodes be measured.
@@ -123,24 +113,9 @@ Refer to Section~\numnameref{sec:A3SIiIP} for information about heterogeneous se
 
 Level~3 submissions include the average power during the core phase of the run and the average power during the full run (see \ref{sec:core_phase} for definition of core phase).
 
-Level~3 measures energy.
-The measured energy is the last measured total energy within the core phase minus the first measured total energy within the core phase.
-The final power is calculated by dividing this energy by the elapsed time between these first and last energy readings.
-These last and first measurements in the core phase must be timed such that no more than a total of ten seconds (five each at begin and end) of the core phase are not covered by the total energy measurement.
-
-Refer to Section~\numnameref{sec:PAaTEM} for information about the distinction between energy and power.
-
-The complete set of total energy readings used to calculate average power (at least \MinMeasurementsCorePhaseLTwoThree{} during the core computation phase) must be included in the submission, along with the execution time for the core phase and the execution time for the full run.
-
-Refer to Section~\numnameref{sec:A1GTRM} for more information about the Level~3 Power Submission.
-
-Refer to Section~\numnameref{sec:FoRM} for more information about the format of reported measurements.
-
 For Level~3, all subsystems participating in the workload must be measured.
 Refer to Section~\numnameref{sec:A3SIiIP} for more information about included subsystems.
-
 With Level~3, the submitter need not be concerned about different types of compute nodes because Level~3 measures the entire system.
-
 
 \item[{[ ]}]
 \textbf{Idle Power}
