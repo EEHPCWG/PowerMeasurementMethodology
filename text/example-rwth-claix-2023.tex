@@ -9,13 +9,13 @@ These \acp{CDU} and side coolers are referred to as cooling components in the fo
 CLAIX-2023 offers two file systems: (1) A \SI{1.1}{\peta\byte} NFS and (2) a \SI{26}{\peta\byte} Lustre file system.
 An Infiniband NDR network connects all compute nodes in a fat-tree topology with a 1:2 blocking factor.
 
-For power delivery, each CLAIX-2023 rack has two Riedo RN3000 \acp{PDU}, which have a vendor-specified accuracy of \SI{0.5}{\percent}\footnote{https://www.rnx.ch/web/content/106212}.
+For power delivery, each CLAIX-2023 rack has two Riedo RN3000 \acp{PDU}, which have a vendor-specified accuracy of \SI{0.5}{\percent}\footnote{\url{https://www.rnx.ch/web/content/106212}}.
 The networking and cooling components of each rack row are connected to three separate \acp{PDU} of the same type.
-Each NFS rack has two Bachmann BN3000 \acp{PDU}, which have a vendor-specified accuracy of \SI{1}{\percent}\footnote{https://www.en.bachmann24.com/pdf/de/bachmann/bachmann-bluenet-bn3000-steckdosenleiste-24xc13-6xc19-802-3012.pdf}.
-Each Lustre rack has two Raritan PX3-1730-M18V2 \acp{PDU}, which have an accuracy of \SI{1}{\percent} as defined by ISO/IEC 62053-21\footnote{https://www.raritan.com/product-selector/pdu-detail/PX3-1730-M18V2}.
-These devices are monitored in \SI{5}{\second} intervals using the \ac{SNMP} plugin of Telegraf\footnote{https://github.com/influxdata/telegraf/tree/62b44b7/plugins/inputs/snmp}.
+Each NFS rack has two Bachmann BN3000 \acp{PDU}, which have a vendor-specified accuracy of \SI{1}{\percent}\footnote{\scriptsize\url{https://www.bachmann24.com/bachmann-bluenet-bn3000-steckdosenleiste-24xc13-6xc19-802-3012}}.
+Each Lustre rack has two Raritan PX3-1730-M18V2 \acp{PDU}, which have an accuracy of \SI{1}{\percent} as defined by ISO/IEC 62053-21\footnote{\url{https://www.raritan.com/product-selector/pdu-detail/PX3-1730-M18V2}}.
+These devices are monitored in \SI{5}{\second} intervals using the \ac{SNMP} plugin of Telegraf\footnote{\url{https://github.com/influxdata/telegraf/tree/62b44b7/plugins/inputs/snmp}}.
 The Telegraf configuration specifies one \texttt{inputs.snmp} instance per device to limit the effect of slow or missing responses.
-Additionally, a ZIMMER LMG450 power meter is employed as detailed below, which has a vendor-specified accuracy of \SI{0.07}{\percent} + \SI{0.04}{\percent} of the measuring range\footnote{https://www.zes.com/en/Products/Precision-Power-Analyzers/LMG450}.
+Additionally, a ZIMMER LMG450 power meter is employed as detailed below, which has a vendor-specified accuracy of \SI{0.07}{\percent} + \SI{0.04}{\percent} of the measuring range\footnote{\url{https://www.zes.com/en/Products/Precision-Power-Analyzers/LMG450}}.
 
 Two separate Green500 submissions were made: (1) A level 3 submission for the CPU segment and (2) a level 2 submission for the GPU segment.
 Both submissions include the \ac{PDU} inlet active energy measurement of all involved compute racks, the networking and cooling components as well the NFS file system and frontend, work load manager, and administrative nodes.
