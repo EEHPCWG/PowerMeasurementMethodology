@@ -34,7 +34,7 @@ jobs:
           working_directory: new/
         continue-on-error: true
       - name: Upload
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: methodology-document
           path: new/methodology*.pdf

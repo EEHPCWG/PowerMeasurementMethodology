@@ -17,6 +17,7 @@ This section defines meter accuracy requirements.
 First, Subsection~\ref{sec:accuracy} defines the general accuracy requirements.
 The following section describe the different types of measurements and the required sampling rates. 
 Measuring devices must also meet the Level requirements as defined in Sections~\ref{sec:AQLevels} and \ref{sec:A1GTRM}.
+Average power values should be reported in kilowatts (kW).
 
 \subsection{Accuracy Requirements}
 \label{sec:accuracy}
@@ -69,7 +70,7 @@ It is also allowed to read values more often than they are updated.
 For example, reading a power value every \SI{1}{\second}, but ten consecutive values are identical, because the device only updates it every \SI{10}{\second}.
 However, this only qualifies as \SI{10}{\second} intervals and therefore Level~1.
 
-\subsubsection{Reporting Average Power}
+\subsubsection{Deriving Average Power Using Instantaneous Power Samples}
 
 The primary reported power values used for the efficiency calculation are average power values over the core phase or the full run (\emph{observation interval}).
 The value is typically computed from the numerical average of the aforementioned series of power readings (which may itself be average power values computed by the device for shorter time intervals).
@@ -82,7 +83,7 @@ If the precision of the benchmark timestamps is less than the measurement, e.g.,
 
 While the main ranking is computed from the overall average power value, submitters are encouraged to include the series of individual power values and their timestamps in the submission, e.g., as a csv file.
 
-\subsubsection{Using Continuously Integrated Energy}
+\subsubsection{Deriving Average Power Using Continuous Integrated Energy}
 
 \emph{Continuously integrated energy} is computed on the measurement device itself.
 The internals of how the energy is computed should be part of the accuracy specification of the measuring device and depends also on the instrumentation location.
@@ -140,18 +141,16 @@ Table~\ref{tab:levels} summarizes the aspect and quality levels introduced in Se
 
 \textbf{1b: Reporting} &
 \begin{minipage}[t]{\tablecolumnwidth}
-      Average power
       \begin{compactitemize}
-            \item core phase
+            \item Average core phase power
       \end{compactitemize}
 \end{minipage} &
 \multicolumn{2}{p{2\tablecolumnwidth}|}{
       \begin{minipage}[t]{2\tablecolumnwidth}
-            Average power
             \begin{compactitemize}
-                  \item core phase
-                  \item ful run
-                  \item idle
+                  \item Average core phase power
+                  \item Average full run power
+                  \item Idle power
             \end{compactitemize}
       \end{minipage}
 } \\
