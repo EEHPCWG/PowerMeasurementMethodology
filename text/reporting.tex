@@ -46,7 +46,7 @@ For example, assume 4 power meters for a Level~3 measurement, each measuring \SI
 In that case, each meter must have a documented accuracy of~$\SI{1}{\percent} \cdot \sqrt{4} = \SI{2}{\percent}$ to get a final accuracy of~\SI{1}{\percent}.
 In other words, you can use a single meter with \SI{1}{\percent} accuracy, \num{4} meters with \SI{2}{\percent} accuracy, or \num{9} meters with \SI{3}{\percent} accuracy to reach~\SI{1}{\percent} for Level~3.
 
-To ensure the above accuracy requirements are met for Level~3, the \ac{EEHPC WG} recommends, but does not require, revenue grade meters certified for ANSI C12.20, IEC 62053-21 (classes~0,5, and~1), or IEC 62053-22 (classes~0,1S, 0,2S, and~0,5S).
+To ensure the above accuracy requirements are met for Level~3, the \ac{EE HPC WG} recommends, but does not require, revenue grade meters certified for ANSI C12.20, IEC 62053-21 (classes~0,5, and~1), or IEC 62053-22 (classes~0,1S, 0,2S, and~0,5S).
 Additionally, any meter accepted by SPECpower is also permitted for Level~3.
 For further information, refer to the SPECpower \textit{Power and Temperature Measurement Setup Guide}\footnote{\url{https://www.spec.org/power/docs/SPEC-Power_Measurement_Setup_Guide.pdf}} and the associated list of accepted power measurement devices\footnote{\url{https://www.spec.org/power/docs/SPECpower-Device_List.html}}.
 
@@ -57,11 +57,7 @@ The timing aspect of the power quality levels mandate at what intervals a power 
 Each of the processed power values may be calculated by the device internally from multiple samples.
 This document does not cover the specific internal sampling rates.
 Instead, the accuracy aspect of power quality levels implies that internal sampling rates are appropriate to the given operating conditions, especially AC or DC power supply.
-The readout interval should be approximately constant for the duration of the observation.
-
-A power value read from a measurement device can represent the power at a specific moment (\emph{instantaneous power}) or an \emph{average power} for a certain interval (e.g. the last \SI{1}{\second}) or a \emph{running average} over a longer time window.
-However, it is often not clearly documented by devices, which is the case.
-Therefore, there is no strict requirement for Levels~1 and~2.
+The readout interval should be approximately constant for the duration of the observation, see Section~\ref{sec:accuracy}.
 
 For Level~3, the submitter should have a good understanding of the nature of the measured power values to ensure that the computed final average power over the core phase is unaffected by errors from aliasing or other problems with the timing of read values.
 Consider for example a device which measures \SI{50}{\hertz} AC-Power for 10 cycles (\SI{0.2}{\second}) should also be read every \SI{0.2}{\second} to ensure an accurate average power.
@@ -72,16 +68,16 @@ However, this only qualifies as \SI{10}{\second} intervals and therefore Level~1
 
 \subsubsection{Deriving Average Power Using Instantaneous Power Samples}
 
-The primary reported power values used for the efficiency calculation are average power values over the core phase or the full run (\emph{observation interval}).
+The primary reported power values used for the efficiency calculation are aggregate average power values across all participating subsystems, see Section~\ref{sec:A3SIiIP}. over the core phase or the full run (\emph{observation interval}).
 The value is typically computed from the numerical average of the aforementioned series of power readings (which may itself be average power values computed by the device for shorter time intervals).
 
-For computing the average power value exactly those values that lie within the core phase / full run time interval should be used.
+For computing the average power value exactly, those values that lie within the core phase / full run time interval should be used.
 Some advanced corner cases may warrant some additional consideration as outlined in the following.
 The overall goal is to compute an average power value that is as close as possible to the true physical value --- as in the energy consumed during the benchmark divided by the duration.
 Values at the boundaries of the observation interval \emph{may} be weighted by the overlap of the value's individual averaging time and the observation interval, if known.
 If the precision of the benchmark timestamps is less than the measurement, e.g., only integral seconds rather than fractions, you \emph{may} correct for rounding, e.g., by adding \SI{500}{\milli\second} to the timestamps.
 
-While the main ranking is computed from the overall average power value, submitters are encouraged to include the series of individual power values and their timestamps in the submission, e.g., as a csv file.
+While the main ranking is computed from the overall average power value, submitters are highly recommended to include the series of individual power values and their timestamps in the submission, e.g., as a csv file.
 
 \subsubsection{Deriving Average Power Using Continuous Integrated Energy}
 
@@ -93,8 +89,8 @@ Continuously integrated energy may be used at all power quality levels.
 Unlike with power values, the readout rate is not as significant.
 However, energy values must be read within ten seconds (Level~1) or one second (Level~2 and~3) of the beginning and end of the core phase, respectively, to ensure overall accuracy.
 
-Using integrated energy values is encouraged, when available.
-The reported value is still the average power, which is computed by dividing the difference in energy measurement by the difference in timestamps of the last/first reading within the observation interval.
+Using integrated energy values is highly recommended, when available.
+The reported value is still the aggregate average power over all participating subsystems, which is computed by dividing the difference in energy measurements $E_\text{end}$ and $E_\text{begin}$ by the difference in timestamps of the last reading $t_\text{end}$ and the first reading $t_\text{begin}$ within the observation interval.
 Note that the duration of the measurement may differ slightly from the duration of the benchmark as measurement timestamps do not align perfectly with beginning and end of the benchmark.
 In that case, make sure to use the timestamps from measurements rather than the benchmark.
 
