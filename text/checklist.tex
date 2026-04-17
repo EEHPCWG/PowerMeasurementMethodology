@@ -1,4 +1,4 @@
-\chapter{Checklist}
+\chapter{Step-by-Step to a Level 1 Submission Guide}
 \label{sec:checklist}
 
 This section contains a checklist with an overview of the information you need to consider when making a power measurement.
@@ -8,27 +8,6 @@ Read through the list and ensure that you can record the needed
 information when you run your workload.
 
 \begin{itemize}
-\item[{[ ]}]
-\textbf{Quality Level}
-\addcontentsline{toc}{subsection}{Quality Level}
-
-Choosing a quality level is the first important decision a submitter must make.
-Refer to Section~\numnameref{sec:AQLevels} for general information about the three quality levels.
-Sections~\ref{sec:A1GTRM} through \ref{sec:A4wEMaT} describe the details of the three quality levels.
-
-\item[{[ ]}]
-\textbf{Power Measurement Locations}
-\addcontentsline{toc}{subsection}{Power Measurement Locations}
-
-Measurements of power or energy are often made at multiple locations in parallel across the computer system.
-A typical location might be the output of the building transformer.
-Refer to Section~\numnameref{sec:A4wEMaT} for more information about power measurement locations.
-
-Note that in some cases, you may have to adjust for power loss.
-For information about power loss, refer to Section~\numnameref{sec:AfPL}.
-If you adjust for power loss, how you determined the power losses must be part of the submission.
-
-
 \item[{[ ]}]
 \textbf{Measuring Devices}
 \addcontentsline{toc}{subsection}{Measuring Devices}
@@ -44,12 +23,34 @@ Refer to Section~\ref{sec:MDSpecs} for information about the required measuring 
 If multiple meters are used, describe how the data aggregation and synchronization were performed.
 One possibility is to have the nodes NTP-synchronized; the power meter's controller is then also NTP-synchronized prior to the run.
 
-\item[{[ ]}]
-\textbf{Workload Requirement}
-\addcontentsline{toc}{subsection}{Workload Requirement}
+% \item[{[ ]}]
+% \textbf{Quality Level}
+% \addcontentsline{toc}{subsection}{Quality Level}
 
-Level~3 measures the power for the entire system.
-Level~2 allows to measure the power for a portion of the system and extrapolate a value for the entire system.
+% Choosing a quality level is the first important decision a submitter must make.
+% Refer to Section~\numnameref{sec:AQLevels} for general information about the three quality levels.
+% Sections~\ref{sec:A1GTRM} through \ref{sec:A4wEMaT} describe the details of the three quality levels.
+
+\item[{[ ]}]
+\textbf{Power Measurement Locations}
+\addcontentsline{toc}{subsection}{Power Measurement Locations}
+
+Measurements of power or energy are often made at multiple locations in parallel across the computer system.
+A typical location might be the output of the building transformer.
+Refer to Section~\numnameref{sec:A4wEMaT} for more information about power measurement locations.
+
+Note that in some cases, you may have to adjust for power loss.
+For information about power loss, refer to Section~\numnameref{sec:AfPL}.
+If you adjust for power loss, how you determined the power losses must be part of the submission.
+
+
+
+% \item[{[ ]}]
+% \textbf{Workload Requirement}
+% \addcontentsline{toc}{subsection}{Workload Requirement}
+
+% Level~3 measures the power for the entire system.
+% Level~2 allows to measure the power for a portion of the system and extrapolate a value for the entire system.
 
 \item[{[ ]}]
 \textbf{Level~1 Power Measurement Summary}
@@ -64,14 +65,15 @@ The core phase is required to run for at least one minute.
 
 Refer to Section~\numnameref{sec:A1GTRM} for more information about the Level~1 power submission.
 
-For Level~1, both the compute-node subsystem and the interconnect power must be reported.
+% For Level~1, both the compute-node subsystem and the interconnect power must be reported.
 The compute-node subsystem power must be measured.
-For the compute subsystem, measure one of the following:
-\begin{itemize}
-\item The entire machine
-\item At least \SpecPowerMaxLOne{}
-\item Whichever is largest of: a minimum of \SpecPowerMinLOne{} of power, \SpecFracMinLOne{} of the system, or \SpecMinNodes{} nodes
-\end{itemize}
+% For the compute subsystem, measure one of the following:
+% \begin{itemize}
+% \item The entire machine
+% \item Whichever is largest of: \SpecFracMinLOne{} of the system or at least one rack of the system
+% \item At least \SpecPowerMaxLOne{}
+% \item Whichever is largest of: a minimum of \SpecPowerMinLOne{} of power, \SpecFracMinLOne{} of the system, or \SpecMinNodes{} nodes
+% \end{itemize}
 
 The power of interconnect subsystem participating in the workload must also be measured or estimated.
 Estimation is performed by substituting the measurement by an upper bound derived from the maximum specified power consumption of all hardware components.
@@ -81,42 +83,42 @@ This may include infrastructure that is shared, but excludes parts that are not 
 For some systems, it may be impossible to avoid including a power contribution from certain subsystems that are not used for the benchmark run.
 In this case, list what you are including, but do not subtract an estimated value for the subsystems that are not needed.
 
-If the compute-node subsystem contains different types of compute nodes, measure at least \SpecFracMinLOne{} of each of the heterogeneous sets, and extrapolate these measurements to the full system.
-Refer to Section~\numnameref{sec:A3SIiIP} for information about heterogeneous sets of compute nodes.
+% If the compute-node subsystem contains different types of compute nodes, measure at least \SpecFracMinLOne{} of each of the heterogeneous sets, and extrapolate these measurements to the full system.
+% Refer to Section~\numnameref{sec:A3SIiIP} for information about heterogeneous sets of compute nodes.
 
-\item[{[ ]}]
-\textbf{Level~2 Power Measurement Summary}
-\addcontentsline{toc}{subsection}{Level~2 Power Measurement}
+% \item[{[ ]}]
+% \textbf{Level~2 Power Measurement Summary}
+% \addcontentsline{toc}{subsection}{Level~2 Power Measurement}
 
-Level~2 submissions include the average power of the core phase (see Section~\ref{sec:core_phase} for definition of core phase) and the average power of the full run sampled at least once per second.
-The submission should also include at least one idle power measurement.
+% Level~2 submissions include the average power of the core phase (see Section~\ref{sec:core_phase} for definition of core phase) and the average power of the full run sampled at least once per second.
+% The submission should also include at least one idle power measurement.
 
-For Level~2, the power during the core phase and during the full run must be measured.
-As with Level~1, the submitted value for the core phase must be the average of all power readings taken during the core phase of the run.
-In addition, the average of all power readings during the full run must be submitted.
-Refer to Section~\ref{sec:PAaTEM} for information on power-averaged measurements.
-The core phase is required to run for at least one minute.
+% For Level~2, the power during the core phase and during the full run must be measured.
+% As with Level~1, the submitted value for the core phase must be the average of all power readings taken during the core phase of the run.
+% In addition, the average of all power readings during the full run must be submitted.
+% Refer to Section~\ref{sec:PAaTEM} for information on power-averaged measurements.
+% The core phase is required to run for at least one minute.
 
-For Level~2, the compute node subsystem must be measured and all other subsystems participating in the workload must be measured or estimated.
-As for Level~1, estimation is performed by substituting the measurement by an upper bound derived from the maximum specified power consumption of all hardware components.
-Level~2 requires that the largest of \SpecFracMinLTwo{} of the compute-node subsystem, or \SpecPowerMinLTwo{} of power, or \SpecMinNodes{} compute nodes be measured.
-It is acceptable to exceed this requirement or to measure the whole machine.
+% For Level~2, the compute node subsystem must be measured and all other subsystems participating in the workload must be measured or estimated.
+% As for Level~1, estimation is performed by substituting the measurement by an upper bound derived from the maximum specified power consumption of all hardware components.
+% Level~2 requires that the largest of \SpecFracMinLTwo{} of the compute-node subsystem, or \SpecPowerMinLTwo{} of power, or \SpecMinNodes{} compute nodes be measured.
+% It is acceptable to exceed this requirement or to measure the whole machine.
 
-The compute-node subsystem is the set of compute nodes.
-As with Level~1, if the compute-node subsystem contains different types of compute nodes, you must measure a fraction of each heterogeneous set.
-For Level~2, this fraction must be at least \SpecFracMinLTwo{} of each set.
-These measurements are then extrapolated to the full system.
-Refer to Section~\numnameref{sec:A3SIiIP} for information about heterogeneous sets of compute nodes.
+% The compute-node subsystem is the set of compute nodes.
+% As with Level~1, if the compute-node subsystem contains different types of compute nodes, you must measure a fraction of each heterogeneous set.
+% For Level~2, this fraction must be at least \SpecFracMinLTwo{} of each set.
+% These measurements are then extrapolated to the full system.
+% Refer to Section~\numnameref{sec:A3SIiIP} for information about heterogeneous sets of compute nodes.
 
-\item[{[ ]}]
-\textbf{Level~3 Power Measurement Summary}
-\addcontentsline{toc}{subsection}{Level~3 Power Measurement}
+% \item[{[ ]}]
+% \textbf{Level~3 Power Measurement Summary}
+% \addcontentsline{toc}{subsection}{Level~3 Power Measurement}
 
-Level~3 submissions include the average power during the core phase of the run and the average power during the full run (see \ref{sec:core_phase} for definition of core phase).
+% Level~3 submissions include the average power during the core phase of the run and the average power during the full run (see \ref{sec:core_phase} for definition of core phase).
 
-For Level~3, all subsystems participating in the workload must be measured.
-Refer to Section~\numnameref{sec:A3SIiIP} for more information about included subsystems.
-With Level~3, the submitter need not be concerned about different types of compute nodes because Level~3 measures the entire system.
+% For Level~3, all subsystems participating in the workload must be measured.
+% Refer to Section~\numnameref{sec:A3SIiIP} for more information about included subsystems.
+% With Level~3, the submitter need not be concerned about different types of compute nodes because Level~3 measures the entire system.
 
 \item[{[ ]}]
 \textbf{Idle Power}
@@ -139,22 +141,22 @@ An idle measurement is optional for Level~1.
 
 Subsystems include (but are not limited to) computational nodes, any interconnect network the application uses, any head or control nodes, any storage system the application uses, and any internal cooling devices (self-contained liquid cooling systems and fans).
 
-\begin{itemize}
-\item
-For Level~1, both the compute-node subsystem and the interconnect must be reported.
-The compute-node subsystem power must be measured.
-The interconnect subsystem participating in the workload must also be measured or, if not measured, the contribution must be estimated.
+% \begin{itemize}
+% \item
+% For Level~1, both the compute-node subsystem and the interconnect must be reported.
+% The compute-node subsystem power must be measured.
+% The interconnect subsystem participating in the workload must also be measured or, if not measured, the contribution must be estimated.
 
-Measure the greater of at least \SpecPowerMinLOne{} of power or \SpecFracMinLOne{} of the compute-node subsystem or \SpecMinNodes{} compute nodes.
+% Measure the greater of at least \SpecPowerMinLOne{} of power or \SpecFracMinLOne{} of the compute-node subsystem or \SpecMinNodes{} compute nodes.
 
-\item
-For Level~2, the compute node subsystem must be measured and all other subsystems participating in the workload must be measured and, if not measured, their contribution must be estimated.
+% \item
+% For Level~2, the compute node subsystem must be measured and all other subsystems participating in the workload must be measured and, if not measured, their contribution must be estimated.
 
-Measure the largest of at least \SpecPowerMinLTwo{} of power, or \SpecFracMinLTwo{} of the compute-node subsystem, or \SpecMinNodes{} compute nodes.
+% Measure the largest of at least \SpecPowerMinLTwo{} of power, or \SpecFracMinLTwo{} of the compute-node subsystem, or \SpecMinNodes{} compute nodes.
 
-\item
-For Level~3, all subsystems participating in the workload must be measured completely.
-\end{itemize}
+% \item
+% For Level~3, all subsystems participating in the workload must be measured completely.
+% \end{itemize}
 
 To estimate the power consumption of a subsystem when measurement is not possible, use an upper bound derived from the maximum specified power consumption of all hardware components.
 The submission must include the relevant manufacturer specifications and formulas used for power estimation.
