@@ -1,21 +1,22 @@
 \documentclass[parskip]{scrreprt}
-%
-\usepackage{makeidx}  % allows for indexgeneration
-\usepackage[pdftex]{hyperref}
+
+\usepackage{makeidx}
 \usepackage{graphicx}
-\usepackage{url}
 \usepackage{amsmath}
 \usepackage{nameref}
 \usepackage{xstring}
 \usepackage{catchfile}
-\usepackage[capitalize]{cleveref}
 \usepackage[binary-units]{siunitx}
-\usepackage{acronym}
-\usepackage{subcaption}
 \usepackage{booktabs}
 \usepackage{makecell}
 \usepackage{enumitem}
-%
+\usepackage{url}
+\usepackage{subcaption}
+\usepackage{acronym}
+
+% ! package loading order matters here
+\usepackage[pdftex]{hyperref}
+\usepackage[capitalize]{cleveref}
 
 \renewcommand*\theadfont{\bfseries}
 
