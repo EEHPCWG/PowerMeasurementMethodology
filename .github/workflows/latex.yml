@@ -14,19 +14,19 @@ jobs:
           path: old
           ref: master
       - name: Run latexdiff
-        uses: xu-cheng/texlive-action/full@v1
+        uses: xu-cheng/texlive-action/full@v3
         if: github.ref != 'refs/heads/master'
         with:
           run: |
             latexdiff --flatten old/methodology.tex new/methodology.tex > new/methodology-diff.tex
       - name: Compile LaTeX document
-        uses: xu-cheng/latex-action@v2
+        uses: xu-cheng/latex-action@v4
         with:
           root_file: "methodology.tex"
           glob_root_file: true
           working_directory: new/
       - name: Compile LaTeX diff document
-        uses: xu-cheng/latex-action@v2
+        uses: xu-cheng/latex-action@v4
         if: github.ref != 'refs/heads/master'
         with:
           root_file: "methodology-diff.tex"
