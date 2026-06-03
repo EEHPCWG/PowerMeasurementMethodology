@@ -5,11 +5,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout new version
-        uses: actions/checkout@v3
+        uses: actions/checkout@v6
         with:
           path: new
       - name: Checkout base version
-        uses: actions/checkout@v3
+        uses: actions/checkout@v6
         with:
           path: old
           ref: master
@@ -23,18 +23,16 @@ jobs:
         uses: xu-cheng/latex-action@v4
         with:
           root_file: "methodology.tex"
-          glob_root_file: true
           working_directory: new/
       - name: Compile LaTeX diff document
         uses: xu-cheng/latex-action@v4
         if: github.ref != 'refs/heads/master'
         with:
           root_file: "methodology-diff.tex"
-          glob_root_file: true
           working_directory: new/
         continue-on-error: true
       - name: Upload
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: methodology-document
           path: new/methodology*.pdf
