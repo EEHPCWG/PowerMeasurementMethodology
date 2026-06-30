@@ -10,20 +10,26 @@
 \textbf{1a: Timing} &
 \begin{minipage}[t]{\tablecolumnwidth}
       \begin{compactitemize}
-            \item every 60~s
-            \item[] \textbf{and}
-            \item $\ge10$~measurements during core phase
+            \item power every \qty{60}{\second} with $\ge10$~measurements during core phase
+            \item[] \textbf{or}
+            \item continuously integrated energy read within \qty{60}{\second} of begin/end
       \end{compactitemize}
 \end{minipage} &
-\multicolumn{2}{p{2\tablecolumnwidth}|}{
-      \begin{minipage}[t]{2\tablecolumnwidth}
-            \begin{compactitemize}
-                  \item power every \SI{1}{\second}
-                  \item[] \textbf{or}
-                  \item continuously integrated energy read within \SI{1}{\second} of begin/end
-            \end{compactitemize}
-      \end{minipage}
-} \\
+\begin{minipage}[t]{\tablecolumnwidth}
+      \begin{compactitemize}
+            \item power every \qty{10}{\second} with $\ge60$~measurements during core phase
+            \item[] \textbf{or}
+            \item continuously integrated energy read within \qty{10}{\second} of begin/end
+      \end{compactitemize}
+\end{minipage} &
+\begin{minipage}[t]{\tablecolumnwidth}
+      \begin{compactitemize}
+            \item power every \qty{1}{\second} with $\ge600$~measurements during core phase
+            \item[] \textbf{or}
+            \item continuously integrated energy read within \qty{1}{\second} of begin/end
+      \end{compactitemize}
+\end{minipage}
+\\
 \hline
 
 
