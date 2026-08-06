@@ -100,10 +100,10 @@ In that case, make sure to use the timestamps from measurements rather than the 
 
 Submitters are encouraged to include the series of intermediate energy values during the core phase and their timestamps in the submission, e.g., as a csv file.
 
-\section{Aspect and Quality Levels}
-\label{sec:AQLevels}
+% \section{Aspect and Quality Levels}
+% \label{sec:AQLevels}
 
-Table~\ref{tab:levels} summarizes the aspect and quality levels introduced in Section~\ref{sec:intro}. 
+% Table~\ref{tab:levels} summarizes the aspect and quality levels introduced in Section~\ref{sec:intro}. 
 
 
 % \newlength{\tablecolumnwidth}
@@ -464,23 +464,19 @@ Aspect~3 specifies the subsystems included in the instrumented power.
 Subsystems in the context of this document are power subsystems.
 A power subsystem is that part of a supercomputer which can be measured in isolation for power consumption while the supercomputer is performing a task.
 
-Subsystems include computational nodes, any interconnect network the application uses, any head or control nodes, any storage system the application uses, and any internal cooling devices (self-contained liquid cooling systems and fans).
+Subsystems include computational nodes, any interconnect network the application uses, any head or control nodes, and any internal cooling devices (self-contained liquid cooling systems and fans).
 
 If some subsystems are part of the measured power, their power may not be subtracted out after the measurement.
 The explicitly measured value must be used as is.
 
-For Level~1, both the compute-node subsystem and the interconnect must be reported.
-The compute-node subsystem power must be measured.
-The interconnect subsystem participating in the workload must also be measured or, if not measured, the contribution must be estimated.
+For Level~1 and Level~2, the compute-node subsystem power must be measured.
+All other subsystems participating in the workload must also be measured or, if not measured, the contribution must be estimated.
 Include everything that you need to operate the interconnect network that is not part of the compute subsystem.
 
-For Level~2, measure the compute node subsystem.
-Other subsystems participating in the workload must be measured or estimated.
+For Levels~1 and~2, estimations of other subsystems besides the compute subsystem must be performed by substituting the measurement by an upper bound derived from the maximum specified power consumption of all hardware components.
 
 For Level~3, all power going to the parts of a computer system that participate in a workload must be included in the power measurement.
-The reported power measurement must include all computational nodes, any interconnect network the application uses, any head or control nodes, any storage system the application uses, all power conversion losses inside the computer, and any internal cooling devices (self-contained liquid cooling systems and fans).
-
-For Levels~1 and~2, estimations of other subsystems besides the compute subsystem must be performed by substituting the measurement by an upper bound derived from the maximum specified power consumption of all hardware components.
+The reported power measurement must include all computational nodes, any interconnect network the application uses, any head or control nodes, all power conversion losses inside the computer, and any internal cooling devices (self-contained liquid cooling systems and fans).
 
 Measurements may include infrastructure that is shared.
 It is allowed but not required to exclude subsystems that don't participate in the workload (e.g. storage subsystems).
