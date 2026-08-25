@@ -1,0 +1,121 @@
+\newlength{\tablecolumnwidth}
+\setlength{\tablecolumnwidth}{3.5cm}
+\noindent
+\begin{table}
+\caption{Summary of aspects and quality levels}
+\label{tab:levels}
+\begin{tabular}{|p{2.5cm}|p{3.5cm}|p{3.5cm}|p{3.5cm}|} \hline
+\textbf{Aspect}&\textbf{Level~1}&\textbf{Level~2}&\textbf{Level~3}\\ \hline
+
+% TODO: differentiate 
+\textbf{1a: Timing} &
+\begin{minipage}[t]{\tablecolumnwidth}
+      every \qty{60}{\second} (with $\ge10$~measurements during core phase)
+\end{minipage} &
+\begin{minipage}[t]{\tablecolumnwidth}
+      every \qty{10}{\second} (with $\ge10$~measurements during core phase)
+\end{minipage} &
+\begin{minipage}[t]{\tablecolumnwidth}
+      every \qty{1}{\second} (with $\ge10$~measurements during core phase)
+\end{minipage}
+\\
+\hline
+
+
+\textbf{1b: Reporting} &
+\begin{minipage}[t]{\tablecolumnwidth}
+      \begin{compactitemize}
+            \item Average core phase power
+      \end{compactitemize}
+\end{minipage} &
+\multicolumn{2}{p{2\tablecolumnwidth}|}{
+      \begin{minipage}[t]{2\tablecolumnwidth}
+            \begin{compactitemize}
+                  \item Average core phase power
+                  \item Average full run power
+                  \item Idle power
+            \end{compactitemize}
+      \end{minipage}
+} \\
+\hline
+
+\textbf{1c: Measurement Type} &
+\multicolumn{3}{p{3\tablecolumnwidth}|}{
+      instantaneously sampled power consumption \textbf{or} continuously integrated energy counter
+} \\
+\hline
+
+% \textbf{1a:~Granularity} &
+% One power sample per second &
+% One power sample per second &
+% Continuously integrated energy\\
+% \hline
+
+
+% \textbf{1b:~Timing} &
+% At equal intervals across the entire core phase of the run, which must be at least one minute &
+% At equal intervals across the full run &
+% At equal intervals across the full run   \\
+% \hline
+
+% \textbf{1c:~Measurements} &
+% Core phase average power &
+% $\bullet$ Core phase average power & 
+% $\bullet$ Core phase total energy \\ %MDSpecs
+
+%  & &
+% $\bullet$ Full run average power &
+% $\bullet$ Full run total energy \\
+
+%  & &
+% $\bullet$ \MinMeasurementsCorePhaseLTwoThree{} average power measurements in the core phase &
+% $\bullet$ \MinMeasurementsCorePhaseLTwoThree{} total energy measurements in the core phase \\
+
+%  & &
+% $\bullet$ Idle power &
+% $\bullet$ Idle power \\
+% \hline
+
+\textbf{2: Machine \newline fraction}  &
+\multicolumn{3}{p{3\tablecolumnwidth}|}{
+      \begin{minipage}[t]{3\tablecolumnwidth}
+        All compute nodes participating in the workload
+      \end{minipage}
+} \\
+
+% The entire system; \SpecFracMinLOne{} of the system; one rack of the system; at least \SpecPowerMaxLOne{};  &
+% The entire system; \SpecFracMinLTwo{} of the system; one rack of the system &
+% The whole of all included subsystems \\
+\hline
+
+\textbf{3:~Subsystems} &
+\multicolumn{2}{p{2\tablecolumnwidth}|}{
+      \begin{minipage}[t]{2\tablecolumnwidth}
+        All compute nodes measured; all participating subsystems measured or estimated (please describe how you estimated)
+      \end{minipage}
+} &
+All compute nodes and subsystems participating in the workload must be measured \\
+\hline
+
+\textbf{4a: Location of measurement} &
+Upstream of power conversion &
+Upstream of power conversion &
+Upstream of power conversion\\
+
+ &
+\centering \textbf{OR} &
+\centering \textbf{OR} &
+\centering \textbf{OR} \tabularnewline
+
+ &
+Conversion loss modeled with manufacturer data &
+Conversion loss modeled with off-line measurements of a single power supply &
+Conversion loss measured simultaneously \\
+\hline
+\textbf{4b: Meter accuracy} &
+\SpecAccuracyLOne{} &
+\SpecAccuracyLTwo{} (see Section~\ref{sec:MDSpecs})&
+\SpecAccuracyLThree{} (see Section~\ref{sec:MDSpecs})\\
+\hline
+\end{tabular}
+\end{table}
