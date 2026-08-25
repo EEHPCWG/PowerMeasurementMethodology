@@ -7,27 +7,16 @@
 \begin{tabular}{|p{2.5cm}|p{3.5cm}|p{3.5cm}|p{3.5cm}|} \hline
 \textbf{Aspect}&\textbf{Level~1}&\textbf{Level~2}&\textbf{Level~3}\\ \hline
 
+% TODO: differentiate 
 \textbf{1a: Timing} &
 \begin{minipage}[t]{\tablecolumnwidth}
-      \begin{compactitemize}
-            \item power every \qty{60}{\second} with $\ge10$~measurements during core phase
-            \item[] \textbf{or}
-            \item continuously integrated energy read within \qty{60}{\second} of begin/end
-      \end{compactitemize}
+      every \qty{60}{\second} (with $\ge10$~measurements during core phase)
 \end{minipage} &
 \begin{minipage}[t]{\tablecolumnwidth}
-      \begin{compactitemize}
-            \item power every \qty{10}{\second} with $\ge60$~measurements during core phase
-            \item[] \textbf{or}
-            \item continuously integrated energy read within \qty{10}{\second} of begin/end
-      \end{compactitemize}
+      every \qty{10}{\second} (with $\ge10$~measurements during core phase)
 \end{minipage} &
 \begin{minipage}[t]{\tablecolumnwidth}
-      \begin{compactitemize}
-            \item power every \qty{1}{\second} with $\ge600$~measurements during core phase
-            \item[] \textbf{or}
-            \item continuously integrated energy read within \qty{1}{\second} of begin/end
-      \end{compactitemize}
+      every \qty{1}{\second} (with $\ge10$~measurements during core phase)
 \end{minipage}
 \\
 \hline
@@ -50,6 +39,11 @@
 } \\
 \hline
 
+\textbf{1c: Measurement Type} &
+\multicolumn{3}{p{3\tablecolumnwidth}|}{
+      instantaneously sampled power consumption \textbf{or} continuously integrated energy counter
+} \\
+\hline
 
 % \textbf{1a:~Granularity} &
 % One power sample per second &
