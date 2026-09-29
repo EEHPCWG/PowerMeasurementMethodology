@@ -1,21 +1,24 @@
 \documentclass[parskip]{scrreprt}
-%
-\usepackage{makeidx}  % allows for indexgeneration
-\usepackage[pdftex]{hyperref}
+
+\usepackage{makeidx}
 \usepackage{graphicx}
-\usepackage{url}
 \usepackage{amsmath}
 \usepackage{nameref}
 \usepackage{xstring}
 \usepackage{catchfile}
-\usepackage[capitalize]{cleveref}
 \usepackage[binary-units]{siunitx}
-\usepackage{acronym}
-\usepackage{subcaption}
 \usepackage{booktabs}
 \usepackage{makecell}
+\usepackage{enumitem}
+\usepackage{url}
+\usepackage{subcaption}
+\usepackage{acronym}
+
+% ! package loading order matters here
+\usepackage[pdftex]{hyperref}
+\usepackage[capitalize]{cleveref}
+
 \renewcommand*\theadfont{\bfseries}
-%
 
 \newenvironment{packed_enum}{
 \begin{enumerate}
@@ -46,6 +49,9 @@
 	\CatchFileDef{\commit}{.git/refs/heads/\branch}{}}{%
 	\newcommand{\commit}{\dots~(in \emph{packed-refs})}}
 % end of git branch and revision
+
+\newlist{compactitemize}{itemize}{3}
+\setlist[compactitemize]{label=\textbullet, nosep, leftmargin=*, itemsep=0em, after=\vspace{.5em}}
 
 \author{Energy Efficient High Performance Computing Working Group:\\Power Measurement Team}
 
@@ -83,13 +89,10 @@ Energy Efficient High Performance Computing Power Measurement Methodology \\
 \newcommand{\SpecFracMinLTwo}{\num[parse-numbers=false]{\frac{1}{8}}}
 \newcommand{\SpecMinNodes}{\num{15}}
 \newcommand{\MinMeasurementsCorePhaseLTwoThree}{\num{10}}
-\newcommand{\MaxReadingIntervalCorePhaseLTwoThree}{\SI{10}{\percent}}
-\newcommand{\MaxSecMissingLThree}{\num{10}}
-\newcommand{\MaxSecMissingLThreeHalf}{\num{5}} %must be half of the above value!
 
 %
 \input{text/intro}
-\input{text/checklist}
+\input{text/summary}
 \input{text/reporting}
 \newpage
 
@@ -97,6 +100,7 @@ Energy Efficient High Performance Computing Power Measurement Methodology \\
 \input{text/conclusion}
 \input{text/definitions}
 \input{text/acronyms.tex}
+% \input{text/checklist}
 \input{text/examples}
 
 \end{document}

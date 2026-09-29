@@ -1,32 +1,17 @@
-# Makefile but currently more like a batch file
-# Issue a make clean and then a make
-#
+MAINFILE := methodology.tex
 
-TARGETS: methodology.pdf
+default: build
 
-.PHONY: all clean complete methodology
+build:
+	latexmk -pdf -synctex=1 ${MAINFILE}
 
-all: methodology.pdf
-methodology: methodology.pdf
-
-tex_files = $(wildcard *.tex)
-bib_files = $(wildcard */*.bib)
-pdf_files = $(wildcard *.pdf)
-
-methodology.pdf: $(tex_files) $(bib_files) $(pdf_files)
-	pdflatex methodology | tee latex.out ; \
-	pdflatex methodology | tee latex.out; \
-	pdflatex methodology | tee latex.out
+open: build
+	latexmk -pv -view=pdf ${MAINFILE}
 
 clean:
-	find . -name '*.blg' -print0 | xargs -0 rm -f; \
-	find . -name '*.aux' -print0 | xargs -0 rm -f; \
-	find . -name '*.bbl' -print0 | xargs -0 rm -f; \
-	find . -name '*.log' -print0 | xargs -0 rm -f; \
-	find . -name '*.out' -print0 | xargs -0 rm -f; \
-	find . -name '*.toc' -print0 | xargs -0 rm -f; \
-	find . -name '*.lof' -print0 | xargs -0 rm -f; \
-	find . -name '*.lot' -print0 | xargs -0 rm -f; \
-	find . -name '*.fdb_latexmk' -print0 | xargs -0 rm -f; \
-	find . -name '*.fls' -print0 | xargs -0 rm -f; \
-	rm -f methodology.pdf
+	latexmk -pdf -c
+
+distclean:
+	latexmk -pdf -C
+
+.PHONY: default build open clean distclean
