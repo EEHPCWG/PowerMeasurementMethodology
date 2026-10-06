@@ -14,10 +14,11 @@ This section contains:
 \label{sec:MDTerm}
 
 This section defines meter accuracy requirements.
-First, Subsection~\ref{sec:accuracy} defines the general accuracy requirements.
-The following section describe the different types of measurements and the required sampling rates. 
-Measuring devices must also meet the Level requirements as defined in Sections~\ref{sec:AQLevels} and \ref{sec:A1GTRM}.
-Average power values should be reported in kilowatts (kW).
+First, Subsection~\ref{subsec:accuracy} defines the general accuracy requirements.
+Measuring devices must also meet the Level requirements as defined in Table~\ref{tab:levels}. % Sections~\ref{sec:AQLevels} and \ref{sec:A1GTRM}.
+Next, Subsection~\ref{subsec:PAaTEM} describe the different types of measurements and the required sampling rates. 
+
+Using an integrated energy measurement device is preferred, but not required.
 
 \subsection{Accuracy Requirements}
 \label{subsec:accuracy}
@@ -53,13 +54,13 @@ For further information, refer to the SPECpower \textit{Power and Temperature Me
 \subsection{Power Readings and Sampling}
 \label{subsec:PAaTEM}
 
-The timing aspect of the power quality levels mandate at what intervals a power value is read from the measurement device and processed in software, the \emph{readout interval}.
+The timing requirement of the power quality levels mandate at what intervals a power value is read from the measurement device and processed in software, the \emph{readout interval}.
 Each of the processed power values may be calculated by the device internally from multiple samples.
 This document does not cover the specific internal sampling rates.
-Instead, the accuracy aspect of power quality levels implies that internal sampling rates are appropriate to the given operating conditions.%, especially AC or DC power supply.
+Instead, the accuracy requirement of power quality levels implies that internal sampling rates are appropriate to the given operating conditions.%, especially AC or DC power supply.
 The readout interval should be approximately constant for the duration of the observation.%, see Subsection~\ref{subsec:accuracy}.
 
-For Level~3, the submitter should have a good understanding of the nature of the measured power values to ensure that the computed final average power over the core phase is unaffected by errors from aliasing or other problems with the timing of read values.
+The submitter should have a good understanding of the nature of the measured power values to ensure that the computed final average power over the core phase is unaffected by errors from aliasing or other problems with the timing of read values.
 Consider a device which measures \SI{50}{\hertz} AC-Power for \num{10} cycles (\SI{0.2}{\second}) should also be read every \SI{0.2}{\second} to ensure an accurate average power.
 While it is permissible to read values more frequently than a device's readout interval, this does not increase the sampling rate.
 For example, a device may be queried every 1s, while its readout interval is 10s, resulting in 10 consecutive readings with the same value.
@@ -218,26 +219,21 @@ Submitters are encouraged to include the series of intermediate energy values du
 % \end{tabular}
 % \end{table}
 
-\section{Aspect~1: Granularity, Timespan and Reported Measurements}
+\section{Aspect~1: Granularity and Timespan}
 \label{sec:A1GTRM}
 
-Aspect~1 has the following three parts.
+Aspect~1 has the following two parts.
 Levels~1, 2, and~3 satisfy this aspect in different ways.
 
 \begin{itemize}
 \item
-The granularity of power measurements.
-This aspect determines the number of measurements per time element.
+The granularity of power measurements, which determines the number of measurements per time element.
 \item
-The timespan of power measurements.
-This aspect determines where in the time of the workload's execution the power measurements are taken.
-\item
-The reported measurements.
-This aspect describes how the power measurements are reported.
+The timespan of power measurements, which determines where in the time of the workload's execution the power measurements are taken.
+% \item
+% The reported measurements.
+% This aspect describes how the power measurements are reported.
 \end{itemize}
-
-For all required measurements, the submission must also include the data used to calculate them.
-For Level~2 and Level~3 submissions, the supporting data must include at least \MinMeasurementsCorePhaseLTwoThree{} measurement values at a regular sampling rate in the core phase of the run.
 
 Levels~2 and~3 require reported measurement values at regular intervals for the following reasons:
 
@@ -267,12 +263,12 @@ Consequently, these levels require measurements during the run but outside of th
 All submissions must include the average power within the core phase of the run.
 
 The core phase is usually considered to be the section of the workload that undergoes parallel execution.
-It typically does not include the parallel job launch and teardown and is required to run for at least one minute.
+It typically does not include the parallel job launch and teardown. % and is required to run for at least one minute.
 
 In order to correlate the power measurement and the performance measurement to obtain the power efficiency, power and performance must be measured over the exact same time period.
 Therefore, the core phase is defined as the time period that is used for the performance calculation.
 Sometimes, the exact same time is impossible to measure due to power meter restrictions.
-Therefore, Level~1 and Level~2 allow a small part at the beginning and at the end which is not measured (see Section~\ref{sec:PAaTEM}).
+Therefore, Level~1 and Level~2 allow a small part at the beginning and at the end which is not measured (see Subsection~\ref{subsec:PAaTEM}).
 
 For example, the core phase of the LINPACK workload is the portion of the code that actually solves the matrix.
 It is the numerically intensive solver phase of the calculation.
@@ -283,8 +279,8 @@ HPL\_pdgesv() start time Wed Jun 30 21:49:08 2015\newline
 HPL\_pdgesv() end time Wed Jun 30 22:23:15 2015
 }.
 
-\subsection{The Whole Run}
-\label{subsec:whole_run}
+\subsection{Full Run}
+\label{subsec:full_run}
 
 Level~2 and Level~3 submissions must also include the average power for the whole run, from the initiation of the job to its completion.
 
@@ -327,7 +323,7 @@ Level~3 requires an integrating total-energy meter, which samples the input powe
 \subsection{Level~1}
 \label{subsec:level_1}
 Level~1 submissions include a measurement of the average power during the core phase.
-The device measurement granularity must be at least one instantaneous measurement of power per second.
+The device measurement granularity must be at least one instantaneous measurement of power every \SI{60}{\second}.
 This requirement holds whether the measurement is DC or AC.
 
 There must be at least \num{10} power-averaged measurement during the run.
@@ -337,8 +333,8 @@ Exclude power readings for time intervals that do not lie completely in the core
 \subsection{Level~2}
 \label{subsec:level_2}
 
-Level~2 submissions include a measurement of the average power during the core phase of the run, the average power during the full run, and a series of regular power-averaged measurements.
-The device measurement granularity must be at least one instantaneous measurement of power per second.
+Level~2 submissions include a measurement of the average power during the core phase of the run, the average power during the full run, and an idle power measurement.
+The device measurement granularity must be at least one instantaneous measurement of power every \SI{10}{\second}.
 This requirement holds whether the measurement is DC or AC.
 
 The submitted value for the core phase must be the average of all power readings taken during the core phase of the run.
@@ -365,24 +361,23 @@ As an example, the figure shows \num{10} power-averaged measurements within the 
 \subsection{Level~3}
 \label{subsec:level_3}
 
-Level~3 submissions include a measurement of the average power during the core phase of the run and the average power during the full run.
+Level~3 submissions include a measurement of the average power during the core phase of the run, the average power during the full run, and an idle power measurement.
+The device measurement granularity must be at least one instantaneous measurement of power every \SI{1}{\second}.
+This requirement holds whether the measurement is DC or AC.
 
-The complete set of total energy readings (at least \MinMeasurementsCorePhaseLTwoThree{} during the core computation phase) must be included, along with the execution time for the core phase and full run.
-
-Level~3 requires continuously integrated total energy measurements rather than power-averaged measurements.
-The readings must begin before the start of the run and extend to when it is finished.
+In the case that an integrated energy measurement device is used, the readings must begin before the start of the run and extend to when it is finished.
 
 The intervals at which total energy readings are reported must be short enough so that at least \MinMeasurementsCorePhaseLTwoThree{} reported readings fall within the core phase of the workload.
 Note that each reported energy reading is the integral over many internal power samples.
 
 The measured energy for the core phase is the last measured total energy within the core phase minus the first measured total energy within the core phase.
 The final power is calculated by dividing this energy by the elapsed time between these first and last energy readings.
-These last and first measurements in the core phase must be timed such that no more than a total of ten seconds (five each at the beginning and end) of the core phase are not covered by the total energy measurement.
+These last and first measurements in the core phase must be timed such that no more than \num{1} second of the core phase is not covered by the total energy measurement.
 The procedure for the full run is analogous.
 
-Figure~\ref{fig:a1l3pm} illustrates Aspect~1 of  Level~3 power measurement.
+Figure~\ref{fig:a1l3pm} illustrates Aspect~1 of Level~3 power measurement.
 The figure shows \num{10} readings in the core phase of the workload.
-Note that these are integrated readings.
+Note that the figure shows integrated readings.
 To obtain a power reading, one must subtract two integrated readings and divide by the time between the readings.
 
 %INCLUDE FIG 3-5
@@ -494,34 +489,34 @@ It is not acceptable to measure the power for both the compute nodes and the GPU
 
 A site may include more subsystems than are strictly required if it chooses or if it is advantageous from a measurement logistics point of view.
 
-In other words, for Level~2 and~3 you have to include everything that you cannot turn of during the benchmark run.
-It only allowed to exclude subsystems (or parts thereof) from the measurement in the first place, but their contribution must not be subtracted afterwards.
-For Level~1 this applies as well, but only for the network subsystem.
+% In other words, for Level~2 and~3 you have to include everything that you cannot turn of during the benchmark run.
+% It only allowed to exclude subsystems (or parts thereof) from the measurement in the first place, but their contribution must not be subtracted afterwards.
+% For Level~1 this applies as well, but only for the network subsystem.
 
-\subsection{Heterogeneous Systems}
+% \subsection{Heterogeneous Systems}
 
-A particular system may have different types of compute nodes.
-The system may have compute nodes from different companies or even compute nodes with different architectures.
-These compute nodes are said to belong to different heterogeneous sets.
-Each heterogeneous set must consist of identical nodes.
+% A particular system may have different types of compute nodes.
+% The system may have compute nodes from different companies or even compute nodes with different architectures.
+% These compute nodes are said to belong to different heterogeneous sets.
+% Each heterogeneous set must consist of identical nodes.
 
-With Level~3, the submitter need not be concerned about heterogeneous sets of compute nodes because Level~3 measures the entire system.
+% With Level~3, the submitter need not be concerned about heterogeneous sets of compute nodes because Level~3 measures the entire system.
 
-Levels~1 and~2, however, measure a portion of the compute-node subsystem and estimate contributions from unmeasured portions.
-With Levels~1 and~2, the submitter must measure at least one member of each heterogeneous set.
-Measure at least \SpecFracMinLOne{} of each heterogeneous set for Level~1, and at least \SpecFracMinLTwo{} of each heterogeneous set for Level~2.
-Then, extrapolate the total power per each heterogeneous set as you would do for a non heterogeneous cluster.
-Finally, accumulate the contributions of all heterogeneous sets.
+% Levels~1 and~2, however, measure a portion of the compute-node subsystem and estimate contributions from unmeasured portions.
+% With Levels~1 and~2, the submitter must measure at least one member of each heterogeneous set.
+% Measure at least \SpecFracMinLOne{} of each heterogeneous set for Level~1, and at least \SpecFracMinLTwo{} of each heterogeneous set for Level~2.
+% Then, extrapolate the total power per each heterogeneous set as you would do for a non heterogeneous cluster.
+% Finally, accumulate the contributions of all heterogeneous sets.
 
-For example, assume there exist two sets of compute nodes, a set called A and another called B.
-The submitter is able to measure the power 
-consumed by $\frac{1}{2} $ of the A compute nodes and $\frac{1}{4}$ of the B compute nodes.
+% For example, assume there exist two sets of compute nodes, a set called A and another called B.
+% The submitter is able to measure the power 
+% consumed by $\frac{1}{2} $ of the A compute nodes and $\frac{1}{4}$ of the B compute nodes.
 
-The total power measurement reported for compute nodes would then be 
+% The total power measurement reported for compute nodes would then be 
 
-\[ Total~power=2*(power~from~compute~nodes~A) + 4*(power~from~compute~nodes~B) \]
+% \[ Total~power=2*(power~from~compute~nodes~A) + 4*(power~from~compute~nodes~B) \]
 
-The assumption of Levels~1 and~2 is that all the compute nodes in a set react identically to the workload.
+% The assumption of Levels~1 and~2 is that all the compute nodes in a set react identically to the workload.
 
 
 \section{Aspect~4: Instrumentation Location where the Electrical Measurements are Taken}
@@ -585,6 +580,7 @@ For a Level~3 submission, the power loss must be measured simultaneously by a de
 For all three levels, the power losses used and how they were determined must be part of the submissions.
 
 \subsection{Data Center Schematic}
+\label{subsec:schematic}
 
 Figure~\ref{fig:powmeasschem} is an example of a simple power measurement schematic.
 This example shows only one power measurement location.
