@@ -463,31 +463,37 @@ A power subsystem is that part of a supercomputer which can be measured in isola
 
 Subsystems include computational nodes, any interconnect network the application uses, any head or control nodes, and any internal cooling devices (self-contained liquid cooling systems and fans).
 
-If some subsystems are part of the measured power, their power may not be subtracted out after the measurement.
-The explicitly measured value must be used as is.
-
-For Level~1 and~2, the compute-node subsystem power must be measured.
-All other subsystems participating in the workload must also be measured or, if not measured, the contribution must be estimated.
+For Level~1 and~2, measure the compute-node subsystem power.
+All other subsystems participating in the workload must also be measured, or their contribution must be estimated if they are not measured.
 Include everything needed to operate the interconnect network that is not part of the compute subsystem.
 
-% For Levels~1 and~2, estimations of other subsystems besides the compute subsystem must be performed by substituting the measurement by an upper bound derived from the maximum specified power consumption of all hardware components.
-
-For Level~3, all power going to the computer system that participate in a workload must be included in the power measurement.
+For Level~3, include all power going to the computer system that participates in a workload in the power measurement.
 The reported power measurement must include all computational nodes, any interconnect network the application uses, any head or control nodes, all power conversion losses inside the computer, and any internal cooling devices (self-contained liquid cooling systems and fans).
 
-Measurements may include infrastructure that is shared.
-It is allowed but not required to exclude subsystems that don't participate in the workload (e.g. storage subsystems).
-However, if these subsystems are part of the cabinet or rack being measured, they may not be excluded even if they are not used.
-That is, the submitter cannot calculate their contribution and subtract that contribution.
-If the subsystem is not part of the rack or cabinet being measured and it does not participate in the workload, it need not be measured.
-For some systems, it may be impossible not to include a power contribution from certain subsystems that are not used by the application.
-In this case, provide a list of the measured subsystems, but do not subtract an estimated value for the subsystems that are not used.
+External storage systems are excluded from the required power measurement at all levels (Level 1, Level 2, and Level 3).
+This includes separate parallel file systems, SAN/NAS storage, and centralized storage infrastructure physically external to the compute racks being measured. 
 
-For example, the node board may include compute nodes and GPUs, and the application may not actually use the GPUs.
-If you cannot easily shut down the GPUs (say with an API), you must still include the power that they use.
-It is not acceptable to measure the power for both the compute nodes and the GPUs and then subtract the GPU power from the measurement.
+Local storage, such as SSDs, boot drives, or storage devices located within a compute chassis or rack, is treated differently.
+If the storage shares a physical or logical power feed with the compute hardware being measured and cannot be isolated from that measurement boundary, its power must be included in the measured value.
+This applies to any subsystem that is located within the compute system.
+If these subsystems are part of the cabinet or rack being measured, they may not be subtracted from the measurement even if they are not used.
+The submitter may add a list of all measured subsystems including non-participating subsystems, as a note for clarification.
 
-A site may include more subsystems than are strictly required if it chooses or if it is advantageous from a measurement logistics point of view.
+
+% Measurements may include shared infrastructure.
+% It is allowed but not required to exclude subsystems that don't participate in the workload (e.g. external storage subsystems).
+% However, if these subsystems are part of the cabinet or rack being measured, they may not be excluded even if they are not used.
+% That is, the submitter cannot calculate their contribution and subtract that contribution.
+% If the subsystem is not part of the rack or cabinet being measured and it does not participate in the workload, it need not be measured.
+% For some systems, it may be impossible not to include a power contribution from certain subsystems that are not used by the application.
+% In this case, provide a list of the measured subsystems, but do not subtract an estimated value for the subsystems that are not used.
+
+As an example, the node board may include compute nodes and GPUs, and the application may not actually use the GPUs.
+If you cannot shut down the GPUs, you must still include the idle power that they use.
+It is not acceptable to measure the power for both the compute nodes and the GPUs and then subtract the idle GPU power from the measurement.
+In this case, the idle GPUs could be noted as included in the measurement but non-participating.
+
+A site may include more subsystems than required if it chooses to from a measurement logistics point of view.
 
 % In other words, for Level~2 and~3 you have to include everything that you cannot turn of during the benchmark run.
 % It only allowed to exclude subsystems (or parts thereof) from the measurement in the first place, but their contribution must not be subtracted afterwards.

@@ -4,11 +4,11 @@
 \begin{table}
 \caption{Summary of aspects and quality levels}
 \label{tab:levels}
-\begin{tabular}{|p{2.5cm}|p{3.5cm}|p{3.5cm}|p{3.5cm}|} \hline
+\begin{tabular}{|p{3cm}|p{3.5cm}|p{3.5cm}|p{3.5cm}|} \hline
 \textbf{Aspect}&\textbf{Level~1}&\textbf{Level~2}&\textbf{Level~3}\\ \hline
 
 % TODO: differentiate 
-\textbf{1a: Timing} &
+\textbf{1a: Timing } (Section~\ref{sec:A1GTRM})&
 \begin{minipage}[t]{\tablecolumnwidth}
       every \qty{60}{\second} (with $\ge10$~measurements during core phase)
 \end{minipage} &
@@ -22,7 +22,7 @@
 \hline
 
 
-\textbf{1b: Reporting} &
+\textbf{1b: Reporting } (Section~\ref{subsec:PAaTEM}) &
 \begin{minipage}[t]{\tablecolumnwidth}
       \begin{compactitemize}
             \item Average core phase power
@@ -39,7 +39,7 @@
 } \\
 \hline
 
-\textbf{1c: Measurement Type} &
+\textbf{1c: Measurement Type} (Section~\ref{subsec:PAaTEM}) &
 \multicolumn{3}{p{3\tablecolumnwidth}|}{
       instantaneously sampled power consumption \textbf{or} continuously integrated energy counter
 } \\
@@ -76,7 +76,7 @@
 % $\bullet$ Idle power \\
 % \hline
 
-\textbf{2: Machine \newline fraction}  &
+\textbf{2: Machine Fraction} (Section~\ref{sec:A2MFI})  &
 \multicolumn{3}{p{3\tablecolumnwidth}|}{
       \begin{minipage}[t]{3\tablecolumnwidth}
         All compute nodes participating in the workload
@@ -88,16 +88,16 @@
 % The whole of all included subsystems \\
 \hline
 
-\textbf{3:~Subsystems} &
+\textbf{3:~Subsystems } (Section~\ref{sec:A3SIiIP}) &
 \multicolumn{2}{p{2\tablecolumnwidth}|}{
       \begin{minipage}[t]{2\tablecolumnwidth}
-        All compute nodes measured; all participating subsystems measured or estimated (please describe how you estimated)
+        All compute nodes must be measured; all participating subsystems must be measured or estimated (please describe how you estimated)
       \end{minipage}
 } &
 All compute nodes and subsystems participating in the workload must be measured \\
 \hline
 
-\textbf{4a: Location of measurement} &
+\textbf{4a: Location of measurement} (Section~\ref{sec:A4wEMaT})&
 Upstream of power conversion &
 Upstream of power conversion &
 Upstream of power conversion\\
@@ -112,10 +112,10 @@ Conversion loss modeled with manufacturer data &
 Conversion loss modeled with off-line measurements of a single power supply &
 Conversion loss measured simultaneously \\
 \hline
-\textbf{4b: Meter accuracy} &
+\textbf{4b: Meter accuracy } (Section~\ref{subsec:accuracy})&
 \SpecAccuracyLOne{} &
-\SpecAccuracyLTwo{} (see Section~\ref{sec:MDSpecs})&
-\SpecAccuracyLThree{} (see Section~\ref{sec:MDSpecs})\\
+\SpecAccuracyLTwo{} &
+\SpecAccuracyLThree{} \\
 \hline
 \end{tabular}
 \end{table}
