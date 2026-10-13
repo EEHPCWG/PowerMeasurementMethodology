@@ -1,4 +1,4 @@
-\chapter{Reporting Power Values \normalsize{(Detailed Information)}}
+\chapter{Reporting Power Values } %\normalsize{(Detailed Information)}}
 \label{sec:reporting}
 
 This section contains:
@@ -16,7 +16,7 @@ This section contains:
 This section defines meter accuracy requirements.
 First, Subsection~\ref{subsec:accuracy} defines the general accuracy requirements.
 Measuring devices must also meet the Level requirements as defined in Table~\ref{tab:levels}. % Sections~\ref{sec:AQLevels} and \ref{sec:A1GTRM}.
-Next, Subsection~\ref{subsec:PAaTEM} describe the different types of measurements and the required sampling rates. 
+Next, Subsection~\ref{subsec:PAaTEM} describes the different types of measurements and the required sampling rates. 
 
 Using an integrated energy measurement device is preferred, but not required.
 
@@ -47,7 +47,7 @@ For Levels~1 and~2, it is acceptable to assume that the AC net power is a sine w
 % In that case, each meter must have a documented accuracy of~$\SI{1}{\percent} \cdot \sqrt{4} = \SI{2}{\percent}$ to get a final accuracy of~\SI{1}{\percent}.
 % In other words, you can use a single meter with \SI{1}{\percent} accuracy, \num{4} meters with \SI{2}{\percent} accuracy, or \num{9} meters with \SI{3}{\percent} accuracy to reach~\SI{1}{\percent} for Level~3.
 
-To ensure the above accuracy requirements are met for Level~3, the \ac{EE HPC WG} recommends, but does not require, revenue grade meters certified for ANSI C12.20, IEC 62053-21 (classes~0,5, and~1), or IEC 62053-22 (classes~0,1S, 0,2S, and~0,5S).
+To ensure the above accuracy requirements are met for Level~3, the \ac{EE HPC WG} recommends, but does not require, revenue grade meters certified for ANSI C12.20, IEC 62053-21 (classes~0.5 and~1), or IEC 62053-22 (classes~0.1S, 0.2S, and~0.5S).
 Additionally, any meter accepted by SPECpower is also permitted for Level~3.
 For further information, refer to the SPECpower \textit{Power and Temperature Measurement Setup Guide}\footnote{\url{https://www.spec.org/power/docs/SPEC-Power_Measurement_Setup_Guide.pdf}} and the associated list of accepted power measurement devices\footnote{\url{https://www.spec.org/power/docs/SPECpower-Device_List.html}}.
 
@@ -57,32 +57,36 @@ For further information, refer to the SPECpower \textit{Power and Temperature Me
 The timing requirement of the power quality levels mandate at what intervals a power value is read from the measurement device and processed in software, the \emph{readout interval}.
 Each of the processed power values may be calculated by the device internally from multiple samples.
 This document does not cover the specific internal sampling rates.
-Instead, the accuracy requirement of power quality levels implies that internal sampling rates are appropriate to the given operating conditions.%, especially AC or DC power supply.
+Instead, the accuracy requirement of power quality levels implies that internal sampling rates are appropriate to the given operating conditions. %, especially AC or DC power supply.
 The readout interval should be approximately constant for the duration of the observation.%, see Subsection~\ref{subsec:accuracy}.
 
 The submitter should have a good understanding of the nature of the measured power values to ensure that the computed final average power over the core phase is unaffected by errors from aliasing or other problems with the timing of read values.
-Consider a device which measures \SI{50}{\hertz} AC-Power for \num{10} cycles (\SI{0.2}{\second}) should also be read every \SI{0.2}{\second} to ensure an accurate average power.
+If a device measures \SI{50}{\hertz} AC-Power for \num{10} cycles (\SI{0.2}{\second}), then it should also be read every \SI{0.2}{\second} to ensure an accurate average power.
 While it is permissible to read values more frequently than a device's readout interval, this does not increase the sampling rate.
-For example, a device may be queried every 1s, while its readout interval is 10s, resulting in 10 consecutive readings with the same value.
-This would still qualify as 10s sampling rate and therefore as a Level 2 measurement.
+For example, a device may be read out every 1s, while its update interval is 10s, resulting in 10 consecutive readings with the same value.
+This would still qualify as 10s sampling interval and therefore as a Level 2 measurement.
 
 \subsubsection{Deriving Average Power Using Instantaneous Power Samples}
 
-The primary reported power values used for the efficiency calculation are aggregate average power values across all participating subsystems, see Section~\ref{sec:A3SIiIP}. over the core phase or the full run (\emph{observation interval}).
+The primary reported power values used for the efficiency calculation are aggregate average power values across all participating subsystems (see Section~\ref{sec:A3SIiIP}) over the core phase or the full run (\emph{observation interval}).
 The value is typically computed from the numerical average of the aforementioned series of power readings (which may itself be average power values computed by the device for shorter time intervals).
 
 For computing the average power value exactly, those values that lie within the core phase / full run time interval should be used.
-Some advanced corner cases may warrant some additional consideration as outlined in the following.
-The overall goal is to compute an average power value that is as close as possible to the true physical value --- as in the energy consumed during the benchmark divided by the duration.
-Values at the boundaries of the observation interval \emph{may} be weighted by the overlap of the value's individual averaging time and the observation interval, if known.
-If the precision of the benchmark timestamps is less than the measurement, e.g., only integral seconds rather than fractions, you \emph{may} correct for rounding, e.g., by adding \SI{500}{\milli\second} to the timestamps.
+% Some advanced corner cases may warrant some additional consideration as outlined in the following.
+% The overall goal is to compute an average power value that is as close as possible to the true physical value --- as in the energy consumed during the benchmark divided by the duration.
+% Values at the boundaries of the observation interval \emph{may} be weighted by the overlap of the value's individual averaging time and the observation interval, if known.
+% If the precision of the benchmark timestamps is less than the measurement, e.g., only integral seconds rather than fractions, you \emph{may} correct for rounding, e.g., by adding \SI{500}{\milli\second} to the timestamps.
+Thus for obtaining the average power, using the first and last sample that remains within the core phase / full run time interval is required.
 
-While the main ranking is computed from the overall average power value, submitters are highly recommended to include the series of individual power values and their timestamps in the submission, e.g., as a csv file.
+
+
+% While the Green500 ranking is computed from the overall average power value,
+Submitters are highly recommended to include the series of individual power values and their timestamps in the submission, e.g., as a csv file.
 
 \subsubsection{Deriving Average Power Using Continuous Integrated Energy}
 
 \emph{Continuously integrated energy} is computed on the measurement device itself.
-The internals of how the energy is computed should be part of the accuracy specification of the measuring device and depends also on the instrumentation location.
+The internals of how the energy is computed should be part of the accuracy specification of the measuring device and depend also on the instrumentation location.
 It should be ensured that any assumptions made by a measuring device regarding the accuracy, e.g. sinusoidal input voltage for AC or frequency ranges, are met.
 
 Continuously integrated energy may be used at all power quality levels.
