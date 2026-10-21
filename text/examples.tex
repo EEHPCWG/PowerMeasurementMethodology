@@ -13,9 +13,9 @@ An overview of the different submission scopes is presented in \cref{tab:example
     \resizebox{\textwidth}{!}{
         \begin{tabular}{lllllc}
             \toprule
-            \thead{Site \& \\ Cluster} & \thead{Submission \\ Level} & \thead{Machine Fraction \& \\ Included Subsystems} & \thead{Timing of \\ Measurement} & \thead{Location of \\ Measurement} & \thead{Meter \\ Accuracy} \\
+            \thead{Cluster Name \& \\ Submission Site} & \thead{Submission \\ Level} & \thead{Machine Fraction \& \\ Included Subsystems} & \thead{Type \& Timing \\ of Measurement} & \thead{Location of \\ Measurement} & \thead{Meter \\ Accuracy} \\
             \midrule
-            \hyperref[sec:example-rwth-claix-2023]{\makecell[tl]{CLAIX-2023 at \\ RWTH Aachen}} & \makecell[tl]{Level 2 (GPU) \\ Level 3 (CPU)} & \makecell[tl]{whole system with compute, \\ network, storage, frontends, \\ management nodes, cooling} & \makecell[tl]{energy counters \\ recorded every \SI{5}{\second}} & \makecell[tl]{rack-level \acsp{PDU}} & \SI{1}{\percent} \\
+            \hyperref[sec:example-rwth-claix-2023-gpu]{\makecell[tl]{CLAIX-2023 GPU at \\ RWTH Aachen University}} & \makecell[tl]{Level 2} & \makecell[tl]{whole system with compute, \\ network, storage, frontends, \\ management nodes, cooling} & \makecell[tl]{energy counters \\ recorded every \SI{5}{\second}} & \makecell[tl]{rack-level \acsp{PDU}} & \SI{1}{\percent} \\
             % template row: & & & & & \\
             % template cell: \makecell[tl]{}
             \bottomrule
@@ -23,4 +23,4 @@ An overview of the different submission scopes is presented in \cref{tab:example
     }
 \end{table}
 
-\input{text/example-rwth-claix-2023.tex}
+\input{text/example-rwth-claix-2023-gpu.tex}
