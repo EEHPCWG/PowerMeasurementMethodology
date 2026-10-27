@@ -18,7 +18,7 @@ The collected data was written to an InfluxDB instance for later analysis.
 
 The Green500 measurement of CLAIX-2023 GPU adhered to Level~2.
 The submission included the \ac{PDU} inlet active energy measurement of all involved compute racks, the networking and cooling components as well the NFS file system and frontend, workload manager, and administrative nodes.
-The measurements of the Lustre file system was excluded as it did not participate in the \acs{HPL} workload.
+The measurements of the Lustre file system were excluded as it did not participate in the \acs{HPL} workload.
 Two faulty \acp{PDU} of different NFS racks could not be monitored and were estimated by doubling the measured load of the remaining \acp{PDU}.
 An idle measurement was collected before the HPL execution during the same cluster reservation to prevent the simultaneous execution of other user jobs.
 While \qty{0.047}{\percent} of \ac{PDU} data is missing due to \ac{SNMP} timeouts, \cref{fig:example-rwth-claix-2023-gpu-summary} shows the data after applying a time-based linear fill.

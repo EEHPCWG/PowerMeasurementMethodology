@@ -93,7 +93,7 @@ Continuously integrated energy may be used at all power quality levels.
 Unlike with power values, the readout rate is not as significant.
 However, energy values must be read within \SI{60}{\second} (Level~1), \SI{10}{\second} (Level~2), or one second (Level~3) of the beginning and end of the core phase, respectively, to ensure overall accuracy.
 
-Using integrated energy values is highly recommended, when available.
+Using integrated energy values is strongly advised, when available.
 The reported value is still the aggregate average power over all participating subsystems, which is computed by dividing the difference in energy measurements $E_\text{end}$ and $E_\text{begin}$ by the difference in timestamps of the last reading $t_\text{end}$ and the first reading $t_\text{begin}$ within the observation interval.
 Note that the duration of the measurement may differ slightly from the duration of the benchmark as measurement timestamps do not align perfectly with beginning and end of the benchmark.
 In that case, make sure to use the timestamps from measurements rather than the benchmark.
@@ -239,7 +239,7 @@ The timespan of power measurements, which determines where in the time of the wo
 % This aspect describes how the power measurements are reported.
 \end{itemize}
 
-Levels~2 and~3 require reported measurement values at regular intervals for the following reasons:
+Measurement values at regular intervals for both power and energy sampling are required for the following reasons:
 
 \begin{itemize}
 \item
@@ -272,16 +272,15 @@ It typically does not include the parallel job launch and teardown. % and is req
 In order to correlate the power measurement and the performance measurement to obtain the power efficiency, power and performance must be measured over the exact same time period.
 Therefore, the core phase is defined as the time period that is used for the performance calculation.
 Sometimes, the exact same time is impossible to measure due to power meter restrictions.
-Therefore, Level~1 and Level~2 allow a small part at the beginning and at the end which is not measured (see Subsection~\ref{subsec:PAaTEM}).
+Therefore, all levels allow a small part at the beginning and at the end which is not measured (see Subsection~\ref{subsec:PAaTEM}).
 
-For example, the core phase of the LINPACK workload is the portion of the code that actually solves the matrix.
-It is the numerically intensive solver phase of the calculation.
+For example, the core phase of the LINPACK workload is the numerically intensive portion of the code that actually solves the matrix equation.
 In case of the standard \acs{HPL} implementation of the LINPACK benchmark as provided by netlib.org (\url{http://www.netlib.org/benchmark/hpl/}) this is the time spent in the routing {\ttfamily HPL\_pdgesv}.
 Note that \acs{HPL} as of version 2.1 contains a timer routine that prints start and end time of the core phase to facilitate power measurements, which looks like:\newline
 {\ttfamily
 HPL\_pdgesv() start time Wed Jun 30 21:49:08 2015\newline
 HPL\_pdgesv() end time Wed Jun 30 22:23:15 2015
-}.
+}
 
 \subsection{Full Run}
 \label{subsec:full_run}
@@ -379,7 +378,7 @@ The final power is calculated by dividing this energy by the elapsed time betwee
 These last and first measurements in the core phase must be timed such that no more than \num{1} second of the core phase is not covered by the total energy measurement.
 The procedure for the full run is analogous.
 
-Figure~\ref{fig:a1l3pm} illustrates Aspect~1 of Level~3 power measurement.
+Figure~\ref{fig:a1l3pm} illustrates Aspect~1 of sampling energy at Level~3.
 The figure shows \num{10} readings in the core phase of the workload.
 Note that the figure shows integrated readings.
 To obtain a power reading, one must subtract two integrated readings and divide by the time between the readings.
@@ -388,7 +387,7 @@ To obtain a power reading, one must subtract two integrated readings and divide 
 \begin{figure}[t]
 \centering
 \includegraphics[width=4in]{fig3-5}
-\caption{Aspect~1 of Level~3 Power Measurements}
+\caption{Aspect~1 of Level~3 Measurements}
 \label{fig:a1l3pm}
 \end{figure}
 
@@ -396,9 +395,9 @@ To obtain a power reading, one must subtract two integrated readings and divide 
 \label{sec:FoRM}
 
 Submitters are encouraged to supply a detailed set of measurements that were are used to calculate the average power values and that showcase the dynamic power consumption over the course of the benchmark.
-Such time series of power or energy values can be attached to the submission, for example as CSV file.
+Such time series of power or energy values can be attached to the submission, for example as a CSV file.
 
-The submitter may find it useful to create a graph showing the power and energy during the workload as shown in Figure~\ref{fig:example-rwth-claix-2023-summary}.
+The submitter may find it useful to create a graph showing the power and energy during the workload as shown in Figure~\ref{fig:example-rwth-claix-2023-gpu-summary}.
 Keep this graph for reference, but do not provide it as part of the submission.
 
 \section{Aspect~2: Machine Fraction Instrumented}
@@ -544,7 +543,7 @@ AC measurements are upstream of the system's power conversion.
 If the measurements are in a DC context, the submitter may have to take into account some power loss.
 Refer to Section~\numnameref{sec:AfPL}.
 
-Electrical power or energy measurements shall be taken in one of the following locations.
+Power or energy measurements shall be taken in one of the following locations.
 
 \begin{itemize}
 \item[{A)}]
