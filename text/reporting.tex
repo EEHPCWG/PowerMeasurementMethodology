@@ -287,9 +287,9 @@ HPL\_pdgesv() end time Wed Jun 30 22:23:15 2015
 
 Level~2 and Level~3 submissions must also include the average power for the whole run, from the initiation of the job to its completion.
 
-Since \acs{HPL} only reports the time spent executing the core phase of the workload, the time for the total run must be measured and reported separately by the submitter, for example by prepending the UNIX time command to the job invocation or the parallel application launch, whichever is earlier.
+Since \acs{HPL} only reports the time spent executing the core phase of the workload, the time for the total run must be measured and reported separately by the submitter, for example by prepending the UNIX time command to the parallel application launch. 
 
-Levels~2 and~3 require the entire run to be measured and reported because \acs{HPL} (the default workload at the time this document was written) drops significantly in power consumption during the course of a computation, as the matrix size being computed gets smaller.
+Levels~2 and~3 require the entire run to be measured and reported because \acs{HPL} (the default workload at the time this document was written) drops significantly in power consumption during the course of a computation, as the matrix size being factorized gets smaller.
 Requiring the entire run eliminates systematic bias caused by using different parts of the run for the measurement.
 Figure~\ref{fig:powprof} shows an example of a power graph taken from an \acs{HPL} run on the LLNL Muir system in the fall of 2011.
 
@@ -317,11 +317,11 @@ Figure~\ref{fig:sopm} shows a smaller time slice that clearly illustrates this.
 
 The boxes are individual one-second power samples.
 This fast up-down fluctuation is not caused by the behavior of an individual power supply; the power being sampled is over the entire computer system doing the \acs{HPL} run.
-The reason that Level~3 requires integrating total energy meters is because they measure at high enough sampling rates to not be subject to these sampling artifacts.
+% The reason that Level~3 requires integrating total energy meters is because they measure at high enough sampling rates to not be subject to these sampling artifacts.
 
-Level~3 requires a power-meter device with a higher inherent measurement granularity as compared to Levels~1 and~2.
-Levels~1 and~2 allow 1-second intervals of the input power.
-Level~3 requires an integrating total-energy meter, which samples the input power multiple times per AC cycle and so is much less susceptible to sampling artifacts caused by the AC waveform.
+% Level~3 requires a power-meter device with a higher inherent measurement granularity as compared to Levels~1 and~2.
+% Levels~1 and~2 allow 1-second intervals of the input power.
+% Level~3 requires an integrating total-energy meter, which samples the input power multiple times per AC cycle and so is much less susceptible to sampling artifacts caused by the AC waveform.
 
 \subsection{Level~1}
 \label{subsec:level_1}
@@ -345,8 +345,8 @@ In addition, the average of all power readings during the full run must be submi
 In both cases, exclude power readings for time intervals that do not lie completely in the respective time period of core phase and full run.
 % The core phase is required to run for at least one minute.
 
-On top of these full measurements, a series of power-averaged measurements of equal length at regular intervals must be submitted for the full run.
-These intervals must be short enough so that at least \MinMeasurementsCorePhaseLTwoThree{} measurements are reported during the core phase of the workload.
+It is encouraged to provide the series of power measurements for the full run.
+There should be at least \MinMeasurementsCorePhaseLTwoThree{} measurements during the core phase of the workload.
 This series of measurements in total must cover the full run.
 
 Figure~\ref{fig:a1l2pm} illustrates the series of power measurements at regular intervals of Aspect~1 of a Level~2 power measurement.
@@ -369,14 +369,15 @@ The device measurement granularity must be at least one instantaneous measuremen
 This requirement holds whether the measurement is DC or AC.
 
 In the case that an integrated energy measurement device is used, the readings must begin before the start of the run and extend to when it is finished.
-
-The intervals at which total energy readings are reported must be short enough so that at least \MinMeasurementsCorePhaseLTwoThree{} reported readings fall within the core phase of the workload.
+\begin{itemize}
+      \item The intervals reported must be short enough so that at least \MinMeasurementsCorePhaseLTwoThree{} reported readings fall within the core phase of the workload.
 Note that each reported energy reading is the integral over many internal power samples.
-
-The measured energy for the core phase is the last measured total energy within the core phase minus the first measured total energy within the core phase.
-The final power is calculated by dividing this energy by the elapsed time between these first and last energy readings.
-These last and first measurements in the core phase must be timed such that no more than \num{1} second of the core phase is not covered by the total energy measurement.
+      \item The measured energy for the core phase is the last measured sampled energy within the core phase minus the first measured sampled energy within the core phase.
+The final power is calculated by dividing this total energy by the elapsed time between these first and last energy readings.
+These last and first measurements in the core phase must be timed such that no more than \num{1} second of the core phase is not covered by the energy samples.
 The procedure for the full run is analogous.
+\end{itemize}
+
 
 Figure~\ref{fig:a1l3pm} illustrates Aspect~1 of sampling energy at Level~3.
 The figure shows \num{10} readings in the core phase of the workload.
@@ -468,7 +469,7 @@ Subsystems include computational nodes, any interconnect network the application
 
 For Level~1 and~2, measure the compute-node subsystem power.
 All other subsystems participating in the workload must also be measured, or their contribution must be estimated if they are not measured.
-Include everything needed to operate the interconnect network that is not part of the compute subsystem.
+% Include everything needed to operate the interconnect network that is not part of the compute subsystem.
 
 For Level~3, include all power going to the computer system that participates in a workload in the power measurement.
 The reported power measurement must include all computational nodes, any interconnect network the application uses, any head or control nodes, all power conversion losses inside the computer, and any internal cooling devices (self-contained liquid cooling systems and fans).
@@ -496,7 +497,7 @@ If you cannot shut down the GPUs, you must still include the idle power that the
 It is not acceptable to measure the power for both the compute nodes and the GPUs and then subtract the idle GPU power from the measurement.
 In this case, the idle GPUs could be noted as included in the measurement but non-participating.
 
-A site may include more subsystems than required if it chooses to from a measurement logistics point of view.
+A site may include more subsystems than required. This may be convenient from a measurement logistics point of view.
 
 % In other words, for Level~2 and~3 you have to include everything that you cannot turn of during the benchmark run.
 % It only allowed to exclude subsystems (or parts thereof) from the measurement in the first place, but their contribution must not be subtracted afterwards.
@@ -531,7 +532,7 @@ A site may include more subsystems than required if it chooses to from a measure
 \section{Aspect~4: Instrumentation Location where the Electrical Measurements are Taken}
 \label{sec:A4wEMaT}
 Aspect~4 specifies where in the power distribution system the power delivery is measured.
-For all quality levels, the submission indicates where power is measured and the quantity of parallel measurements.
+For all quality levels, the submission should indicate where power is measured and the quantity of parallel measurements.
 
 Measurements of power or energy are typically made at multiple locations in parallel across the computer system.
 For example, such locations can be at the entrance to each separate rack, or at the output connector of multiple building transformers.
