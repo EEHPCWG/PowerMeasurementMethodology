@@ -1,10 +1,12 @@
 \chapter{Introduction}
 \label{sec:intro}
 
-This document recommends a methodological approach for measuring, recording, and reporting the power used by a high performance computer (HPC) system while running a workload.
+This document recommends a methodological approach for measuring, recording, and reporting the power used by a \ac{HPC} system while running a workload.
 
-This document is part of a collaborative effort between the Green500, the Top500, the Green Grid, and the Energy Efficient High Performance Computing Working Group (EEHPC WG).
-While it is intended for this methodology to be generally applicable to benchmarking a variety of workloads, the initial focus is on High Performance LINPACK (HPL).
+This document is part of a collaborative effort between the Green500, the Top500, the Green Grid, and the \ac{EE HPC WG}.
+% This methodology is generally on obtaining a power measurement for the \ac{HPL} benchmark, however it has value for measuring other workloads as well.
+This methodology is generally applicable to benchmarking a variety of workloads, in this case the focus for the remainder of this document is on \ac{HPL}.
+% While it is intended for this methodology to be generally applicable to benchmarking a variety of workloads, the initial focus is on \ac{HPL}.
 
 Benchmarking computer systems is a way of comparing performance between architectures.
 There are benchmarks that are used for comparing the energy efficiency of architectures and include both a measure of the benchmark performance and either energy or power.
@@ -12,7 +14,7 @@ Benchmarking efforts, like the Top500 and the Green500, provide a ranked list of
 They also provide a reliable basis for tracking and detecting trends in high performance computing.
 
 Besides providing more accurate and precise information for the Green500 List, there are other reasons to make a system-level power measurement.
-There are a lot of capabilities today for measuring component-level power.
+There are many capabilities today for measuring component-level power.
 This is especially true for processors and accelerators, but it also includes node and rack-level measurements.
 System-level power is still a challenge for many sites and systems.
 Sites and vendors may want to do architectural trending and system modeling for design, selection, upgrades, tuning and analysis.
@@ -45,11 +47,13 @@ The quality ratings are as follows:
 
 \begin{packed_item}
 \item 
-Adequate, called Level~1 (L1)
+Adequate, called Level~1
 \item
-Moderate, called Level~2 (L2)
+Moderate, called Level~2
 \item
-Best, called Level~3 (L3)
+Best, called Level~3
 \end{packed_item}
 
 \textbf{To grant a given quality level for a submission, the submission must satisfy the requirements of all four aspects at that quality level or higher.}
+
+A summary of the four aspects and three quality levels is given in Table~\ref{tab:levels}.
